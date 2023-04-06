@@ -1,0 +1,7 @@
+main:
+  - title: "Tags"
+    url: /tags/
+  - title: "Category"
+    url: /categories/
+  - title: "Search"
+    url: /search/
