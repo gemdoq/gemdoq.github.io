@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "dark"  # "air", "aqua", "contrast", "dark", "dirt", 
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "기록보관소"
+title                    : "기록보관소📦"
 title_separator          : "|"
 subtitle                 : "까먹으면 안되는 것들"
 name                     : "gemdoq"
-description              : "개발하다 잊어먹기 쉬운 중요한 것들을 저장하기 위한 기록보관소"
+description              : "개발하다🛠️ 잊어버리기💬 쉬운 중요한 것들을💡 저장하기 위한💾 기록보관소📦"
 url                      : "https://gemdoq.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -104,52 +104,31 @@ analytics:
 
 # Site Author
 author:
-  name             : "gemdoq"
+  name             : "gemdoq🦁"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "사유와 망상 애호가"
+  bio              : "망상🦄사유💭애호가🥰"
   location         : "Seoul, South Korea"
-  email            : "gemdoq@gmail.com"
+  email            : 
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:teddylee777@email.com"
+      url: "mailto:gemdoq@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://teddynote.github.io"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      url: "https://gemdoq.github.io"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/teddylee777"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://github.com/gemdoq"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/teddylee777"
+      url: "https://github.com/gemdoq"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
+      url: "https://gitlab.com/gemdoq"
 
 
 # Reading Files
@@ -220,7 +199,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul
 
 
 # Plugins (previously gems:)
@@ -257,16 +236,16 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 
 # HTML Compression

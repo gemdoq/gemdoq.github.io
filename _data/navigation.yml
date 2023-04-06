@@ -1,7 +1,7 @@
 main:
-  - title: "Tags"
-    url: /tags/
-  - title: "Category"
-    url: /categories/
-  - title: "Search"
+  - title: "Search 🔍"
     url: /search/
+  - title: "Category 🗂️"
+    url: /categories/
+  - title: "Tags 🏷️"
+    url: /tags/
