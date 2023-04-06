@@ -5,8 +5,19 @@ categories: Travel
 tag: [TopRestaurants, Food, Travel, NYEats]
 toc: false
 author_profile: false
+typora-root-url: ../
 ---
 **Summary:** Are you planning a trip to New York? Then you must check out these top 10 restaurants that offer delicious food and an unforgettable dining experience. From classic Italian restaurants to modern fusion cuisine, this list has something for everyone. We've included the address, menu recommendations and other helpful information like opening and closing hours. So, let's get started!
+
+![DEV ACHIEVE](/images/2023-02-26-top-10-restaurants-you-must-visit-when-traveling-to-new-york/DEV ACHIEVE.png)
+
+# 여기는 망곰사진
+
+이렇다구![Github](/images/2023-02-26-top-10-restaurants-you-must-visit-when-traveling-to-new-york/Github.png)
+
+# 여기는 깃헙사진
+
+이렇다구![manggom](/images/2023-02-26-top-10-restaurants-you-must-visit-when-traveling-to-new-york/manggom.png)
 
 ##1. Del Posto
 **Address:** 85 10th Ave, New York, NY 10011
@@ -14,6 +25,7 @@ author_profile: false
 Del Posto is an Italian restaurant located in the heart of Manhattan. It serves classic Italian dishes like pasta, risotto, and seafood. The restaurant also offers a variety of wines to pair with your meal. The atmosphere is elegant and the service is impeccable.
 
 **Menu Recommendations:** 
+
 - Spaghetti alla Carbonara 
 - Risotto alla Milanese 
 - Branzino al Forno 
