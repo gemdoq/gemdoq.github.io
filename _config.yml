@@ -58,7 +58,7 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-  hide                   : # true, false (default)
+  hide                   : true # true, false (default)
 search                   : # true, false (default)
 search_full_content      : # true, false (default)
 search_provider          : # lunr (default), algolia, google
@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "gemdoq🦁"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/avartar.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "망상🦄사유💭애호가🥰"
   location         : "Seoul, South Korea"
   email            : 
@@ -119,6 +119,9 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/gemdoq"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://www.youtube.com/@seunghochoi-dd4kn"
 
 # Site Footer
 footer:
@@ -129,6 +132,9 @@ footer:
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       url: "https://gitlab.com/gemdoq"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://www.youtube.com/@seunghochoi-dd4kn"
 
 
 # Reading Files
@@ -270,5 +276,9 @@ defaults:
       share: true
       related: true
       show_date: true
+      toc: true
+      toc_sticky: true
+      toc_label: 목차
+      author_profile: false
 
 date_format: "%Y-%m-%d"

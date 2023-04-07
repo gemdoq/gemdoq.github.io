@@ -1,7 +1,20 @@
 main:
-  - title: "Search 🔍"
-    url: /search/
+  - title: "About 👀"
+    url: /about/
   - title: "Category 🗂️"
     url: /categories/
   - title: "Tags 🏷️"
     url: /tags/
+  - title: "Search 🔍"
+    url: /search/
+
+docs: 
+  - title: "대목차1 📚"
+    children:
+      - title: "Category 🗂️"
+        url: /categories/
+
+  - title: "대목차2 📚"
+    children:
+      - title: "Tag 🏷️"
+        url: /tags/
