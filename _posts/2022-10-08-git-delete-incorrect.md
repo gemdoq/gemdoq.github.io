@@ -18,7 +18,7 @@ typora-root-url: ../
 ### 1. 원격 저장소에서 파일 삭제하기
 
 이미 github remote에 push를 했기 때문에 로컬의 저장소에서 파일을 삭제해도 원격 저장소에서는 삭제되지 않는다.
-** git rm VS git rm --cached **
+**git rm VS git rm --cached**
 ~~~javascript
 // 원격 저장소와 로컬 저장소에 있는 파일을 삭제한다.
 $ git rm [File Name]
