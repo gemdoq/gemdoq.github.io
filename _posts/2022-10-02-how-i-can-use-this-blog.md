@@ -49,7 +49,7 @@ typora-root-url: ../
 
 추천하는 테마는 just-the-docs, minimal mistakes가 있다.
 
-현재 사용중인 Jekyll Theme : [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/)
+현재 사용중인 Jekyll Theme : [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/){:target="_blank"}
 
 ### 개념3 로컬에서 지킬사이트 구동
 
