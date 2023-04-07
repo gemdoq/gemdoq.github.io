@@ -3,7 +3,7 @@ layout: single
 title: "블로그 활용 방법"
 date: 2022-10-02 10:25:12 +0900
 categories: knowledge
-tags: [Blog, Ruby, Jekyll, Bundler]
+tags: [Blog, Jekyll]
 typora-root-url: ../
 ---
 
@@ -18,31 +18,45 @@ typora-root-url: ../
 
 ### 개념0 필요한 것
 
-1. 구글링 실력: 궁금할 때 구글링을 해서 쉽게 바로 얻을 수 있는 정보를 기록하는 건 낭비
-2. vim 사용 지식
-3. 리눅스 기본명령어 지식
+1. 구글링 실력
+   - 궁금할 때 구글링을 해서 쉽게 바로 얻을 수 있는 정보를 기록하는 건 낭비
+1. vim 사용 지식
+2. 리눅스 기본명령어 지식
 
 ### 개념1 설치 순서
 
 - 루비설치 
+
 - 디렉토리생성: mkdir 디렉토리 
-  - 디렉토리명은 관리하기 쉽게 깃허브아이디.github.io
+
+- 디렉토리명은 관리하기 쉽게 깃허브아이디.github.io
+
 - 디렉토리이동: cd 디렉토리
+
 - 지킬설치: gem install jekyll 
+
 - 번들러설치: `생략가능` 
+
 - 지킬사이트생성: jekyll new --skip-bundle . 
+
 - 젬파일설정(Gemfile): vi Gemfile
+
 - 번들러실행: bundle install
+
 - 지킬사이트테마설정(_config.yml): vi _config.yml
 
 ### 개념2 Jekyll theme
 
 추천하는 테마는 just-the-docs, minimal mistakes가 있다.
 
+현재 사용중인 Jekyll Theme : [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/)
+
 ### 개념3 로컬에서 지킬사이트 구동
 
 - 번들로 지킬사이트 구동: bundle exec jekyll serve
+
 - 로컬 사이트 주소: localhost:4000
+
 - 번들러 종료: Ctrl+C
 
 <br>
@@ -53,11 +67,13 @@ GitHub Pages는 몇가지 특수문자들을 구현해버린다.
 
 이런 특수문자들을 conflicting syntax라고 한다.
 
-그래서 내가 표현하고자 하는 텍스트가 conflicting syntax여서 표현하지 못할 때가 있다.
+그래서 내가 표현하고자 하는 텍스트가 conflicting syntax여서 
 
-liquid에서는 conflicting syntax를 사용할 수 있게 하기 위한 raw문법을 제공한다.
+표현하지 못할 때가 있다.
 
-다음과 같은 raw문법으로 conflicting syntax를 사용할 수 있다.
+liquid에서는 conflicting syntax를 사용할 수 있게 하기 위한 
+
+다음과 같은 raw문법을 제공한다.
 
 ```
 {% raw %}{%{% endraw %} raw %}
@@ -69,13 +85,17 @@ conflicting syntax
 
 ## 머릿말 블록(front matter block)
 
-YAML 형식의 머릿말 블록(front matter block)을 가지고 있는 모든 파일은 지킬이 특별한 파일 취급을 한다.
+YAML 형식의 머릿말 블록(front matter block)을 
+
+가지고 있는 모든 파일은 지킬이 특별한 파일 취급을 한다.
 
 ### 형식
 
 이하 코드박스와 같이 삼중선 안에 내용을 넣는 형식이며, 
 
-사전 정의된 변수를 설정하거나 사용자 지정 변수를 만들어 설정을 적용할 수 있다.
+사전 정의된 변수를 설정하거나 사용자 지정 변수를 만들어 
+
+설정을 적용할 수 있다.
 
 ```yaml
 ---
@@ -111,7 +131,9 @@ food: pizza
 
 ## 카테고리별 보기 기능(아카이브)
 
-_pages에서 category-archive.md를 만들고, front matter에 다음과 같이 넣는다.
+_pages에서 category-archive.md를 만들고, 
+
+front matter에 다음과 같이 넣는다.
 
 ```yaml
 ---
@@ -135,17 +157,19 @@ main:
     url: /categories/
 ```
 
-이제 포스트 작성 시 카테고리를 추가하고 싶으면, 
+이제 포스트 작성 시 카테고리를 추가하고 싶으면, front matter에 
 
-front matter에 category-archive.layout값인 categories를 key로 가지는 원하는 카테고리 value를 넣어주면
+category-archive.layout값인 categories를 key로 가지는 
 
-포스트에 카테고리가 할당된다. 
+원하는 카테고리 value를 넣어주면 포스트에 카테고리가 할당된다. 
 
 <br>
 
 ## 태그별 보기 기능(아카이브)
 
-_pages에서 tag-archive.md를 만들고, front matter에 다음과 같이 넣는다.
+_pages에서 tag-archive.md를 만들고, 
+
+front matter에 다음과 같이 넣는다.
 
 ```yaml
 ---
@@ -171,17 +195,21 @@ main:
 
 이제 포스트 작성 시 태그를 추가하고 싶으면, 
 
-front matter에 tag-archive.layout값인 tag를 key로 가지는 원하는 태그 value를 넣어주면
+front matter에 tag-archive.layout값인 tag를 key로 가지는 
 
-포스트에 태그가 할당된다.
+원하는 태그 value를 넣어주면 포스트에 태그가 할당된다.
 
-태그는 카테고리와 다르게 태그 value로 배열 넣어 한번에 여러 태그를 할당할 수 있다. 
+태그는 카테고리와 다르게 태그 value로 여러 태그값이 담긴
+
+배열을 value로 넣어 한번에 여러 태그를 할당할 수 있다. 
 
 <br>
 
 ## 연도별 보기 기능(아카이브)
 
-_pages에서 year-archive.md를 만들고, front matter에 다음과 같이 넣는다.
+_pages에서 year-archive.md를 만들고, 
+
+front matter에 다음과 같이 넣는다.
 
 ```yaml
 ---
@@ -239,16 +267,20 @@ sidebar:
 	nav: "docs"
 ```
 
-이제 포스트를 클릭하면 좌측 사이드에 네비게이션으로 docs를 활용할 수 있다.
+이제 포스트를 클릭하면 좌측 사이드에 네비게이션으로 
+
+docs를 활용할 수 있다.
 
 <br>
 
 ## 공지사항 기능
 
-markdown 형식의 문서에서 적용되더라
 {: .notice--danger}
+markdown 형식의 문서에서 적용되더라
 
-텍스트 밑에 `중괄호열고콜론띄어쓰기닷설정값중괄호닫고`를 넣어주면 된다 예시코드는 다음과 같다.
+텍스트 밑에 `중괄호열고콜론띄어쓰기닷설정값중괄호닫고`를 넣어주면 된다.
+
+예시코드는 다음과 같다.
 
 ```markdown
 {: .notice--danger/success/warning/info/primary}
@@ -258,8 +290,8 @@ markdown 형식의 문서에서 적용되더라
 
 ## 버튼 기능
 
-markdown 형식의 문서에서 적용되더라
 {: .notice--danger}
+markdown 형식의 문서에서 적용되더라
 
 다음의 예시코드처럼 텍스트를 작성하면 된다.
 
@@ -277,7 +309,7 @@ markdown 형식의 문서에서 적용되더라
 
 위 주소에서 `HasadgwdthH`가 영상식별번호다.
 
-중괄호 안에 다음 코드에 넣으면 영상식별번호에 해당되는 유튜브 영상이 첨부된다.
+다음 코드에 넣으면 영상식별번호에 해당되는 유튜브 영상이 첨부된다.
 
 ```markdown
 {% raw %}
@@ -295,7 +327,7 @@ markdown 형식의 문서에서 적용되더라
 
 위 주소에서 `1iDkrmC75d3jDk8kSJfgHasa38dg6th`가 영상식별번호다.
 
-중괄호 안에 다음 코드에 넣으면 영상식별번호에 해당되는 유튜브 영상이 첨부된다.
+다음 코드에 넣으면 영상식별번호에 해당되는 유튜브 영상이 첨부된다.
 
 ```markdown
 {% raw %}
@@ -317,15 +349,15 @@ typora 설정 - 이미지 탭 - 다음과 같이 설정한다.
 
 typora로 이미지를 드래그앤드롭으로 넣으면, 
 
-블로그 디렉토리의 images라는 폴더에 드래그앤드롭으로 넣은 이미지도 함께 복사된다.
+블로그 디렉토리의 images라는 폴더에도 함께 복사된다.
 
 다만 주의해야 할 점이 있다. 
 
 블로그가 구성될 때 포스트의 카테고리를 참조하여 url을 만들기 때문에, 
 
-이미지의 위치가 제대로 특정되지 않아 이미지가 깨지는 경우를 방지하기 위해서,
+이미지의 위치가 제대로 특정되지 않아 이미지가 깨지는 경우가 있다.
 
-매 포스트를 작성시마다 front matter에 다음 설정코드를 넣어줘야 한다.
+매 포스트를 작성시마다 front matter에 다음 설정을 해주자.
 
 ```yaml
 ---
@@ -348,7 +380,9 @@ typora가 유료여서 사용하는 게 부담된다면,
 ![이미지별명](루트경로/images/YYYY-mm-dd-포스트명/이미지명)
 ```
 
-루트경로는 다른 개발환경에서도 이미지가 깨지지 않고 호환될 수 있도록 `중괄호` 안에 다음 코드를 넣어 표현한다.
+루트경로는 다른 개발환경에서도 이미지가 깨지지 않고 호환될 수 있도록 
+
+`중괄호` 안에 다음 코드를 넣어 표현한다.
 
 ```markdown
 {% raw %}
@@ -360,7 +394,9 @@ typora가 유료여서 사용하는 게 부담된다면,
 
 ## 리다이렉트 기능
 
-포스트 정보가 바뀌었을 때 포스트 주소를 리다이렉트를 걸어주어 연결을 유지할 수 있는 기능이다.
+포스트 정보가 바뀌었을 때 포스트 주소를 리다이렉트를 걸어주어 
+
+연결을 유지할 수 있는 기능이다.
 
 포스트를 작성할 때 front matter에 다음과 같이 넣어준다.
 
@@ -369,11 +405,13 @@ redirect_from:
 	- 원래주소 (/원래카테고리/원래_포스트_파일_제목)
 ```
 
-예를 들어 예전 포스트의 카테고리가 original이고, 
+예를 들어 예전 포스트의 카테고리가 `original`이고, 
 
-포스트파일의 제목이 2009-10-11-past-post.md이었다면,
+포스트파일의 제목이 `2009-10-11-past-post.md`였다면,
 
-바뀐 포스트의 front matter에는 이렇게 들어가야 redirect가 정상적으로 된다.
+바뀐 포스트의 front matter에는 이렇게 들어가야 
+
+redirect가 정상적으로 작동한다.
 
 ```yaml
 redirect_from:
@@ -386,21 +424,25 @@ redirect_from:
 
 minimal mistakes 테마에는 여러 장점이 있다. 
 
-무엇보다 sass를 다 미리 꾸며놔서 사용자가 간편하게 사용할 수 있다는 커다란 장점이 있다.
+무엇보다 sass를 다 미리 꾸며놔서 사용자가 간편하게 사용할 수 있다.
 
-게다가 커스텀 CSS를 만들고, 필요에 따라 간단한 코드로 markdown 문서에 적용할 수 있다.
+게다가 커스텀 CSS를 만들고, 필요에 따라 markdown 문서에 
+
+간단한 코드사용으로 적용할 수 있다.
 
 우선 _sass 폴더의 minimal-mistakes 폴더를 들어간다.
 
 여러 scss 파일들이 있는데, 그 중 _utilities.scss파일을 열어본다.
 
-_utilities.scss는 사용자가 필요에 따른 서식을 정의할 수 있는 scss파일이다.
+_utilities.scss는 사용자가 필요에 따른 서식을 정의할 수 있는 파일이다.
 
-예를 들어 내가 이미지를 삽입했는데, 크기가 너무 커서 조절하고 싶다면 다음과 같이 하면 된다.
+예를 들어 내가 이미지를 삽입했는데, 크기가 너무 커서 조절하고 싶다면 
+
+다음과 같은 순서로 커스텀 스타일을 적용하면 된다.
 
 1. 유틸리티 서식파일(_utilities.scss)을 연다.
 
-2. 최하단에 .img-width-half라고 선언하고, 해당 서식내용을 width: 50%;로 할당한다.
+2. 최하단에 아래와 같이 커스텀 서식을 정의한다.
    ```scss
    // custom style
    .img-width-half {
@@ -408,7 +450,7 @@ _utilities.scss는 사용자가 필요에 따른 서식을 정의할 수 있는 
    }
    ```
 
-3. 삽입한 이미지의 코드 뒤에 커스텀 스타일을 다음과 같이 적용한다.
+3. 삽입한 이미지의 뒤에 커스텀 서식을 아래와 같이 적용한다.
    ```markdown
    <!-- .align-center는 이미 테마 제작자에 의해 정의되어 있음 -->
    ![이미지명](이미지주소){: .align-center .img-width-half}
