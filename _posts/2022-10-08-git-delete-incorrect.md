@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "[Git] Github에 잘못 올라간 파일 삭제하기"
-date: 2022-10-04 11:40:22 +0900
-categories: Git
+title: "Github에 잘못 올라간 파일 삭제하기"
+date: 2022-10-08 11:40:22 +0900
+categories: knowledge
 tags: [Git]
 typora-root-url: ../
 ---

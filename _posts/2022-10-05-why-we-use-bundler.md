@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "[knowledge] Bundler 개념"
-date: 2022-10-03 13:25:12 +0900
+title: "Bundler 개념"
+date: 2022-10-05 13:25:12 +0900
 categories: knowledge
 tags: [bundler]
 typora-root-url: ../

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[knowledge] 블로그 활용 방법"
+title: "블로그 활용 방법"
 date: 2022-10-02 10:25:12 +0900
 categories: knowledge
 tags: [Blog, Ruby, Jekyll, Bundler]
@@ -176,6 +176,36 @@ front matter에 tag-archive.layout값인 tag를 key로 가지는 원하는 태�
 포스트에 태그가 할당된다.
 
 태그는 카테고리와 다르게 태그 value로 배열 넣어 한번에 여러 태그를 할당할 수 있다. 
+
+<br>
+
+## 연도별 보기 기능(아카이브)
+
+_pages에서 year-archive.md를 만들고, front matter에 다음과 같이 넣는다.
+
+```yaml
+---
+title: "Posts by Year"
+layout: posts
+permalink: /year/
+entries_layout: grid
+author_profile: true
+---
+```
+
+_data에서 navigation.yml을 연다.
+
+navigation.yml의 main은 상단 네비게이션 바의 요소들을 의미한다.
+
+다음과 같이 추가한다.
+
+```yaml
+main:
+  - title: "Year 📅"
+    url: /year/
+```
+
+이제 포스트를 작성하면 자동으로 작성된 연도별로 분류된다. 
 
 <br>
 
@@ -409,42 +439,3 @@ $\[ x^n + y^n = z^n \]$
 $y = f(x)^2$
 
 <br>
-
-## 연도별 보기 기능(아카이브)
-
-_pages에서 year-archive.md를 만들고, front matter에 다음과 같이 넣는다.
-
-```yaml
----
-title: "Posts by Year"
-layout: posts
-permalink: /year/
-entries_layout: grid
-author_profile: true
----
-```
-
-_data에서 navigation.yml을 연다.
-
-navigation.yml의 main은 상단 네비게이션 바의 요소들을 의미한다.
-
-다음과 같이 추가한다.
-
-```yaml
-main:
-  - title: "Year 📅"
-    url: /year/
-```
-
-이제 포스트를 작성하면 자동으로 작성된 연도별로 분류된다. 
-
-<br>
-
-
-
-
-
-
-
-
-
