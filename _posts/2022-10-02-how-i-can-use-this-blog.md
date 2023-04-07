@@ -47,6 +47,26 @@ typora-root-url: ../
 
 <br>
 
+## 깃허브 블로그에서 특수문자 사용하는 방법
+
+GitHub Pages는 몇가지 특수문자들을 구현해버린다.
+
+이런 특수문자들을 conflicting syntax라고 한다.
+
+그래서 내가 표현하고자 하는 텍스트가 conflicting syntax여서 표현하지 못할 때가 있다.
+
+liquid에서는 conflicting syntax를 사용할 수 있게 하기 위한 raw문법을 제공한다.
+
+다음과 같은 raw문법으로 conflicting syntax를 사용할 수 있다.
+
+```
+{% raw %}{%{% endraw %} raw %}
+conflicting syntax
+{% raw %}{%{% endraw %} endraw %}
+```
+
+<br>
+
 ## 머릿말 블록(front matter block)
 
 YAML 형식의 머릿말 블록(front matter block)을 가지고 있는 모든 파일은 지킬이 특별한 파일 취급을 한다.
@@ -80,6 +100,9 @@ date, categories, tags
 ---
 food: pizza
 ---
+{% raw %}
+<h3> {{ food.pizza }} </h3>
+{% endraw %}
 ```
 
 해당 페이지에서 중괄호를 겹쳐서 사용 가능
@@ -183,7 +206,7 @@ front matter에 다음 설정을 넣어준다.
 
 ```yaml
 sidebar:
-		nav: "docs"
+	nav: "docs"
 ```
 
 이제 포스트를 클릭하면 좌측 사이드에 네비게이션으로 docs를 활용할 수 있다.
@@ -227,7 +250,9 @@ markdown 형식의 문서에서 적용되더라
 중괄호 안에 다음 코드에 넣으면 영상식별번호에 해당되는 유튜브 영상이 첨부된다.
 
 ```markdown
-% include video id="영상식별번호" provider="youtube" %
+{% raw %}
+{% include video id="영상식별번호" provider="youtube" %}
+{% endraw %}
 ```
 
 <br>
@@ -243,7 +268,9 @@ markdown 형식의 문서에서 적용되더라
 중괄호 안에 다음 코드에 넣으면 영상식별번호에 해당되는 유튜브 영상이 첨부된다.
 
 ```markdown
-% include video id="영상식별번호" provider="google-drive"
+{% raw %}
+{% include video id="영상식별번호" provider="google-drive"}
+{% endraw %}
 ```
 
 <br>
@@ -294,7 +321,9 @@ typora가 유료여서 사용하는 게 부담된다면,
 루트경로는 다른 개발환경에서도 이미지가 깨지지 않고 호환될 수 있도록 `중괄호` 안에 다음 코드를 넣어 표현한다.
 
 ```markdown
-{site.url}
+{% raw %}
+{{ site.url }}
+{% endraw %}
 ```
 
 <br>
