@@ -7,8 +7,8 @@ tags: [bundler]
 typora-root-url: ../
 ---
 
-## Bundler 개념
 
+## Bundler 개념
 > - 번들러가 어떻게 만들어졌나
 > - 번들러의 역할
 > - 번들러의 장점

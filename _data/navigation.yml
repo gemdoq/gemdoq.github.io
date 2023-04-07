@@ -3,8 +3,10 @@ main:
     url: /about/
   - title: "Category 🗂️"
     url: /categories/
-  - title: "Tags 🏷️"
+  - title: "Tag 🏷️"
     url: /tags/
+  - title: "Year 📅"
+    url: /year/
   - title: "Search 🔍"
     url: /search/
 

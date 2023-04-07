@@ -7,8 +7,8 @@ tags: [Blog, Ruby, Jekyll, Bundler]
 typora-root-url: ../
 ---
 
-## 블로그(GitHub Pages) 활용 방법
 
+## 블로그(GitHub Pages) 활용 방법
 > - GitHub pages를 꾸미고 각 요소를 설정하는 방법들 정리
 > - 포스팅할 때 활용할 수 있는 기능 정리
 
@@ -109,9 +109,9 @@ food: pizza
 
 <br>
 
-## 카테고리 기능
+## 카테고리별 보기 기능(아카이브)
 
-_pages에서 category-achive.md를 만들고, front matter에 다음과 같이 넣는다.
+_pages에서 category-archive.md를 만들고, front matter에 다음과 같이 넣는다.
 
 ```yaml
 ---
@@ -137,15 +137,15 @@ main:
 
 이제 포스트 작성 시 카테고리를 추가하고 싶으면, 
 
-front matter에 category-achive.layout값인 categories를 key로 가지는 원하는 카테고리 value를 넣어주면
+front matter에 category-archive.layout값인 categories를 key로 가지는 원하는 카테고리 value를 넣어주면
 
 포스트에 카테고리가 할당된다. 
 
 <br>
 
-## 태그기능
+## 태그별 보기 기능(아카이브)
 
-_pages에서 tag-achive.md를 만들고, front matter에 다음과 같이 넣는다.
+_pages에서 tag-archive.md를 만들고, front matter에 다음과 같이 넣는다.
 
 ```yaml
 ---
@@ -171,7 +171,7 @@ main:
 
 이제 포스트 작성 시 태그를 추가하고 싶으면, 
 
-front matter에 tag-achive.layout값인 tag를 key로 가지는 원하는 태그 value를 넣어주면
+front matter에 tag-archive.layout값인 tag를 key로 가지는 원하는 태그 value를 넣어주면
 
 포스트에 태그가 할당된다.
 
@@ -179,7 +179,7 @@ front matter에 tag-achive.layout값인 tag를 key로 가지는 원하는 태그
 
 <br>
 
-## 좌측사이드바기능
+## 좌측사이드바 기능
 
 _data에서 navigation.yml을 연다.
 
@@ -213,7 +213,7 @@ sidebar:
 
 <br>
 
-## 공지사항기능
+## 공지사항 기능
 
 markdown 형식의 문서에서 적용되더라
 {: .notice--danger}
@@ -226,7 +226,7 @@ markdown 형식의 문서에서 적용되더라
 
 <br>
 
-## 버튼기능
+## 버튼 기능
 
 markdown 형식의 문서에서 적용되더라
 {: .notice--danger}
@@ -239,7 +239,7 @@ markdown 형식의 문서에서 적용되더라
 
 <br>
 
-## 유튜브 영상 추가기능
+## 유튜브 영상추가 기능
 
 유튜브의 영상 주소에는 영상식별번호가 있다.
 
@@ -275,7 +275,7 @@ markdown 형식의 문서에서 적용되더라
 
 <br>
 
-## 이미지 추가기능
+## 이미지추가 기능
 
 ### Typora로 이미지 넣기
 
@@ -328,7 +328,7 @@ typora가 유료여서 사용하는 게 부담된다면,
 
 <br>
 
-## 리다이렉트기능
+## 리다이렉트 기능
 
 포스트 정보가 바뀌었을 때 포스트 주소를 리다이렉트를 걸어주어 연결을 유지할 수 있는 기능이다.
 
@@ -351,3 +351,100 @@ redirect_from:
 ```
 
 <br>
+
+## 심화) 커스텀 CSS 스타일 기능
+
+minimal mistakes 테마에는 여러 장점이 있다. 
+
+무엇보다 sass를 다 미리 꾸며놔서 사용자가 간편하게 사용할 수 있다는 커다란 장점이 있다.
+
+게다가 커스텀 CSS를 만들고, 필요에 따라 간단한 코드로 markdown 문서에 적용할 수 있다.
+
+우선 _sass 폴더의 minimal-mistakes 폴더를 들어간다.
+
+여러 scss 파일들이 있는데, 그 중 _utilities.scss파일을 열어본다.
+
+_utilities.scss는 사용자가 필요에 따른 서식을 정의할 수 있는 scss파일이다.
+
+예를 들어 내가 이미지를 삽입했는데, 크기가 너무 커서 조절하고 싶다면 다음과 같이 하면 된다.
+
+1. 유틸리티 서식파일(_utilities.scss)을 연다.
+
+2. 최하단에 .img-width-half라고 선언하고, 해당 서식내용을 width: 50%;로 할당한다.
+   ```scss
+   // custom style
+   .img-width-half {
+   	width: 50%;
+   }
+   ```
+
+3. 삽입한 이미지의 코드 뒤에 커스텀 스타일을 다음과 같이 적용한다.
+   ```markdown
+   <!-- .align-center는 이미 테마 제작자에 의해 정의되어 있음 -->
+   ![이미지명](이미지주소){: .align-center .img-width-half}
+   ```
+
+<br>
+
+## LaTeX(수식문법) 기능
+
+포스트 작성 시, front matter에 다음과 같이 설정해주면 된다.
+
+```yaml
+use_math: true
+```
+
+위 코드가 있는 포스트에서는 사이트가 구동 시, 
+
+_includes/head에 있는 custom.html에서 liquid문법에 따라 
+
+_includes에 있는 mathjax-support.html파일이 호출되고, 
+
+LaTeX 기능이 활성화된다.
+
+테스트 문구는 다음과 같다.
+
+$\[ x^n + y^n = z^n \]$
+
+$y = f(x)^2$
+
+<br>
+
+## 연도별 보기 기능(아카이브)
+
+_pages에서 year-archive.md를 만들고, front matter에 다음과 같이 넣는다.
+
+```yaml
+---
+title: "Posts by Year"
+layout: posts
+permalink: /year/
+entries_layout: grid
+author_profile: true
+---
+```
+
+_data에서 navigation.yml을 연다.
+
+navigation.yml의 main은 상단 네비게이션 바의 요소들을 의미한다.
+
+다음과 같이 추가한다.
+
+```yaml
+main:
+  - title: "Year 📅"
+    url: /year/
+```
+
+이제 포스트를 작성하면 자동으로 작성된 연도별로 분류된다. 
+
+<br>
+
+
+
+
+
+
+
+
+
