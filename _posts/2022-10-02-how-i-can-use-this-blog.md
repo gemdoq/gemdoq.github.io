@@ -47,7 +47,7 @@ typora-root-url: ../
 
 ### 개념2 Jekyll theme
 
-추천하는 테마는 just-the-docs, minimal mistakes가 있다.
+추천하는 테마는 [Just-The-Docs](https://github.com/just-the-docs/just-the-docs){:target="_blank"}, [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/){:target="_blank"}가 있다.
 
 현재 사용중인 Jekyll Theme : [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/){:target="_blank"}
 
