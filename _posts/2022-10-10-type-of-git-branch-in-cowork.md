@@ -21,7 +21,7 @@ Gitflow Workflow에서는 항상 유지되는 메인 브랜치들(master, develo
 
 총 5가지의 브랜치를 사용한다.
 
-![total-branch](/images/2022-10-10-type-of-git-branch-in-cowork/total-branch.png)
+![total-branch](/images/2022-10-10-type-of-git-branch-in-cowork/total-branch.png){: width="560"}
 
 <br>
 
@@ -47,7 +47,57 @@ develop 브랜치를 'master' 브랜치에 병합(merge)
 
 평소에는 이 브랜치를 기반으로 개발을 진행
 
-![develop-branch](/images/2022-10-10-type-of-git-branch-in-cowork/develop-branch.png)
+![develop-branch](/images/2022-10-10-type-of-git-branch-in-cowork/develop-branch.png){: width="560"}
+
+<br>
+
+## 3. Feature branch
+<span style="color:#4d0000">**기능을 개발하는 브랜치**</span>
+
+feature 브랜치는 새로운 기능 개발 및 버그 수정이 필요할 때마다 
+
+'develop' 브랜치로부터 분기
+
+feature 브랜치에서의 작업은 기본적으로 공유할 필요가 없기 때문에, 
+
+자신의 로컬 저장소에서 관리
+
+개발이 완료되면 'develop' 브랜치로 병합(merge)하여 다른 사람들과 공유
+
+1. 'develop' 브랜치에서 새로운 기능에 대한 feature 브랜치를 분기
+2. 새로운 기능에 대한 작업 수행
+3. 작업이 끝나면 'develop' 브랜치로 merge
+4. 더 이상 필요하지 않은 feature 브랜치는 삭제
+5. 새로운 기능에 대한 'feature' 브랜치를 중앙 원격 저장소에 push
+
+* feature 브랜치 이름 정하기
+  * master, develop, release-(RB_), or hotfix- 제외
+  * [feature/기능요약] 형식을 추천  EX) feature/login
+
+* feature 브랜치 생성 및 종료 과정
+
+~~~javascript
+// feature 브랜치(feature/login)를 'develop' 브랜치('master' 브랜치에서 따는 것이 아니다!)에서 분기
+$ git checkout -b feature/login develop
+
+/* ~ 새로운 기능에 대한 작업 수행 ~ */
+
+/* feature 브랜치에서 모든 작업이 끝나면 */
+// 'develop' 브랜치로 이동한다.
+$ git checkout develop
+// 'develop' 브랜치에 feature/login 브랜치 내용을 병합(merge)한다.
+# --no-ff 옵션: 아래에 추가 설명
+$ git merge --no-ff feature/login
+// -d 옵션: feature/login에 해당하는 브랜치를 삭제한다.
+$ git branch -d feature/login
+// 'develop' 브랜치를 원격 중앙 저장소에 올린다.
+$ git push origin develop
+~~~
+
+* <mark>--no-ff 옵션</mark>
+  * 새로운 커밋 객체를 만들어 'develop' 브랜치에 merge
+  * 이것은 'feature' 브랜치에 존재하는 커밋 이력을 **모두 합쳐서** 하나의 새로운 커밋 객체를 만들어 'develop' 브랜치로 merge
+  * ![feature-branch-merge](/images/2022-10-10-type-of-git-branch-in-cowork/feature-branch-merge.png){: width="560"}
 
 <br>
 
