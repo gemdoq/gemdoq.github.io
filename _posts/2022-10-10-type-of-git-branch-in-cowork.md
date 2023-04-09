@@ -213,4 +213,3 @@ $ git merge --no-ff hotfix-1.2.1
 ~~~
 
 <br>
-
