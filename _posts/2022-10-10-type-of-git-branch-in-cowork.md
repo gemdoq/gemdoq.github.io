@@ -101,3 +101,54 @@ $ git push origin develop
 
 <br>
 
+## 4. Release Branch
+
+<span style="color:#4d0000">**이번 출시 버전을 준비하는 브랜치**</span>
+
+배포를 위한 전용 브랜치를 사용함으로써 한 팀이 해당 배포를 준비하는 동안 
+
+다른 팀은 다음 배포를 위한 지속적인 기능 개발 가능
+
+1. 'develop' 브랜치에서 *배포할 수 있는 수준의 기능이 모이면 또는 정해진 배포 일정이 되면,* release 브랜치를 분기
+  * release 브랜치를 만드는 순간부터 배포 사이클 시작
+  * release 브랜치에서는 배포를 위한 최종적인 ***버그 수정, 문서 추가*** 등 릴리스와 직접적으로 관련된 작업을 수행
+2. 'release' 브랜치에서 *배포 준비가 완료되면*
+  * 배포 가능한 상태: 새로운 기능을 포함한 상태로 ***모든 기능이 정상적으로 동작*** 하는 상태
+    1. 병합한 커밋에 Release 버전 태그를 부여하여, 'master' 브랜치에 merge 
+    2. 배포를 준비하는 동안 release 브랜치가 변경되었을 수 있으므로 배포 완료 후 'develop' 브랜치에도 merge
+
+이때, 다음 배포(Release)를 위한 개발 작업은 'develop' 브랜치에서 계속 진행
+
+
+* release 브랜치 이름 정하기
+  * release-RB_* 또는 release-* 또는 release/* 처럼 이름 짓는 것이 일반적인 관례
+  * [release-* ] 형식을 추천  EX) release-1.2
+
+* release 브랜치 생성 및 종료 과정
+
+~~~javascript
+// release 브랜치(release-1.2)를 'develop' 브랜치('master' 브랜치에서 따는 것이 아니다!)에서 분기
+$ git checkout -b release-1.2 develop
+
+/* ~ 배포 사이클이 시작 ~ */
+
+/* release 브랜치에서 배포 가능한 상태가 되면 */
+// 'master' 브랜치로 이동한다.
+$ git checkout master
+// 'master' 브랜치에 release-1.2 브랜치 내용을 병합(merge)한다.
+# --no-ff 옵션: 위의 추가 설명 참고
+$ git merge --no-ff release-1.2
+// 병합한 커밋에 Release 버전 태그를 부여한다.
+$ git tag -a 1.2
+
+/* 'release' 브랜치의 변경 사항을 'develop' 브랜치에도 적용 */
+// 'develop' 브랜치로 이동한다.
+$ git checkout develop
+// 'develop' 브랜치에 release-1.2 브랜치 내용을 병합(merge)한다.
+$ git merge --no-ff release-1.2
+// -d 옵션: release-1.2에 해당하는 브랜치를 삭제한다.
+$ git branch -d release-1.2
+~~~
+
+<br>
+
