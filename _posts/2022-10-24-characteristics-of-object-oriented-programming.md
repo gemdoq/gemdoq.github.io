@@ -1,9 +1,9 @@
 ---
 layout: single
-title: "객체 지향 프로그래밍(OOP)의 특징"
+title: "객체 지향 프로그래밍(OOP)의 특징(characteristics)"
 date: 2022-10-22 10:55:35 +0900
 categories: knowledge
-tags: [OOP, 객체지향프로그래밍]
+tags: [OOP, 객체지향프로그래밍, 캡슐화, 상속, 다형성]
 typora-root-url: ../
 ---
 
