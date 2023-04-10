@@ -3,7 +3,7 @@ layout: single
 title: "Bundler 개념"
 date: 2022-10-05 13:25:12 +0900
 categories: knowledge
-tags: [bundler]
+tags: [Bundler]
 typora-root-url: ../
 ---
 
