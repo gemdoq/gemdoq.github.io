@@ -156,4 +156,6 @@ $ git clean -f -d -x // 무시된 파일까지 삭제
   * Ex) .o 파일 같은 빌드 파일까지도 지울 수 있다.
 * -n 옵션
   * 가상으로 실행해보고 어떤 파일들이 지워질지 알려주는 것
-  * ![](/images/2022-10-17-git-add-commit-push-cancel/n-option.png)
+  * ![](/images/2022-10-17-git-add-commit-push-cancel/n-option.png){: width="560"}
+
+<br>
