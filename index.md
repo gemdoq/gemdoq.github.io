@@ -5,7 +5,7 @@ author_profile: true
 
 <div class="sogae" align="center">
   <div class="sogaegeul" align="center">
-  <h1 align="center">안녕하세요!<br><br> 백엔드 개발자 <br><strong style="color: #8d99ff;">gemdoq</strong>입니다.</h1>
+  <h1 align="center">안녕하세요!<br><br><strong style="color: #8d99ff;"> 풀스택 개발자 <br> <a href="https://github.com/gemdoq" target="_blank">gemdoq</a></strong>입니다.</h1>
     <p align="center"> 이곳에 저는 수집한 정보를<br>제가 알기 쉽게 정리합니다. </p>
   </div>
   <img class="sogaegrim" width="250" height="250" src="/assets/images/explorer.png">
