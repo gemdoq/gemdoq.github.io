@@ -605,7 +605,7 @@ ko: &DEFAULT_KO
   breadcrumb_separator       : "/"
   menu_label                 : "토글 메뉴"
   search_label               :
-  toc_label                  : "On This Page"
+  toc_label                  : "목차"
   ext_link_label             : "직접 링크"
   less_than                  : "최대"
   minute_read                : "분 소요"
@@ -615,7 +615,7 @@ ko: &DEFAULT_KO
   categories_label           : "카테고리:"
   date_label                 : "업데이트:"
   comments_label             : "댓글남기기"
-  comments_title             : "댓글"
+  comments_title             : "💬댓글"
   more_label                 : "더 보기"
   related_label              : "참고"
   follow_label               : "팔로우:"
@@ -637,7 +637,7 @@ ko: &DEFAULT_KO
   comment_error_msg          : "댓글 등록에 문제가 있습니다. 필요 필드를 작성했는지 확인하고 다시 시도하세요."
   loading_label              : "로딩중..."
   search_label_text          :
-  search_placeholder_text    : "검색어를 입력하세요..."
+  search_placeholder_text    : "카테고리, 태그 등을 찾아보세요 🔍"
   search_algolia_no_results  :
   results_found              : "개 결과 발견"
   back_to_top                : "맨 위로 이동"
