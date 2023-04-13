@@ -46,9 +46,7 @@ Parameters 자원을 제공하는 서버에 보낼 데이터 운용에 필요한
 Anchor 자원 내 특정부분을 대표하는 부분
 - 예시 : #samples
 
-<br>
-
-## Link
+### Link
 
 브라우저의 URL에서 자원을 가져올 수 있는 HTML 요소
 
