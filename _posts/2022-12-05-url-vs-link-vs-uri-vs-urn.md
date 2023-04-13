@@ -72,6 +72,8 @@ URL이 아닌 URI의 예시는 XML
 
 ### URL과 차이점
 
+![url-vs-uri](/images/2022-12-05-url-vs-link-vs-uri-vs-urn/url-vs-uri.png){: width="560"}
+
 URL은 식별자(Identifier)이면서, 동시에 접속할 수 있는 방향도 제공
 
 <br>
