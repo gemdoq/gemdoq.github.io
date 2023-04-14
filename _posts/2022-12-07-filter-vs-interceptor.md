@@ -2,7 +2,7 @@
 layout: single
 title: "필터와 인터셉터의 개념과 역사"
 date: 2022-12-07 11:15:21 +0900
-categories: Java
+categories: java
 tags: [Filter, Interceptor, DelegatingFilterProxy, SpringBoot]
 typora-root-url: ../
 ---
