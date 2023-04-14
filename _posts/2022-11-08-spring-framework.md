@@ -2,7 +2,7 @@
 layout: single
 title: "Spring Framework란"
 date: 2022-11-08 10:16:24 +0900
-categories: knowledge
+categories: java
 tags: [Spring, Framework, Library]
 typora-root-url: ../
 ---

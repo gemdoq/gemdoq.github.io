@@ -2,7 +2,7 @@
 layout: single
 title: "Data Binding, Data Validation"
 date: 2022-11-19 10:33:19 +0900
-categories: knowledge
+categories: java
 tags: [Request Parameter, Data Binding, Data Validation]
 typora-root-url: ../
 ---

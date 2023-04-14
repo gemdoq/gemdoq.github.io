@@ -2,7 +2,7 @@
 layout: single
 title: "Web Server와 WAS"
 date: 2022-11-10 09:53:33 +0900
-categories: knowledge
+categories: java
 tags: [Web Server, WAS, Static Pages, Dynamic Pages]
 typora-root-url: ../
 ---

@@ -2,7 +2,7 @@
 layout: single
 title: "Comparable과 Comparator의 차이와 사용법"
 date: 2022-11-02 09:33:41 +0900
-categories: knowledge
+categories: java
 tags: [Java, Comparable, Comparator, 정렬, 인터페이스, Overflow, Underflow]
 typora-root-url: ../
 ---

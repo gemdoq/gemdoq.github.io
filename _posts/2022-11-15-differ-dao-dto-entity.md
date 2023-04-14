@@ -2,7 +2,7 @@
 layout: single
 title: "DAO, DTO, Entity Class의 차이"
 date: 2022-11-15 10:22:33 +0900
-categories: knowledge
+categories: java
 tags: [DAO, DTO, Entity]
 typora-root-url: ../
 ---

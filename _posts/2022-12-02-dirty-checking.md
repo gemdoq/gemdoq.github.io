@@ -2,7 +2,7 @@
 layout: single
 title: "Dirty Checking에 대하여"
 date: 2022-12-02 08:58:27 +0900
-categories: knowledge
+categories: java
 tags: [Dirty Checking, DynamicUpdate]
 typora-root-url: ../
 ---

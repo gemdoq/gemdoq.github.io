@@ -2,7 +2,7 @@
 layout: single
 title: "오버로딩과 오버라이딩"
 date: 2022-11-01 09:31:41 +0900
-categories: knowledge
+categories: java
 tags: [Java, 오버로딩, overloading, 오버라이딩, overriding]
 typora-root-url: ../
 ---

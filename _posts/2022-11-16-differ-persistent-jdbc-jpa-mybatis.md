@@ -2,7 +2,7 @@
 layout: single
 title: "Persistent, JDBC, JPA/Hibernate, Mybatis의 차이"
 date: 2022-11-16 11:24:33 +0900
-categories: knowledge
+categories: java
 tags: [영속성, Persistent, JDBC, JPA, Hibernate, Mybatis]
 typora-root-url: ../
 ---

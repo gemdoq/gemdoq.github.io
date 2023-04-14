@@ -2,7 +2,7 @@
 layout: single
 title: "JSP와 Thymleaf"
 date: 2022-11-22 10:37:24 +0900
-categories: knowledge
+categories: java
 tags: [Template Engine, JSP, Thymleaf]
 typora-root-url: ../
 ---

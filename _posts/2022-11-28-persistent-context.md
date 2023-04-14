@@ -2,7 +2,7 @@
 layout: single
 title: "Persistent Context에 대하여"
 date: 2022-11-28 10:33:16 +0900
-categories: knowledge
+categories: java
 tags: [Persistent Context, 1차 캐시, 동일성 보장, 쓰기 지연, JDBC Batch option]
 typora-root-url: ../
 ---
