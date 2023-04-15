@@ -77,9 +77,19 @@ dependencies {
 ## 구조
 
 클라이언트는 애플리케이션에 요청을 보내고, 컨테이너는 FilterChain을 만든다.
-만들어진 FilterChain은 요청된 URI 경로를 기반으로 만들어진 HTTPServletRequest를 처리해야 하는 Filter 인스턴스와 Servlet을 포함한다.
+만들어진 FilterChain은 요청된 URI 경로를 기반으로 만들어진 HttpServletRequest를 처리해야 하는 Filter 인스턴스와 Servlet을 포함한다.
 
+Spring MVC 어플리케이션에서 Servlet은 DispatcherServlet의 인스턴스며, 기껏해야 하나의 HttpServletRequest와 HttpServletResponse를 다룰 수 있다.
 
+하지만 서블릿 위에 한개 이상의 필터를 겹쳐서 쌓아두고 HttpServletRequest와 HttpServletResponse를 처리하게 하는 FilterChain 덕분에 수많은 것들을 할 수 있다.
+
+```java
+public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
+	// do something before the rest of the application
+    chain.doFilter(request, response); // invoke the rest of the application
+    // do something after the rest of the application
+}
+```
 
 
 
