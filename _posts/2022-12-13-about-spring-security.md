@@ -10,7 +10,8 @@ typora-root-url: ../
 
 ## Spring Security에 대해
 > - Spring Security란
-> - Spring Security 사용
+> - 사용
+> - 구조
 > - 주요 모듈
 > - SecurityConfig
 
@@ -40,7 +41,7 @@ Spring Security는 지속적으로 발전되고 새로운 기능이 추가되고
 
 <br>
 
-## Spring Security 사용
+## 사용
 
 ### Dependency Update
 
@@ -50,13 +51,33 @@ dependencies {
 	compile "org.springframework.boot:spring-boot-starter-security"
 }
 ```
-스프링부트에서 자동으로 실행하는 것
+
+### SpringBoot Auto Configuration
+
+스프링부트에서 자동으로 실행하는 것들은 다음과 같다.
+
 1. SpringSecurityFilterChain이라는 이름의 서블릿 필터를 bean으로 등록(애플리케이션 URL 보호, 유저명과 암호 검증, 로그인 양식 리디렉션 등을 담당)
 2. 콘솔에 기록하기 위해, user명과 임의로 생성된 암호로 UserDetailsService라는 이름의 bean을 등록
 3. 모든 요청에 대한 Filter로써 SpringSecurityFilterChain를 등록
 
+### Spring Security function
 
+스프링 시큐리티가 동작하는 기능은 다음과 같다.
 
+- 애플리케이션과 상호 작용하기 위해 유저에게 인증을 요구
+- 기본 로그인 양식을 생성
+- 콘솔에 기록되어 있는 사용자 이름과 암호가 있는 사용자에게 양식 기반 인증을 허용
+- 암호 저장을 BCrypt로 보호
+- 사용자가 로그아웃하도록 허용
+- CSRF 공격 방지
+- 세션 고정 보호
+- 보안 헤더 통합
+- 서블릿 API 메소드들 통합
+
+## 구조
+
+클라이언트는 애플리케이션에 요청을 보내고, 컨테이너는 FilterChain을 만든다.
+만들어진 FilterChain은 요청된 URI 경로를 기반으로 만들어진 HTTPServletRequest를 처리해야 하는 Filter 인스턴스와 Servlet을 포함한다.
 
 
 
