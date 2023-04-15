@@ -160,7 +160,7 @@ JDBC를 이용하는 개발자가 직접 여러 개의 작업을 하나의 트�
 
 #### 동기화
 
-트랜잭션을 시작하기 위한 Connection 객체를 특별한 저장소에 보관해두고 필요할 때 꺼내쓸 수 있도록 하는 기술
+트랜잭션을 시작하기 위한 Connection 객체를 특별한 저장소에 보관해두고 필요할 때 꺼내 쓸 수 있도록 하는 기술
 
 트랜잭션 동기화 저장소는 작업 쓰레드마다 Connection 객체를 독립적으로 관리하기 때문에, 멀티쓰레드 환경에서도 충돌이 발생할 여지가 없음
 
@@ -176,11 +176,11 @@ DataSourceUtils.releaseConnection(c, dataSource);
 TransactionSynchronizeManager.unbindResource(dataSource);
 TransactionSynchronizeManager.clearSynchronization();
 ```
-하지만 개발자가 JDBC가 아닌 Hibernate와 같은 기술을 쓴다면 위의 JDBC 종속적인 트랜잭션 동기화 코드들은 문제를 유발하게 된다. 
+하지만 개발자가 JDBC가 아닌 Hibernate와 같은 기술을 쓴다면 위의 JDBC 종속적인 트랜잭션 동기화 코드들은 문제를 유발
 
-대표적으로 Hibernate에서는 Connection이 아닌 Session이라는 객체를 사용하기 때문이다. 
+대표적으로 Hibernate에서는 Connection이 아닌 Session이라는 객체를 사용하기 때문
 
-이러한 기술 종속적인 문제를 해결하기 위해 Spring은 트랜잭션 관리 부분을 추상화한 기술을 제공하고 있다.
+이러한 기술 종속적인 문제를 해결하기 위해 Spring은 트랜잭션 관리 부분을 추상화한 기술을 제공
 
 #### 추상화
 
@@ -205,11 +205,13 @@ public Object invoke(MethodInvoation invoation) throws Throwable {
 	}
 }
 ```
-하지만 위와 같은 트랜잭션 관리 코드들이 비지니스 로직 코드와 결합되어 2가지 책임을 갖고 있기 때문에 Spring에서는 AOP를 이용해 이러한 트랜잭션 부분을 핵심 비지니스 로직과 분리
+위와 같은 트랜잭션 관리 코드는 비지니스 로직 코드와 결합되어 1개 초과 책임
+
+그래서 Spring에서는 AOP를 이용해 이러한 트랜잭션을 핵심 비지니스 로직과 분리
 
 #### AOP를 이용한 분리
 
-예를 들어 다음과 같이 트랜잭션 코드와 비지니스 로직 코드가 복잡하게 얽혀있는 코드가 있을 경우
+예를 들어 다음과 같이 트랜잭션 코드와 비지니스 로직 코드가 복잡하게 얽혀 있는 경우
 ```java
 public void addUsers(List<User> userList) {
 	TransactionStatus status = this.transactionManager.getTransaction(new DefaultTransactionDefinition());
@@ -228,15 +230,11 @@ public void addUsers(List<User> userList) {
 	}
 }
 ```
-위의 코드는 여러 책임을 가질 뿐만 아니라 서로 성격도 다르고 주고받는 것도 없으므로 분리하는 것이 적합하다.
+위의 코드는 여러 책임을 가질 뿐만 아니라 서로 성격도 다르고 주고받는 것도 없으므로 분리하는 것이 적합
 
-하지만 위의 코드를 어떻게 분리할 것인지에 대한 고민을 해야 한다. 흔히 떠올릴 수 있는 방법으로는 내부 메소드로 추출하거나 DI로 합성을 이용해 해결하거나 상속을 이용할 수 있을 것이다.
+Spring에서는 AOP(Aspect Oriented Programming, 관점 지향 프로그래밍) 기능으로써 트랜잭션 어노테이션(@Transactional)을 지원(트랜잭션과 같은 부가 기능에 대한 로직을 클래스 밖으로 빼내서 별도의 모듈로 만듦)
 
-하지만 위의 어떠한 방법을 이용하여도 트랜잭션을 담당하는 기술 코드를 완전히 분리시키는 것이 불가능
-
-그래서 Spring에서는 마치 트랜잭션 코드와 같은 부가 기능 코드가 존재하지 않는 것 처럼 보이기 위해 해당 로직을 클래스 밖으로 빼내서 별도의 모듈로 만드는 AOP(Aspect Oriented Programming, 관점 지향 프로그래밍)를 고안 및 적용하게 되었고, 이를 적용한 트랜잭션 어노테이션(@Transactional)을 지원하게 되었다. 
-
-이를 적용하면 위와 같은 코드를 핵심 비지니스 로직만 다음과 같이 남길 수 있다.
+이를 적용하면 위와 같은 코드를 아래 코드와 같이 핵심 비지니스 로직만 남길 수 있음
 
 ```java
 @Service
