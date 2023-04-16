@@ -76,6 +76,8 @@ dependencies {
 
 ## 구조
 
+![filterchain](/images/2022-12-13-about-spring-security/filterchain.png){: width="560"}
+
 클라이언트는 애플리케이션에 요청을 보내고, 컨테이너는 FilterChain을 만든다.
 만들어진 FilterChain은 요청된 URI 경로를 기반으로 만들어진 HttpServletRequest를 처리해야 하는 Filter 인스턴스와 Servlet을 포함한다.
 
@@ -93,14 +95,20 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 
 ### DelegatingFilterProxy
 
+![delegatingfilterproxy](/images/2022-12-13-about-spring-security/delegatingfilterproxy.png){: width="560"}
+
 Spring은 Filter를 구현한 DelegatingFilterProxy에게 Servlet Container에서의 Filter 인스턴스를 생성하여 Spring에서 정의한 bean을 등록
 → DelegatingFilterProxy 사용으로 bean 인스턴스 조회 지연 가능
 
 ### FilterChainProxy
 
+![filterchainproxy](/images/2022-12-13-about-spring-security/filterchainproxy.png){: width="560"}
+
 스프링 시큐리티에서 서블릿에 대한 지원을 하는 특수 필터로 SecurityFilterChain을 통해 많은 Filter인스턴스에 위임 가능
 
 ### SecurityFilterChain
+
+![securityfilterchain](/images/2022-12-13-about-spring-security/securityfilterchain.png){: width="560"}
 
 스프링 시큐리티에서 요청에 대하여 어떤 Filter인스턴스를 호출해야 할지 결정할 때 사용
 SecurityFilterChain의 보안필터들은 DelegatingFilterProxy 대신 FilterChainProxy에 등록되는 것으로 많은 이점을 가짐
@@ -109,9 +117,12 @@ SecurityFilterChain의 보안필터들은 DelegatingFilterProxy 대신 FilterCha
 2. FilterChainProxy은 스프링 시큐리티의 중추이기 때문에 중요한 작업들이 수행됨
 3. Servlet Container에서의 Filter 인스턴스 호출은 URL에 의해 강제적으로 발생되지만, FilterChainProxy은 RequestMatcher 인터페이스에 의해 유연한 호출 설정이 가능
 
+![multi-securityfilterchain](/images/2022-12-13-about-spring-security/multi-securityfilterchain.png){: width="560"}
+
 ### 보안 예외 처리
 
 ExceptionTranslationFilter는 FilterChainProxy에 보안필터 중 하나로써 삽입되어 AccessDeniedException와 AuthenticationException을 HTTP 응답으로 변환 가능
 
+![exceptiontranslationfilter](/images/2022-12-13-about-spring-security/exceptiontranslationfilter.png){: width="560"}
 
 <br>
