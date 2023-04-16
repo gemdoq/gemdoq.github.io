@@ -91,6 +91,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 }
 ```
 
+Spring은 Filter를 구현한 DelegatingFilterProxy에게 Servlet Container에서의 Filter 인스턴스를 생성하여 Spring에서 정의한 bean을 등록
 
 
 
