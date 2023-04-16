@@ -91,7 +91,20 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 }
 ```
 
+### DelegatingFilterProxy
+
 Spring은 Filter를 구현한 DelegatingFilterProxy에게 Servlet Container에서의 Filter 인스턴스를 생성하여 Spring에서 정의한 bean을 등록
+→ DelegatingFilterProxy 사용으로 bean 인스턴스 조회 지연 가능
+
+### FilterChainProxy
+
+스프링 시큐리티에서 서블릿에 대한 지원을 하는 특수 필터로 SecurityFilterChain을 통해 많은 Filter인스턴스에 위임 가능
+
+### SecurityFilterChain
+
+스프링 시큐리티에서 요청에 대하여 어떤 Filter인스턴스를 호출해야 할지 결정할 때 사용
+
+### 
 
 
 
