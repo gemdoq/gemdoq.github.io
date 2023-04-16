@@ -103,11 +103,15 @@ Spring은 Filter를 구현한 DelegatingFilterProxy에게 Servlet Container에�
 ### SecurityFilterChain
 
 스프링 시큐리티에서 요청에 대하여 어떤 Filter인스턴스를 호출해야 할지 결정할 때 사용
+SecurityFilterChain의 보안필터들은 DelegatingFilterProxy 대신 FilterChainProxy에 등록되는 것으로 많은 이점을 가짐
 
-### 
+1. 스프링 시큐리티에 문제 발생시 디버그를 FilterChainProxy에 찍기 좋음
+2. FilterChainProxy은 스프링 시큐리티의 중추이기 때문에 중요한 작업들이 수행됨
+3. Servlet Container에서의 Filter 인스턴스 호출은 URL에 의해 강제적으로 발생되지만, FilterChainProxy은 RequestMatcher 인터페이스에 의해 유연한 호출 설정이 가능
 
+### 보안 예외 처리
 
-
+ExceptionTranslationFilter는 FilterChainProxy에 보안필터 중 하나로써 삽입되어 AccessDeniedException와 AuthenticationException을 HTTP 응답으로 변환 가능
 
 
 <br>
