@@ -128,7 +128,7 @@ ExceptionTranslationFilter는 FilterChainProxy에 보안필터 중 하나로써 
 1. ①ExceptionTranslationFilter가 FilterChain.doFilter(request, response)로 나머지 어플리케이션을 호출
 2. ②만약 사용자가 인증되지 않거나, 인증예외가 발생하면 Authentication을 시작
 - SecurityContextHolder 소멸
-- 인증이 성공하면 원래 요청을 재생할 수 있도록 HttpServletRequest 저장
+- 인증이 성공하면 원래 요청을 재생할 수 있도록 HttpServletRequest를 RequestCache에 저장
 3. 클라이언트에게 AuthenticationEntryPoint로 자격증명을 요청하고, 로그인 페이지로 리디렉션하거나 WWW-Authenticate header에 전송
 - ③AccessDeniedException이 발생하면, 접속 거부를 처리하기 위한 AccessDeniedHandler 호출
 
@@ -145,4 +145,19 @@ try {
 }
 ```
 
+기본적으로 HttpSessionRequestCache가 사용
+아래 코드에 의해 continue라 명명된 매개변수가 있는 경우 RequestCache 구현이 어떻게 HttpSession을 저장된 요청을 확인하는데 사용
+```java
+@Bean
+DefaultSecurityFilterChain springSecurity(HttpSecurity http) throws Exception {
+	HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+	requestCache.setMatchingRequestParameterName("continue");
+	http
+		// ...
+		.requestCache((cache) -> cache
+			.requestCache(requestCache)
+		);
+	return http.build();
+}
+```
 <br>
