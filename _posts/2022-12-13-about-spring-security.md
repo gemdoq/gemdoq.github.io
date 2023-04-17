@@ -132,4 +132,17 @@ ExceptionTranslationFilter는 FilterChainProxy에 보안필터 중 하나로써 
 3. 클라이언트에게 AuthenticationEntryPoint로 자격증명을 요청하고, 로그인 페이지로 리디렉션하거나 WWW-Authenticate header에 전송
 - ③AccessDeniedException이 발생하면, 접속 거부를 처리하기 위한 AccessDeniedHandler 호출
 
+ExceptionTranslationFilter 수도코드
+```java
+try {
+	filterChain.doFilter(request, response); 
+} catch (AccessDeniedException | AuthenticationException ex) {
+	if (!authenticated || ex instanceof AuthenticationException) {
+		startAuthentication(); 
+	} else {
+		accessDenied(); 
+	}
+}
+```
+
 <br>
