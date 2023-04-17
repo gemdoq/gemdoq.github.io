@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Spring Security에 대해"
+title: "Spring Security: (1)Architecture"
 date: 2022-12-13 10:17:29 +0900
 categories: java
 tags: [Spring Security]
@@ -8,12 +8,10 @@ typora-root-url: ../
 ---
 
 
-## Spring Security에 대해
+## Spring Security: (1)Architecture
 > - Spring Security란
 > - 사용
 > - 구조
-> - 주요 모듈
-> - SecurityConfig
 
 <br>
 
@@ -179,4 +177,6 @@ SecurityFilterChain springSecurity(HttpSecurity http) throws Exception {
     return http.build();
 }
 ```
+
+
 <br>
