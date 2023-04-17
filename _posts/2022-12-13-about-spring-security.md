@@ -144,9 +144,10 @@ try {
 	}
 }
 ```
-
 기본적으로 HttpSessionRequestCache가 사용
-아래 코드에 의해 continue라 명명된 매개변수가 있는 경우 RequestCache 구현이 어떻게 HttpSession을 저장된 요청을 확인하는데 사용
+
+continue라 명명된 매개변수가 있는 경우 RequestCache 구현이 저장된 요청을 확인하는데 HttpSession을 사용
+
 ```java
 @Bean
 DefaultSecurityFilterChain springSecurity(HttpSecurity http) throws Exception {
@@ -158,6 +159,24 @@ DefaultSecurityFilterChain springSecurity(HttpSecurity http) throws Exception {
 			.requestCache(requestCache)
 		);
 	return http.build();
+}
+```
+그렇지만 사용자의 인증되지 않은 요청을 세션에 저장하지 않으려는 경우에는 NullRequestCache를 구현해서 사용
+
+해당 스토리지를 사용자의 브라우저로 오프로드하거나 데이터베이스에 저장할 경우
+
+혹은 사용자가 로그인 전에 방문하려고 했던 페이지 대신 홈페이지로 사용자를 리디렉션하길 원하는 경우 등
+
+```java
+@Bean
+SecurityFilterChain springSecurity(HttpSecurity http) throws Exception {
+    RequestCache nullRequestCache = new NullRequestCache();
+    http
+        // ...
+        .requestCache((cache) -> cache
+            .requestCache(nullRequestCache)
+        );
+    return http.build();
 }
 ```
 <br>
