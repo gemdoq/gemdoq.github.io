@@ -41,6 +41,8 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 
 누가 인증되었는지에 대한 정보를 저장
 
+스프링시큐리티는 어떻게 값이 채워지든 SecurityContextHolder에 값만 있으면 현재 인증된 사용자로 인식
+
 #### SecurityContext
 
 #### Authentication
