@@ -37,6 +37,9 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 ### 구체적인 역할
 
 #### SecurityContextHolder
+![securitycontextholder](/images/2022-12-14-about-spring-security-2-authentication/securitycontextholder.png){: width="560"}
+
+누가 인증되었는지에 대한 정보를 저장
 
 #### SecurityContext
 
