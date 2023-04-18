@@ -34,3 +34,23 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 - AuthenticationEntryPoint
 - AbstractAuthenticationProcessingFilter
 
+### 구체적인 역할
+
+#### SecurityContextHolder
+
+#### SecurityContext
+
+#### Authentication
+
+#### GrantedAuthority
+
+#### AuthenticationManager
+
+#### ProviderManager
+
+#### AuthenticationProvider
+
+#### AuthenticationEntryPoint
+
+#### AbstractAuthenticationProcessingFilter
+
