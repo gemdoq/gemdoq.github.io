@@ -22,4 +22,15 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 
 ## 구조
 
-구조에 대해 참고중
+### 주요 구성요소
+
+- SecurityContextHolder
+- SecurityContext
+- Authentication
+- GrantedAuthority
+- AuthenticationManager
+- ProviderManager
+- AuthenticationProvider
+- AuthenticationEntryPoint
+- AbstractAuthenticationProcessingFilter
+
