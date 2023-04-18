@@ -43,6 +43,8 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 
 스프링시큐리티는 어떻게 값이 채워지든 SecurityContextHolder에 값만 있으면 현재 인증된 사용자로 인식
 
+사용자가 인증되었음을 나타내는 가장 간단한 방법은 SecurityContextHolder에 직접 값을 추가하는 방법
+
 #### SecurityContext
 
 #### Authentication
