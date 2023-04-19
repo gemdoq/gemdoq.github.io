@@ -34,18 +34,20 @@ Kotlin 사용시 1.6+ 버전 사용 필요
 기본 스프링 부트 2.7 버전이 스프링에서 공식적으로 이야기하는 최신버전이므로 그 이전의 스프링 부트 버전은 우선 2.7로 업그레이드를 하여 사이드 이펙트를 줄이며 순차적으로 업그레이드 할 것을 권장
 
 ### 스프링 부트 버전 의존성을 체크
-- 스프링 부트 2.7 Dependency Version : [링크](https://docs.spring.io/spring-boot/docs/2.7.x/reference/html/dependency-versions.html#appendix.dependency-versions)
-- 스프링 부트 3.0 Dependency Version : [링크](https://docs.spring.io/spring-boot/docs/3.0.x/reference/html/dependency-versions.html#appendix.dependency-versions)
+- 스프링 부트 2.7 Dependency Version : [🔗 링크](https://docs.spring.io/spring-boot/docs/2.7.x/reference/html/dependency-versions.html#appendix.dependency-versions)
+- 스프링 부트 3.0 Dependency Version : [🔗 링크](https://docs.spring.io/spring-boot/docs/3.0.x/reference/html/dependency-versions.html#appendix.dependency-versions)
 ### 스프링 시큐리티 마이그레이션
 - 스프링 부트 3.0은 스프링 시큐리티 6.0을 사용
-- 이전 버전을 사용하고 있다면 5.8 버전으로 먼저 마이그레이션하고 6.0으로 업그레이드 할 것을 권장
-- 관련 마이그레이션 가이드 : [링크](https://docs.spring.io/spring-security/reference/5.8/migration/index.html)
-- 5.8 → 6.0 마이그레이션 가이드 : [링크](https://docs.spring.io/spring-security/reference/6.0/migration/index.html)
+- 스프링 시큐리티의 이전 버전을 사용하고 있다면 시큐리티 5.8 버전으로 먼저 마이그레이션 후 시큐리티 6.0으로 업그레이드 할 것을 권장
+- 관련 마이그레이션 가이드 : [🔗 링크](https://docs.spring.io/spring-security/reference/5.8/migration/index.html)
+- 5.8 → 6.0 마이그레이션 가이드 : [🔗 링크](https://docs.spring.io/spring-security/reference/6.0/migration/index.html)
 
 ## 핵심 변경 사항
 
-### Java 17 버전을 Baseline으로 결정
-### Java EE → 최근 릴리즈 된 Jakarta EE 10 버전에 중점 변경(Jakarta EE 9+) (Jakarta EE 10 APIs such as Servlet 6.0 and JPA 3.1)
+### Java 17 Baseline
+### Java EE → Jakarta EE 10(Jakarta EE 9+)
+패키지 명 변경 : Javax.* → Jakarta.*
+스프링 부트 3.0에서 Jakarta 9+를 채택하면서 Javax 패키지를 사용하는 import 구문 변경 필요
 ### Tomcat 10.1 적용
 ### Hibernate ORM 6.1 적용
 
@@ -54,6 +56,23 @@ Kotlin 사용시 1.6+ 버전 사용 필요
 ## 인프라 측면에서 변경 사항
 
 ### AOT(Ahead-Of-Time) 도입
+
+JIT Compiler와 AOT Compiler 모두 기계어를 만든다는 역할은 동일
+
+AOT Compiler는 실행하기 전에 코드에 대한 정적 코드 테스트를 진행하고 그것을 기반으로 기계어를 생성
+JIT Compiler는 런타임에 기계어를 생성
+
+#### AOT Compiler
+- 실행 전에 무겁고 복잡한 분석 및 최적화가 수행
+- 런타임에 실행하는 속도가 빠름
+
+
+#### JIT Compiler
+- 상황에 맞춘 최적화 코드를 생성 가능(할당받은 코어, OS, 커널 버전, CPU 등)
+- 런타임에 오버헤드가 발생
+- C1, C2 컴파일러로 구성
+
+
 ### GraalVM 네이티브 이미지(Native Image) 지원
 ### Project Loom(Java 19)이라는 가상스레드(Virtual Thread) 지원, Project CRaC 활용 가능
 
