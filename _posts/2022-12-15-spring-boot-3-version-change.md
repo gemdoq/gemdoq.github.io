@@ -45,10 +45,14 @@ Kotlin 사용시 1.6+ 버전 사용 필요
 ## 핵심 변경 사항
 
 ### Java 17 Baseline
+
 ### Java EE → Jakarta EE 10(Jakarta EE 9+)
+
 패키지 명 변경 : Javax.* → Jakarta.*
 스프링 부트 3.0에서 Jakarta 9+를 채택하면서 Javax 패키지를 사용하는 import 구문 변경 필요
+
 ### Tomcat 10.1 적용
+
 ### Hibernate ORM 6.1 적용
 
 <br>
@@ -63,17 +67,32 @@ AOT Compiler는 실행하기 전에 코드에 대한 정적 코드 테스트를 
 JIT Compiler는 런타임에 기계어를 생성
 
 #### AOT Compiler
+
 - 실행 전에 무겁고 복잡한 분석 및 최적화가 수행
 - 런타임에 실행하는 속도가 빠름
 
-
 #### JIT Compiler
+
 - 상황에 맞춘 최적화 코드를 생성 가능(할당받은 코어, OS, 커널 버전, CPU 등)
 - 런타임에 오버헤드가 발생
 - C1, C2 컴파일러로 구성
 
-
 ### GraalVM 네이티브 이미지(Native Image) 지원
+
+#### GraalVM이란?
+
+GraalVM은 Java로 구현된 HotSpot/OpenJDK 기반의 Java VM 및 JDK
+
+#### 기존 JDK와 차이점
+
+- GraalVM Compiler <> JIT Compiler
+- GraalVM Native Image, AOT Compilation을 기반으로 한 JIT Compiler를 사용
+- Truffle 언어 구현 프레임워크 및 GraalVM SDK 제공
+  - 다른 프로그래밍 언어(JavaScript, Ruby, R 등)를 런타임으로 동작할 수 있게 지원
+- Native 애플리케이션으로 확장
+
+GraalVM은 OpenJDK 8 + Graal + other things으로 구성
+
 ### Project Loom(Java 19)이라는 가상스레드(Virtual Thread) 지원, Project CRaC 활용 가능
 
 <br>
