@@ -34,9 +34,12 @@ Kotlin 사용시 1.6+ 버전 사용 필요
 기본 스프링 부트 2.7 버전이 스프링에서 공식적으로 이야기하는 최신버전이므로 그 이전의 스프링 부트 버전은 우선 2.7로 업그레이드를 하여 사이드 이펙트를 줄이며 순차적으로 업그레이드 할 것을 권장
 
 ### 스프링 부트 버전 의존성을 체크
+
 - 스프링 부트 2.7 Dependency Version : [🔗 링크](https://docs.spring.io/spring-boot/docs/2.7.x/reference/html/dependency-versions.html#appendix.dependency-versions)
 - 스프링 부트 3.0 Dependency Version : [🔗 링크](https://docs.spring.io/spring-boot/docs/3.0.x/reference/html/dependency-versions.html#appendix.dependency-versions)
+
 ### 스프링 시큐리티 마이그레이션
+
 - 스프링 부트 3.0은 스프링 시큐리티 6.0을 사용
 - 스프링 시큐리티의 이전 버전을 사용하고 있다면 시큐리티 5.8 버전으로 먼저 마이그레이션 후 시큐리티 6.0으로 업그레이드 할 것을 권장
 - 관련 마이그레이션 가이드 : [🔗 링크](https://docs.spring.io/spring-security/reference/5.8/migration/index.html)
@@ -46,7 +49,7 @@ Kotlin 사용시 1.6+ 버전 사용 필요
 
 ### Java 17 Baseline
 
-### Java EE → Jakarta EE 10(Jakarta EE 9+)
+### Java Enterprise Edition → Jakarta EE 10(Jakarta EE 9+)
 
 패키지 명 변경 : Javax.* → Jakarta.*
 스프링 부트 3.0에서 Jakarta 9+를 채택하면서 Javax 패키지를 사용하는 import 구문 변경 필요
