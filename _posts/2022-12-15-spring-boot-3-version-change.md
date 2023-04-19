@@ -93,6 +93,8 @@ GraalVM은 Java로 구현된 HotSpot/OpenJDK 기반의 Java VM 및 JDK
 
 GraalVM은 OpenJDK 8 + Graal + other things으로 구성
 
+#### Native Image
+
 ### Project Loom(Java 19)이라는 가상스레드(Virtual Thread) 지원, Project CRaC 활용 가능
 
 <br>
