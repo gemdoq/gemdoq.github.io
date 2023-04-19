@@ -95,6 +95,9 @@ GraalVM은 OpenJDK 8 + Graal + other things으로 구성
 
 #### Native Image
 
+자바 코드를 독립형 네이티브 실행 파일 또는 네이티브 공유 라이브러리로 컴파일하는 기술
+생성된 네이티브 실행 파일은 JVM이 설치되어 있지 않아도 OS와 머신 아키텍쳐에서 사용 가능
+
 ### Project Loom(Java 19)이라는 가상스레드(Virtual Thread) 지원, Project CRaC 활용 가능
 
 <br>
