@@ -97,7 +97,24 @@ GraalVM은 OpenJDK 8 + Graal + other things으로 구성
 
 자바 코드를 독립형 네이티브 실행 파일 또는 네이티브 공유 라이브러리로 컴파일하는 기술
 생성된 네이티브 실행 파일은 JVM이 설치되어 있지 않아도 OS와 머신 아키텍쳐에서 사용 가능
+생성된 네이티브 이미지 안에는 SubstrateVM(SVM)이 포함
 
-### Project Loom(Java 19)이라는 가상스레드(Virtual Thread) 지원, Project CRaC 활용 가능
+##### SVM
+
+- GraalVM의 하위 프로젝트
+- JVM의 기능을 모두 가지고 있으나 GC나 Thread Control 성능이 좋지 않음
+- 메인 메소드가 실행되기 이전의 실행 준비 단계를 모두 처리하여 자체 이미지에 포함
+- 적은 메모리로 시작 가능
+
+### Project Loom(Java 19) 지원
+
+- 기존의 Thread(실)는 자원 사용면에서 비효율적
+- 작성하고 디버깅하기 어려운 비동기 개발 방식
+- Fiber(섬유)라는 Virtual Thread를 통해 컨티뉴에이션 + 스케쥴러를 통한 블로킹
+
+### Project CRaC 활용 가능
+
+실행 중인 JVM 이미지를 저장
+자바가 시작될 때(Warm-up) 필요한 기능의 수행에 필요한 준비 시간 단축
 
 <br>
