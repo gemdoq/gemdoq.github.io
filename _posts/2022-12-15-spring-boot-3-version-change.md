@@ -9,11 +9,24 @@ typora-root-url: ../
 
 
 ## Spring Boot 3.0 버전 변경 사항 정리
+> - 요구사항
 > - 핵심 변경 사항
 > - 인프라 측면에서 변경 사항
 
 <br>
 22년 11월 스프링 6.0이 공식적으로 릴리즈
+
+## 요구사항
+
+- Java Version : Java 17+
+- Gradle 7.5+, Maven 3.5+
+- Hibernate 6.1
+- Spring Framework 6
+- Jakarta EE 9+
+
+Kotlin 사용시 1.6+ 버전 사용 필요
+
+<br>
 
 ## 핵심 변경 사항
 
