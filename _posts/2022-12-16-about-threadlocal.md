@@ -111,7 +111,60 @@ public void remove() {
 
 <br>
 
-## 사용법
+## 사용
+
+### 테스트 코드
+
+```java
+public class ThreadLocalTest {
+	
+	// 스레드 클래스
+	static class MadThread extends Thread {
+		private static final ThreadLocal<String> threadLocal = ThreadLocal.withInitial(() -> "defaultName");
+		private final String name;
+
+		public MadThread(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public void run() {
+			System.out.printf("%s Started,  ThreadLocal: %s%n", name, threadLocal.get());
+			// 스레드 로컬에 값(현재 스레드 이름) 저장
+			threadLocal.set(name);
+			System.out.printf("%s Finished, ThreadLocal: %s%n", name, threadLocal.get());
+		}
+	}
+
+	public void runTest() {
+		for (int threadCount = 1; threadCount <= 5; threadCount++) {
+			final MadThread thread = new MadThread("thread-" + threadCount);
+			thread.start();
+		}
+	}
+
+	public static void main(String[] args) {
+		new ThreadLocalTest().runTest();
+	}
+}
+```
+
+### 실행 결과
+
+```console
+thread-1 Started,  ThreadLocal: defaultName
+thread-1 Finished, ThreadLocal: thread-1
+thread-5 Started,  ThreadLocal: defaultName
+thread-5 Finished, ThreadLocal: thread-5
+thread-4 Started,  ThreadLocal: defaultName
+thread-4 Finished, ThreadLocal: thread-4
+thread-3 Started,  ThreadLocal: defaultName
+thread-2 Started,  ThreadLocal: defaultName
+thread-3 Finished, ThreadLocal: thread-3
+thread-2 Finished, ThreadLocal: thread-2
+```
+
+스레드가 동시에 실행되기 때문에 출력 순서는 실행 때마다 다를 수 있지만 스레드 간에 간섭 없이 값이 잘 저장된 것을 확인
 
 <br>
 
