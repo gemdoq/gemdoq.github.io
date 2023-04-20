@@ -45,6 +45,28 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 
 사용자가 인증되었음을 나타내는 가장 간단한 방법은 SecurityContextHolder에 직접 값을 추가하는 방법
 
+```java
+SecurityContext context = SecurityContextHolder.createEmptyContext();
+Authentication authentication =
+    new TestingAuthenticationToken("username", "password", "ROLE_USER");
+context.setAuthentication(authentication);
+
+SecurityContextHolder.setContext(context);
+```
+1. SecurityContext instance 생성
+2. 새 Authentication 객체 생성(일반적으로 UsernamePasswordAuthenticationToken 사용)
+3. SecurityContextHolder에 SecurityContext 주입
+
+인증된 주체에 대한 정보를 얻으려면 SecurityContextHolder에 접근
+
+```java
+SecurityContext context = SecurityContextHolder.getContext();
+Authentication authentication = context.getAuthentication();
+String username = authentication.getName();
+Object principal = authentication.getPrincipal();
+Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+```
+
 #### SecurityContext
 
 #### Authentication
