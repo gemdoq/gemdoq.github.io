@@ -66,6 +66,8 @@ String username = authentication.getName();
 Object principal = authentication.getPrincipal();
 Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 ```
+ThreadLocal을 사용하면, 필터체인프록시가 시큐리티컨텍스트를 항상 비워주기 때문에 주체의 요청이 처리되고 나서 쓰레드가 비워지는 것을 보장
+
 
 #### SecurityContext
 
