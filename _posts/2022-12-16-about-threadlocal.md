@@ -259,4 +259,40 @@ public void run() {
 
 ## 활용
 
+클라이언트 요청에 대해서 각각의 스레드에서 처리할 때나, 스레드 독립적으로 처리해야 하는 데이터와 같이 인증 관련 처리에서도 활용
+
+대표적으로 Spring Security의 SecurityContext, SecurityContextHolder
+Spring MVC의 인터셉터(interceptor) 등에서 아래와 같이 클라이언트의 요청 등에서 활용
+
+```java
+/**
+ * 스레드 로컬 선언
+ */
+public class MadContext {
+	public static final ThreadLocal<String> THREAD_LOCAL = ThreadLocal.withInitial(() -> "");
+}
+
+/**
+ * 인터셉터 정의
+ */
+public class MadContextInterceptor implements HandlerInterceptor {
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		// `id` 파라미터 값 추출
+		final String id = request.getParameter("id");
+
+		// 스레드 로컬에 값 저장
+		MadContextHolder.THREAD_LOCAL.set(id);
+		return true;
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+		// 스레드 로컬 정보 제거
+		MadContextHolder.THREAD_LOCAL.remove();
+	}
+}
+```
+
 <br>
