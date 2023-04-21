@@ -69,7 +69,8 @@ Collection<? extends GrantedAuthority> authorities = authentication.getAuthoriti
 ThreadLocal을 사용하면, 필터체인프록시가 시큐리티컨텍스트를 항상 비워주기 때문에 주체의 요청이 처리되고 나서 쓰레드가 비워지는 것을 보장
 
 일부 응용프로그램은 스레드를 사용하는 특수한 방식으로 인해 스레드로컬을 사용하는데 온전히 적합하지는 않음
-예를 들어 Swing Client는 JVM의 모든 스레드를 동일한 시큐리티 컨텍스트를 사용하기 위해 요구함
+예를 들어 Swing Client는 JVM의 모든 스레드를 동일한 시큐리티 컨텍스트를 사용하기 위해 요구
+그래서 SecurityContextHolder에 컨텍스트가 어떻게 저장될지에 대한 전략 지정하여 설정 가능
 
 #### SecurityContext
 
