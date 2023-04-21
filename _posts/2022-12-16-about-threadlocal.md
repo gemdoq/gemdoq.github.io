@@ -248,10 +248,10 @@ All threads are finished
 방지하려면 사용이 끝난 스레드 로컬 정보는 제거될 수 있도록 remove 메서드를 마지막에 명시적으로 호출
 ```java
 public void run() {
-    System.out.printf("%s Started,  ThreadLocal: %s%n", name, threadLocal.get());
-    threadLocal.set(name);
-    System.out.printf("%s Finished, ThreadLocal: %s%n", name, threadLocal.get());
-    threadLocal.remove(); // `remove` 메서드를 호출한다.
+  System.out.printf("%s Started,  ThreadLocal: %s%n", name, threadLocal.get());
+  threadLocal.set(name);
+  System.out.printf("%s Finished, ThreadLocal: %s%n", name, threadLocal.get());
+  threadLocal.remove(); // `remove` 메서드를 호출한다.
 }
 ```
 
