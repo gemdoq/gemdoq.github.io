@@ -170,6 +170,91 @@ thread-2 Finished, ThreadLocal: thread-2
 
 ## 주의사항
 
+스레드가 재활용될 수 있기 때문에 사용이 끝났다면 스레드 로컬을 비워주는 과정이 필수
+스레드 로컬을 비워주지 않으면 다음과 같은 상황이 발생할 수 있음(주의)
+```java
+package threadlocal;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class ThreadLocalTest {
+	static class MadThread extends Thread {
+		private static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
+		private final String name;
+
+		public MadThread(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public void run() {
+			System.out.printf("%s Started,  ThreadLocal: %s%n", name, threadLocal.get());
+			threadLocal.set(name);
+			System.out.printf("%s Finished, ThreadLocal: %s%n", name, threadLocal.get());
+		}
+	}
+
+	// 스레드 풀 선언
+	private final ExecutorService executorService = Executors.newFixedThreadPool(3);
+
+	public void runTest() {
+		for (int threadCount = 1; threadCount <= 5; threadCount++) {
+			final String name = "thread-" + threadCount;
+			final MadThread thread = new MadThread(name);
+			executorService.execute(thread);
+		}
+
+		// 스레드 풀 종료
+		executorService.shutdown();
+
+		// 스레드 풀 종료 대기
+		while (true) {
+			try {
+				if (executorService.awaitTermination(10, TimeUnit.SECONDS)) {
+					break;
+				}
+			} catch (InterruptedException e) {
+				System.err.println("Error: " + e);
+				executorService.shutdownNow();
+			}
+		}
+		System.out.println("All threads are finished");
+	}
+
+	public static void main(String[] args) {
+		new ThreadLocalTest().runTest();
+	}
+}
+```
+출력 순서는 본인의 환경에 따라 실행할 때마다 다를 수 있지만 정상적인 상황이라면 스레드가 시작될 때 출력되는 스레드 로컬의 값은 "defaultName" 이어야 함
+
+하지만 4번과 5번 스레드가 시작될 때를 보면 이미 스레드 로컬에 값이 들어있음
+```console
+thread-1 Started,  ThreadLocal: defaultName
+thread-3 Started,  ThreadLocal: defaultName
+thread-3 Finished, ThreadLocal: thread-3
+thread-2 Started,  ThreadLocal: defaultName
+thread-2 Finished, ThreadLocal: thread-2
+thread-4 Started,  ThreadLocal: thread-3
+thread-4 Finished, ThreadLocal: thread-4
+thread-1 Finished, ThreadLocal: thread-1
+thread-5 Started,  ThreadLocal: thread-2
+thread-5 Finished, ThreadLocal: thread-5
+All threads are finished
+```
+이러한 결과가 발생하는 이유는 스레드 풀을 통해서 스레드가 재사용되기 때문
+방지하려면 사용이 끝난 스레드 로컬 정보는 제거될 수 있도록 remove 메서드를 마지막에 명시적으로 호출
+```java
+public void run() {
+    System.out.printf("%s Started,  ThreadLocal: %s%n", name, threadLocal.get());
+    threadLocal.set(name);
+    System.out.printf("%s Finished, ThreadLocal: %s%n", name, threadLocal.get());
+    threadLocal.remove(); // `remove` 메서드를 호출한다.
+}
+```
+
 <br>
 
 ## 활용
