@@ -72,6 +72,10 @@ ThreadLocal을 사용하면, 필터체인프록시가 시큐리티컨텍스트�
 예를 들어 Swing Client는 JVM의 모든 스레드를 동일한 시큐리티 컨텍스트를 사용하기 위해 요구
 그래서 SecurityContextHolder에 컨텍스트가 어떻게 저장될지에 대한 전략 지정하여 설정 가능
 독립적인 어플리케이션에서는 SecurityContextHolder.MODE_GLOBAL전략을 사용하는 것이 좋음
+다른 어플리케이션들은 동일한 보안 정체성을 가정하는 보안 스레드에 의해 생성된 스레드를 필요로 함
+그런 경우 SecurityContextHolder.MODE_INHERITABLETHREADLOCAL를 사용할 수 있음
+기본 SecurityContextHolder.MODE_THREADLOCAL의 모드를 두가지 방식으로 변경할 수 있음
+첫번째는 시스템 속성을 세팅하는 방법이고, 두번째 방법은 SecurityContextHolder에서 정적 메소드를 호출하는 방법
 
 #### SecurityContext
 
