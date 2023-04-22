@@ -88,7 +88,14 @@ SecurityContext는 SecurityContextHolder에 포함되어 있으며, Authenticati
    - 이런 경우, isAuthenticated()는 false를 반환
 2. 현재 인증된 사용자를 나타내고, SecurityContext에서 Authentication를 획득 가능
 
+##### 내부 요소
+
+1. principal: 사용자 식별. 사용자 이름/비밀번호로 인증할 때 UserDetail의 인스턴스
+2. credentials: 보통의 경우 암호를 의미. 대부분 인증된 후에는 이 값이 지워져 유출 방지
+3. authorities: 사용자의 역할이나 범위 등 사용자에게 부여된 권한. GrantedAuthority 인스턴스
+
 #### GrantedAuthority
+
 
 #### AuthenticationManager
 
