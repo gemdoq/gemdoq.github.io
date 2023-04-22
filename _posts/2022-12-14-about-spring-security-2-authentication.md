@@ -83,6 +83,11 @@ SecurityContext는 SecurityContextHolder에 포함되어 있으며, Authenticati
 
 #### Authentication
 
+스프링 시큐리티에서 Authentication 인터페이스는 두가지 목적으로 쓰임
+1. AuthenticationManager에 사용자가 인증을 위해 제공한 자격 증명을 입력
+   - 이런 경우, isAuthenticated()는 false를 반환
+2. 현재 인증된 사용자를 나타내고, SecurityContext에서 Authentication를 획득 가능
+
 #### GrantedAuthority
 
 #### AuthenticationManager
