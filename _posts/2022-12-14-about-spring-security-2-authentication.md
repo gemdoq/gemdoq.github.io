@@ -96,6 +96,10 @@ SecurityContext는 SecurityContextHolder에 포함되어 있으며, Authenticati
 
 #### GrantedAuthority
 
+사용자의 role이나 scope 등의 주체에게 부여된 권한을 의미
+Authentication.getAuthorities() 메소드를 통해서 GrantedAuthority Collection을 얻을 수 있음
+사용자명/암호 기반 인증을 사용하는 경우, UserDetailService에 의해 GrantedAuthority가 호출됨
+GrantedAuthority는 보통 어플리케이션 전체에 대한 권한을 가짐(도메인 일부가 아닌)
 
 #### AuthenticationManager
 
