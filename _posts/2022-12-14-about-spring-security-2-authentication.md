@@ -112,6 +112,11 @@ ProviderManager가 AuthenticationManager의 가장 일반적인 구현체
 
 #### ProviderManager
 
+AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationManager의 가장 일반적인 구현체
+각각의 AuthenticationProvider는 인증이 성공하거나 실패했음을 나타내거나, 혹은 결정을 내릴 수 없음을 나타내고 AuthenticationProvider에게 결정하도록 허용할 수 있음
+만약 어떤 AuthenticationProvider도 인증할 수 없다면, 인증은 ProviderNotFoundException가 발생하며 실패함
+
+
 #### AuthenticationProvider
 
 #### AuthenticationEntryPoint
