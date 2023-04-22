@@ -103,6 +103,13 @@ GrantedAuthority는 보통 어플리케이션 전체에 대한 권한을 가짐(
 
 #### AuthenticationManager
 
+스프링 시큐리티의 필터가 인증을 수행하는 방법을 정의하는 API
+AuthenticationManager를 호출한 컨트롤러에 의해 Authentication은 SecurityContextHolder에 설정됨
+
+스프링 시큐리티의 필터 인스턴스들을 통합하지 않는다면, SecurityContextHolder를 직접 세팅하고, AuthenticationManager를 사용하지 않을 수 있음
+
+ProviderManager가 AuthenticationManager의 가장 일반적인 구현체
+
 #### ProviderManager
 
 #### AuthenticationProvider
