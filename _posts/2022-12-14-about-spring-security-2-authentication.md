@@ -79,6 +79,8 @@ ThreadLocal을 사용하면, 필터체인프록시가 시큐리티컨텍스트�
 
 #### SecurityContext
 
+SecurityContext는 SecurityContextHolder에 포함되어 있으며, Authentication 객체를 가지고 있음
+
 #### Authentication
 
 #### GrantedAuthority
