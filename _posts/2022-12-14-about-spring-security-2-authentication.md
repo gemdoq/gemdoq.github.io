@@ -117,6 +117,9 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 만약 어떤 AuthenticationProvider도 인증할 수 없다면, ProviderManager가 '전달된 인증 형태를 지원하도록 구성되지 않았다'는 것을 나타내는 특수한 AuthenticationException 예외인, ProviderNotFoundException가 발생하며 실패함
 
 
+실제로 각 AuthenticationProvider는 특정 유형의 인증을 수행하는 방법을 알고 있음
+
+
 #### AuthenticationProvider
 
 #### AuthenticationEntryPoint
