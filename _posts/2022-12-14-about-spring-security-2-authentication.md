@@ -121,7 +121,8 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 예를 들어 한 AuthenticationProvider는 사용자명/암호를 인증할 수 있는데, 다른 건 SAML assertion을 인증할 수 있음
 이를 통해 각 AuthenticationProvider는 하나의 AuthenticationManager bean으로 노출되면서도 다양한 여러 유형의 인증을 지원할 수 있음
 
-또한 ProviderManager는 인증을 수행할 수 있는 AuthenticationProvider가 없을 때, 선택적으로 부모 AuthenticationManager를 설정할 수 있다.
+또한 ProviderManager를 사용하여 상위 AuthenticationManager(선택 사항) 구성 가능
+이는 AuthenticationProvider가 인증을 수행할 수 없는 경우 참조
 
 
 
