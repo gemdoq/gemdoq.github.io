@@ -118,7 +118,7 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 
 
 실제로 각 AuthenticationProvider는 특정 유형의 인증을 수행하는 방법을 알고 있음
-
+예를 들어 한 AuthenticationProvider는 사용자명/암호를 인증할 수 있는데, 다른 건 SAML assertion을 인증할 수 있다.
 
 #### AuthenticationProvider
 
