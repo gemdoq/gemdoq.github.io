@@ -130,9 +130,10 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 서로 다른 ProviderManager로 인해 서로 다른 인증 기제를 가지는 여러 개의 SecurityFilterChain 인스턴스가 하나의 인증에 필요한 경우 충분히 일반적임
 
 
-일반적으로 ProviderManager는 성공적인 인증 요청에 의해 반환된 Authentication 객체로부터 민감 신용정보를 제거하려 함
+일반적으로 ProviderManager는 성공적인 인증 요청에 의해 반환된 Authentication 객체로부터 민감 자격증명 정보를 제거하려 함
 이렇게 하면 HttpSession에 필요 이상으로 암호와 같은 정보가 남아있는 것을 방지할 수 있음
 이런 경우, stateless(비저장) 어플리케이션에서 더 나은 성능을 위해 사용자 객체의 캐쉬를 사용하는 경우 문제가 될 수 있음
+만약 Authentication이 캐쉬에 UserDetails 인스턴스같은 객체에 대해 참조하고 자격증명이 제거되어 있는 경우, 캐쉬에 저장된 값에 대해 더 이상 인증할 수 없음
 
 
 
