@@ -139,8 +139,13 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 
 #### AuthenticationProvider
 
+ProviderManager에는 여러 AuthenticationProvider 인스턴스를 넣을 수 있음
+각 AuthenticationProvider는 특정 유형의 인증을 수행함
+예를 들어 DaoAuthenticationProvider는 사용자명/암호 기반의 인증을 수행하고, JwtAuthenticationProvider는 JWT 토큰 인증을 수행함
 
 #### AuthenticationEntryPoint
+
+AuthenticationEntryPoint는 HTTP 응답으로 클라이언트에게 자격증명에 대한 요청을 보내는 데 쓰임
 
 #### AbstractAuthenticationProcessingFilter
 
