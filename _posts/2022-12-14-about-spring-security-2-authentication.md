@@ -126,6 +126,8 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 상위 AuthenticationManager는 어떤 유형이든 될 수 있지만, 거의 ProviderManager의 인스턴스임
 
 
+실제로 여러 ProviderManager 인스턴스는 동일한 AuthenticationManager를 공유할 수 있음
+
 
 
 
