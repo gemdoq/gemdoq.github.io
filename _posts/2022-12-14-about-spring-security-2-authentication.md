@@ -127,6 +127,9 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 
 
 실제로 여러 ProviderManager 인스턴스는 동일한 AuthenticationManager를 공유할 수 있음
+서로 다른 ProviderManager로 인해 서로 다른 인증 기제를 가지는 여러 개의 SecurityFilterChain 인스턴스가 하나의 인증에 필요한 경우 충분히 일반적임
+
+
 
 
 
