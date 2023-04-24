@@ -130,6 +130,7 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 서로 다른 ProviderManager로 인해 서로 다른 인증 기제를 가지는 여러 개의 SecurityFilterChain 인스턴스가 하나의 인증에 필요한 경우 충분히 일반적임
 
 
+일반적으로 ProviderManager는 성공적인 인증 요청에 의해 반환된 Authentication 객체로부터 민감 신용정보를 제거하려 함
 
 
 
