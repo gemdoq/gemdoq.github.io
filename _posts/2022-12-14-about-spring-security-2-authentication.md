@@ -132,6 +132,7 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 
 일반적으로 ProviderManager는 성공적인 인증 요청에 의해 반환된 Authentication 객체로부터 민감 신용정보를 제거하려 함
 이렇게 하면 HttpSession에 필요 이상으로 암호와 같은 정보가 남아있는 것을 방지할 수 있음
+이런 경우, stateless(비저장) 어플리케이션에서 더 나은 성능을 위해 사용자 객체의 캐쉬를 사용하는 경우 문제가 될 수 있음
 
 
 
