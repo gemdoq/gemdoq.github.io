@@ -123,6 +123,9 @@ AuthenticationProvider 인스턴스의 리스트를 위임하는 AuthenticationM
 
 또한 ProviderManager를 사용하여 상위 AuthenticationManager(선택 사항) 구성 가능
 이는 AuthenticationProvider가 인증을 수행할 수 없는 경우 참조
+상위 AuthenticationManager는 어떤 유형이든 될 수 있지만, 거의 ProviderManager의 인스턴스임
+
+
 
 
 
