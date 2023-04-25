@@ -156,4 +156,5 @@ AbstractAuthenticationProcessingFilter는 사용자 자격증명을 인증하는
 자격증명에 대해 인증되기 전에 스프링 시큐리티는 AuthenticationEntryPoint를 이용하여 자격증명을 요청
 다음으로 AbstractAuthenticationProcessingFilter가 제출된 모든 인증요청에 대한 인증을 할 수 있음
 
-1. 사용자가 자신의 자격증명을 제출하면 AbstractAuthenticationProcessingFilter가 HttpServletRequest의 Authentication을 인증
+1. 사용자가 자신의 자격증명을 제출하면 AbstractAuthenticationProcessingFilter가 HttpServletRequest의 Authentication을 인증되게 만듦
+예를 들어 UsernamePasswordAuthenticationFilter는 HttpServletRequest에서 사용자명과 암호로부터 UsernamePasswordAuthenticationToken을 생성함
