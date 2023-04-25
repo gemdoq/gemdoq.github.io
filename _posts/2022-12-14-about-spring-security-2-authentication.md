@@ -146,6 +146,9 @@ ProviderManager에는 여러 AuthenticationProvider 인스턴스를 넣을 수 �
 #### AuthenticationEntryPoint
 
 AuthenticationEntryPoint는 HTTP 응답으로 클라이언트에게 자격증명에 대한 요청을 보내는 데 쓰임
+경우에 따라 클라이언트는 사전에 자격증명을 포함해서 리소스 요청을 보냄
+그런 경우 스프링 시큐리티는 이미 포함되어 있으므로 클라이언트에 자격증명을 요청하는 HTTP응답을 보낼 필요가 없음
+그렇지 않으면 접속권한이 없는 상태의 자원에 대해 인증이 되지 않은 요청을 하기 때문에 AuthenticationEntryPoint에서 클라이언트에게 자격증명을 요구함
 
 #### AbstractAuthenticationProcessingFilter
 
