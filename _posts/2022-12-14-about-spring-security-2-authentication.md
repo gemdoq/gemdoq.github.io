@@ -152,3 +152,8 @@ AuthenticationEntryPoint는 HTTP 응답으로 클라이언트에게 자격증명
 
 #### AbstractAuthenticationProcessingFilter
 
+AbstractAuthenticationProcessingFilter는 사용자 자격증명을 인증하는데 쓰이는 기본적인 필터
+자격증명에 대해 인증되기 전에 스프링 시큐리티는 AuthenticationEntryPoint를 이용하여 자격증명을 요청
+다음으로 AbstractAuthenticationProcessingFilter가 제출된 모든 인증요청에 대한 인증을 할 수 있음
+
+1. 사용자가 자신의 자격증명을 제출하면 AbstractAuthenticationProcessingFilter가 HttpServletRequest의 Authentication을 인증
