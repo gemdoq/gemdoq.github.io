@@ -160,3 +160,4 @@ AbstractAuthenticationProcessingFilter는 사용자 자격증명을 인증하는
 예를 들어 UsernamePasswordAuthenticationFilter는 HttpServletRequest에서 사용자명과 암호로부터 UsernamePasswordAuthenticationToken을 생성함
 2. 인증을 위해 Authentication이 AuthenticationManager한테 전달됨
 3. 만약 인증이 실패하면 SecurityContextHolder가 지워지고, (기억하기가 설정되어 있을 경우)RememberMeServices.loginFail가 호출되고, AuthenticationFailureHandler가 호출됨
+4. 만약 인증이 성공하면 
