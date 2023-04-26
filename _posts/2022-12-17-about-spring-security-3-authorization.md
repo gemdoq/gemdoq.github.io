@@ -55,7 +55,19 @@ RequestMatcherDelegatingAuthorizationManager는 요청을 가장 적절한 Autho
 
 이 접근 방식을 통해 AuthorizationManager 구현의 구성을 인가 결정에 반영
 
+#### AuthorityAuthorizationManager
 
+스프링 시큐리티에서 제공하는 가장 일반적인 AuthorizationManager이며, 현재 Authentication의 권한들로 구성
+
+#### AuthenticatedAuthorizationManager
+
+익명이거나 완전히 인증되었거나 기억된 사용자를 구별하는 데 사용되는 AuthorizationManager
+
+많은 사이트에서 remember-me설정에 따라 특정 제한된 접속을 허용하지만 전체 접속을 하기 위해 사용자는 자신의 신원을 확인하기 위해 로그인 필요
+
+#### Custom Authorization Managers
+
+어플리케이션에 따라 자체 인증 데이터베이스나 오픈 정책을 따로 사용하여 특정한 보안 관리 로직을 구현할 수 있는 AuthorizationManager
 
 <br>
 
