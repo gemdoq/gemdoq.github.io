@@ -45,6 +45,16 @@ verify 메소드는 check 메소드를 호출 후 AuthorizationDecision이 부�
 
 ### 대리자 기반 AuthorizationManager 구현
 
+사용자는 자신의 AuthorizationManager를 구현하여 권한 부여의 모든 측면을 제어할 수 있지만, 스프링 보안은 개별 AuthorizationManager와 협업할 수 있는 AuthorizationManager 위임 제공
+
+RequestMatcherDelegatingAuthorizationManager는 요청을 가장 적절한 AuthorizationManager와 매칭
+
+메소드 보안을 위해 AuthorizationManagerBeforeMethodInterceptor와 AuthorizationManagerAfterMethodInterceptor 사용 가능
+
+![authorizationhierarchy](/images/2022-12-17-about-spring-security-3-authorization/authorizationhierarchy.png){: width="560"}
+
+이 접근 방식을 통해 AuthorizationManager 구현의 구성을 인가 결정에 반영
+
 
 
 <br>
