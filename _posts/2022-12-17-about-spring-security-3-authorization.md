@@ -24,8 +24,28 @@ Authorization(인가)은 특정 리소스에 접근하려는 사용자의 권한
 
 ## 사전 호출 처리
 
+스프링 시큐리티는 웹 요청이나 메소드 호출과 같은 보안 객체에 대한 접근 통제를 할 수 있는 인터셉터를 AccessDecisoinManager에 의해 제공
+
 ### AuthorizationManager
+
+AuthorizationManager는 AccessDecisoinManager과 AccessDecisionVoter 모두를 대체
+
+AccessDecisoinManager이나 AccessDecisionVoter를 사용자 정의하는 어플리케이션들은 AuthorizationManager를 사용
+
+AuthorizationManager는 최종 접속 권한 결정을 책임지는 AuthorizationFilter에 의해 호출되며, 두가지 메소드를 포함
+```java
+AuthorizationDecision check(Supplier<Authentication> authentication, Object secureObject);
+
+default AuthorizationDecision verify(Supplier<Authentication> authentication, Object secureObject) throws AccessDeniedException {}
+```
+check 메소드는 인증 결정을 내리기 위해 필요한 모든 관련 정보를 전달
+특히 보안 객체를 전달하여 실제 보안 개체 호출에 포함된 인수를 검사
+
+verify 메소드는 check 메소드를 호출 후 AuthorizationDecision이 부정일 경우, AccessDeniedException 던짐
+
 ### 대리자 기반 AuthorizationManager 구현
+
+
 
 <br>
 
