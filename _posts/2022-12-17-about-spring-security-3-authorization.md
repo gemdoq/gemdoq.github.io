@@ -73,6 +73,23 @@ RequestMatcherDelegatingAuthorizationManager는 요청을 가장 적절한 Autho
 
 ## 계층적 역할
 
+일반적으로 어플리케이션에서 특정 역할은 자동으로 다른 역할을 포함하기 때문에 스프링 시큐리티에서는 RoleVoter에서 확장된, RoleHierarchyVoter라는 기능을 제공하여 사용자에게 도달할 수 있는 권한을 할당함으로써 역할 계층 구분
+```java
+@Bean
+AccessDecisionVoter hierarchyVoter() {
+    RoleHierarchy hierarchy = new RoleHierarchyImpl();
+    hierarchy.setHierarchy("ROLE_ADMIN > ROLE_STAFF\n" +
+            "ROLE_STAFF > ROLE_USER\n" +
+            "ROLE_USER > ROLE_GUEST");
+    return new RoleHierarchyVoter(hierarchy);
+}
+```
+역할 계층 순서는 ROLE_ADMIN → ROLE_STAFF → ROLE_USER → ROLE_GUEST
+
+화살표 기호(→)는 포함을 의미
+
+ROLE_ADMIN으로 인증된 사용자는 네 역할을 모두 권한을 모두 소유
+
 <br>
 
 ## 레거시 인증 구성 요소
