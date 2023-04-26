@@ -12,7 +12,6 @@ typora-root-url: ../
 > - 정의
 > - 사전 호출 처리
 > - 계층적 역할
-> - 레거시 인증 구성 요소
 
 <br>
 
@@ -89,12 +88,5 @@ AccessDecisionVoter hierarchyVoter() {
 화살표 기호(→)는 포함을 의미
 
 ROLE_ADMIN으로 인증된 사용자는 네 역할을 모두 권한을 모두 소유
-
-<br>
-
-## 레거시 인증 구성 요소
-
-### AccessDecisionManager
-### 투표 기반 AccessDecisionManager 구현
 
 <br>
