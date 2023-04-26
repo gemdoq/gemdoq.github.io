@@ -22,6 +22,8 @@ Authentication(인증)은 특정 리소스에 접근하려는 사용자의 신�
 
 인증이 수행되고 나면, 정체를 알고 Authorization(인가)를 수행 가능
 
+<br>
+
 ## 구조
 
 ### 주요 구성요소
@@ -198,3 +200,5 @@ AuthenticationEntryPoint는 HTTP 응답으로 클라이언트에게 자격증명
    3. RememberMeService.loginSuccess가 호출되며,
    4. ApplicationEventPublisher가 InteractiveAuthenticationSuccessEvent를 게시하고,
    5. AuthenticationSuccessHandler가 호출됨
+
+<br>
