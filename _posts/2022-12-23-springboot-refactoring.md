@@ -21,6 +21,101 @@ typora-root-url: ../
 
 ## Raw 타입은 사용하지 말자
 
+다음과 같이 Controller에서 데이터를 반환할 때 ResponseEntity를 Raw 타입으로 반환하고 있다.
+
+```java
+@RestController
+@RequestMapping(value = "/error")
+@Log4j2
+public class ErrorController {
+
+    @GetMapping(value = "/unauthorized")
+    public ResponseEntity unauthorized() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+}
+```
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    @PostMapping(value = "signUp")
+    public ResponseEntity signUp(@RequestBody User user) {
+        user.setRole(UserRole.ROLE_USER);
+        user.setPw(passwordEncoder.encode(user.getPw()));
+        return userService.findByEmail(user.getEmail()).isPresent()
+                ? ResponseEntity.badRequest().build()
+                : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(user)));
+    }
+
+    @GetMapping(value = "/findAll")
+    public ResponseEntity findAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+}
+```
+Raw 타입을 사용하면 컴파일 시점에 문제를 잡지 못하다가 런타임 시점에 ClassCastException 에러가 발생할 수 있다. 예를 들어 다음과 같은 Integer만을 갖는 List에 String이 추가되어도 오류 없이 컴파일되고 실행된다. 그러다가 해당 데이터를 꺼내거나 연산을 할 때 즉, 런타임 시점에 문제(ClassCastException 에러)가 발생하게 된다.
+```java
+List list = new ArrayList<>();
+list.add("문자열");
+list.add(123);
+
+int sum = 0;
+for (Object num : list) {
+    // 런타임 시점에 ClassCastException 발생
+    sum += (int)num;
+}
+```
+하지만 만약 Raw 타입이 아니라 타입 파라미터를 List<Integer>로 명시해준다면, 컴파일러가 리스트에 Integer만 넣어야 함을 인지하여 컴파일 시점에 오류를 잡아낼 수 있다. 왜냐하면 컴파일러는 컬렉션에서 원소를 꺼내는 모든 곳에 보이지 않는 형변환을 추가하여 절대 실패하지 않음을 보장하기 때문이다.
+
+그렇기 때문에 위와 같은 Raw 타입의 반환을 피하고 반환할 데이터 타입을 명시해는 것이 좋다.
+```java
+@RestController
+@RequestMapping(value = "/error")
+@Log4j2
+public class ErrorController {
+
+    @GetMapping(value = "/unauthorized")
+    public ResponseEntity<Void> unauthorized() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+}
+```
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    @PostMapping(value = "/signUp")
+    public ResponseEntity<String> signUp(@RequestBody User user) {
+        user.setRole(UserRole.ROLE_USER);
+        user.setPw(passwordEncoder.encode(user.getPw()));
+        return userService.findByEmail(user.getEmail()).isPresent()
+                ? ResponseEntity.badRequest().build()
+                : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(user)));
+    }
+
+    @GetMapping(value = "/findAll")
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+}
+```
 <br>
 
 ## Restful API는 자원과 메소드로 표현하자
