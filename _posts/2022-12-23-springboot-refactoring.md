@@ -122,9 +122,48 @@ public class UserController {
 
 위의 예제에서는 Controller가 사용자 목록 조회 API(/user/findAll) 를 제공하고 있다.
 
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    ... 생략
+
+    @GetMapping(value = "/findAll")
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+}
+```
+기능적인 문제는 없지만 Restful API는 자원(URI)과 메소드(GET, POST 등) 으로 해당 요청을 표현해야 한다. 하지만 사용자 목록 조회 API의 경우, URI에서도 조회라는 기능을 설명하고 있고(find...) GET이라는 메소드도 조회라는 기능을 설명하고 있다. 그렇기 때문에 해당 API의 URI를 다음과 같이 명사의 형태로 바꿔 자원과 메소드로 표현하도록 하자.
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/users")
+@Log4j2
+public class UserController {
+
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    ... 생략
+
+    @GetMapping
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+}
+```
+
 <br>
 
 ## 데이터를 주고 받을 때에는 DTO를 이용하자
+
+
 
 <br>
 
