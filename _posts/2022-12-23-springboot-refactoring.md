@@ -310,9 +310,60 @@ public class UserServiceImpl implements UserService {
 
 ## Controller는 최대한 가볍게 만들어라
 
+Spring에서 Controller는 클라이언트의 요청이 들어오고 나가는 곳이다. 요청을 처리하기 위한 비지니스 로직은 상당히 복잡할 수 있다. 하지만 이를 주고 받는 컨트롤러는 어떠한 데이터를 주고 받는지만을 명확하게 작성하는 것이 좋다. 그래야 다른 사람이 해당 API를 봤을 때 이해하기 쉬울 것이다.
+
+그렇기 때문에 지금처럼 SignUpDTO를 통해 User를 생성하고, 암호화를 하는 로직을 서비스 레이어로 넘기도록 하자. 지금은 userService의 signUp이 User를 파라미터로 받고 있지만, 이제는 SignUpDTO를 파라미터로 받아야 한다. 또한 암호화를 위한 PasswordEncoder 역시 UserService로 이동시켜 주어야 한다.
+
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    private final UserService userService;
+
+    @PostMapping(value = "/signUp")
+    public ResponseEntity<String> signUp(@RequestBody SignUpDTO signUpDTO) {
+        return userService.findByEmail(signUpDTO.getEmail()).isPresent()
+                ? ResponseEntity.badRequest().build()
+                : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(signUpDTO)));
+    }
+
+    ... 생략
+}
+```
+위와 같이 컨트롤러를 단순화하여 우리는 해당 API를 명확히 이해할 수 있게 되었다. 그리고 비밀번호 암호와와 같은 로직은 서비스단으로 이동하게 되었다.
+
+```java
+@RequiredArgsConstructor
+@Service
+public class UserServiceImpl implements UserService {
+
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    @Override
+    public User signUp(SignUpDTO signUpDTO) {
+        User user = User.builder()
+                .email(signUpDTO.getEmail())
+                .pw(passwordEncoder.encode(signUpDTO.getPw()))
+                .role(UserRole.ROLE_USER)
+                .build();
+
+        return userRepository.save(user);
+    }
+    
+    ... 생략
+}
+```
+
 <br>
 
 ## 불변 객체를 사용하라
+
+
+
 
 <br>
 
