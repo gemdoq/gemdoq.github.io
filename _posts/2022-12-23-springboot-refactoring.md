@@ -163,7 +163,119 @@ public class UserController {
 
 ## 데이터를 주고 받을 때에는 DTO를 이용하자
 
+위의 예제에서는 데이터를 주고 받을때 엔티티를 사용하고 있다. 회원가입을 할 때는 User를 파라미터로 받고 있고, 사용자 목록을 조회할 때는 List<User>를 반환하고 있다.
 
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    @PostMapping(value = "/signUp")
+    public ResponseEntity<String> signUp(@RequestBody User user) {
+        user.setRole(UserRole.ROLE_USER);
+        user.setPw(passwordEncoder.encode(user.getPw()));
+        return userService.findByEmail(user.getEmail()).isPresent()
+                ? ResponseEntity.badRequest().build()
+                : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(user)));
+    }
+
+    @GetMapping(value = "/list")
+    public ResponseEntity<List<User>> findAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+}
+```
+지금은 간단한 프로젝트이기 때문에 User 객체에 @Valid와 @NotEmpty 같은 유효성 검사 코드나 패스워드 변경시 필요한 newPw와 같은 필드가 존재하지 않는다. 하지만 만약 프로젝트가 확장되어 User 객체와 같은 엔티티에 해당 코드들이 추가된다면 엔티티가 상당히 무겁고 복잡해지며 가독성이 떨어질 것이다. 그리고 만약 엔티티를 직접 반환한다면 필드명이 바뀌는 경우에 API의 스펙을 변경하게 되고, 해당 API를 사용중인 클라이언트에게 문제를 발생시킬 수 있다.
+
+또한 지금은 사용자 목록을 반환하는 경우에는 List를 그대로 반환하고 있다. DTO를 사용하지 않고 있으므로, 만약 해당 API에 total count를 추가해달라는 요구사항이 생기는 경우에 상당히 유연성이 떨어진다. 또한 DTO의 이름을 SignUpDTO와 같이 작명한다면, 해당 요청을 통해 어떠한 파라미터를 받는지 직관적으로 짐작할 수 있다.
+
+그렇기 때문에 우리는 다음과 같은 이유로 Entity와 DTO를 분리하여 사용해야 한다.
+1. 불필요한 코드 및 로직을 엔티티로부터 분리할 수 있다.
+2. 엔티티가 변경되어도 API 스펙이 변하지 않는다.
+3. 요청으로 넘어오는 파라미터를 직관적으로 확인가능하며, API의 유연성을 확보할 수 있다.
+그 외에 함수의 파라미터가 너무 긴 경우에도 가독성이 떨어지므로, DTO를 사용하는 것도 좋은 선택지이다.
+위의 코드를 DTO로 변경하기 위해 우선 다음과 같은 회원가입 DTO와 사용자 목록 반환 DTO를 생성하도록 하자.
+```java
+@Getter
+public class SignUpDTO {
+
+    private String email;
+    private String pw;
+
+}
+```
+```java
+@Getter
+@Builder
+public class UserListResponseDTO {
+
+    private final List<User> userList;
+
+}
+```
+또한 User 객체를 이제 직접 생성해주어야 하므로 lombok을 통해 builder 패턴을 추가해주도록 하자. 이에 맞게 User 클래스를 수정하면 다음과 같다.
+```java
+@Entity
+@Table(name = "USER")
+@Getter
+@Builder
+@NoArgsConstructor(force = true)
+public class User extends Common implements Serializable {
+
+    @Column(nullable = false, unique = true, length = 50)
+    private final String email;
+
+    @Setter
+    @Column(nullable = false)
+    private String pw;
+
+    @Setter
+    @Column(nullable = false, length = 50)
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
+}
+```
+그리고 UserController에 해당 DTO를 반영하여 다음과 같이 수정하도록 하자.
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final UserService userService;
+
+    @PostMapping(value = "/signUp")
+    public ResponseEntity<String> signUp(@RequestBody SignUpDTO signUpDTO) {
+        User user = User.builder()
+                .email(signUpDTO.getEmail())
+                .pw(passwordEncoder.encode(signUpDTO.getPw()))
+                .role(UserRole.ROLE_USER)
+                .build();
+
+        return userService.findByEmail(user.getEmail()).isPresent()
+                ? ResponseEntity.badRequest().build()
+                : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(user)));
+    }
+
+    @GetMapping(value = "/list")
+    public ResponseEntity<UserListResponseDTO> findAll() {
+        UserListResponseDTO userListResponseDTO = UserListResponseDTO.builder()
+                .userList(userService.findAll()).build();
+
+        return ResponseEntity.ok(userListResponseDTO);
+    }
+
+}
+```
 
 <br>
 
