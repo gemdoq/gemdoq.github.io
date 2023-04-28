@@ -120,6 +120,8 @@ public class UserController {
 
 ## Restful API는 자원과 메소드로 표현하자
 
+위의 예제에서는 Controller가 사용자 목록 조회 API(/user/findAll) 를 제공하고 있다.
+
 <br>
 
 ## 데이터를 주고 받을 때에는 DTO를 이용하자
