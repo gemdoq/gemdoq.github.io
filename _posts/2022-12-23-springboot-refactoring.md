@@ -281,6 +281,31 @@ public class UserController {
 
 ## final과 함께 생성자 주입을 사용하라
 
+오늘날 이제는 더 이상 @Autowired를 활용한 필드 주입이 아닌 final + 생성자 주입을 사용하며, lombok은 이를 상당히 간단하게 구현할 수 있도록 해주었다.
+하지만 작성된 코드를 보면 다음과 같이 final을 붙일 수 있음에도 붙이지 않는 경우가 있다.
+
+```java
+@RequiredArgsConstructor
+@Service
+public class UserServiceImpl implements UserService {
+
+    @NonNull
+    private UserRepository userRepository;
+
+}
+```
+위의 코드 처럼 객체가 변하지 않는 경우에는 모두 final과 @RequiredArgsConstructor를 이용하도록 개선하자.
+
+```java
+@RequiredArgsConstructor
+@Service
+public class UserServiceImpl implements UserService {
+
+    private final UserRepository userRepository;
+
+}
+```
+
 <br>
 
 ## Controller는 최대한 가볍게 만들어라
