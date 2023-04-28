@@ -7,7 +7,6 @@ tags: [Springboot, Refactoring]
 typora-root-url: ../
 ---
 
-
 ## Spring Boot 리팩토링하기
 > - Raw 타입은 사용하지 말자
 > - Restful API는 자원과 메소드로 표현하자
@@ -33,7 +32,6 @@ public class ErrorController {
     public ResponseEntity unauthorized() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
-
 }
 ```
 ```java
@@ -59,7 +57,6 @@ public class UserController {
     public ResponseEntity findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
-
 }
 ```
 Raw 타입을 사용하면 컴파일 시점에 문제를 잡지 못하다가 런타임 시점에 ClassCastException 에러가 발생할 수 있다. 예를 들어 다음과 같은 Integer만을 갖는 List에 String이 추가되어도 오류 없이 컴파일되고 실행된다. 그러다가 해당 데이터를 꺼내거나 연산을 할 때 즉, 런타임 시점에 문제(ClassCastException 에러)가 발생하게 된다.
@@ -87,7 +84,6 @@ public class ErrorController {
     public ResponseEntity<Void> unauthorized() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
-
 }
 ```
 ```java
@@ -113,7 +109,6 @@ public class UserController {
     public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
-
 }
 ```
 <br>
@@ -135,7 +130,6 @@ public class UserController {
     public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
-
 }
 ```
 기능적인 문제는 없지만 Restful API는 자원(URI)과 메소드(GET, POST 등) 으로 해당 요청을 표현해야 한다. 하지만 사용자 목록 조회 API의 경우, URI에서도 조회라는 기능을 설명하고 있고(find...) GET이라는 메소드도 조회라는 기능을 설명하고 있다. 그렇기 때문에 해당 API의 URI를 다음과 같이 명사의 형태로 바꿔 자원과 메소드로 표현하도록 하자.
@@ -155,7 +149,6 @@ public class UserController {
     public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
-
 }
 ```
 
@@ -188,7 +181,6 @@ public class UserController {
     public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
-
 }
 ```
 지금은 간단한 프로젝트이기 때문에 User 객체에 @Valid와 @NotEmpty 같은 유효성 검사 코드나 패스워드 변경시 필요한 newPw와 같은 필드가 존재하지 않는다. 하지만 만약 프로젝트가 확장되어 User 객체와 같은 엔티티에 해당 코드들이 추가된다면 엔티티가 상당히 무겁고 복잡해지며 가독성이 떨어질 것이다. 그리고 만약 엔티티를 직접 반환한다면 필드명이 바뀌는 경우에 API의 스펙을 변경하게 되고, 해당 API를 사용중인 클라이언트에게 문제를 발생시킬 수 있다.
@@ -196,18 +188,20 @@ public class UserController {
 또한 지금은 사용자 목록을 반환하는 경우에는 List를 그대로 반환하고 있다. DTO를 사용하지 않고 있으므로, 만약 해당 API에 total count를 추가해달라는 요구사항이 생기는 경우에 상당히 유연성이 떨어진다. 또한 DTO의 이름을 SignUpDTO와 같이 작명한다면, 해당 요청을 통해 어떠한 파라미터를 받는지 직관적으로 짐작할 수 있다.
 
 그렇기 때문에 우리는 다음과 같은 이유로 Entity와 DTO를 분리하여 사용해야 한다.
+
 1. 불필요한 코드 및 로직을 엔티티로부터 분리할 수 있다.
 2. 엔티티가 변경되어도 API 스펙이 변하지 않는다.
 3. 요청으로 넘어오는 파라미터를 직관적으로 확인가능하며, API의 유연성을 확보할 수 있다.
+
 그 외에 함수의 파라미터가 너무 긴 경우에도 가독성이 떨어지므로, DTO를 사용하는 것도 좋은 선택지이다.
 위의 코드를 DTO로 변경하기 위해 우선 다음과 같은 회원가입 DTO와 사용자 목록 반환 DTO를 생성하도록 하자.
+
 ```java
 @Getter
 public class SignUpDTO {
 
     private String email;
     private String pw;
-
 }
 ```
 ```java
@@ -216,7 +210,6 @@ public class SignUpDTO {
 public class UserListResponseDTO {
 
     private final List<User> userList;
-
 }
 ```
 또한 User 객체를 이제 직접 생성해주어야 하므로 lombok을 통해 builder 패턴을 추가해주도록 하자. 이에 맞게 User 클래스를 수정하면 다음과 같다.
@@ -239,7 +232,6 @@ public class User extends Common implements Serializable {
     @Column(nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private UserRole role;
-
 }
 ```
 그리고 UserController에 해당 DTO를 반영하여 다음과 같이 수정하도록 하자.
@@ -273,7 +265,6 @@ public class UserController {
 
         return ResponseEntity.ok(userListResponseDTO);
     }
-
 }
 ```
 
@@ -291,7 +282,6 @@ public class UserServiceImpl implements UserService {
 
     @NonNull
     private UserRepository userRepository;
-
 }
 ```
 위의 코드 처럼 객체가 변하지 않는 경우에는 모두 final과 @RequiredArgsConstructor를 이용하도록 개선하자.
@@ -302,7 +292,6 @@ public class UserServiceImpl implements UserService {
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
 }
 ```
 
@@ -329,8 +318,6 @@ public class UserController {
                 ? ResponseEntity.badRequest().build()
                 : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(signUpDTO)));
     }
-
-    ... 생략
 }
 ```
 위와 같이 컨트롤러를 단순화하여 우리는 해당 API를 명확히 이해할 수 있게 되었다. 그리고 비밀번호 암호와와 같은 로직은 서비스단으로 이동하게 되었다.
@@ -353,8 +340,6 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(user);
     }
-    
-    ... 생략
 }
 ```
 
@@ -389,7 +374,6 @@ public class UserController {
 
         return ResponseEntity.ok(userListResponseDTO);
     }
-
 }
 ```
 위의 코드를 보면 이제 매개변수, 지역변수, 클래스 변수 등 변경가능성이 없는 모든 변수들에 final이 붙어있다. UserController 외에 다른 클래스들에도 마찬가지로 final을 적극 활용해주도록 하자.
@@ -416,8 +400,6 @@ public final class TokenUtils {
 
         return builder.compact();
     }
-
-    ... 생략
 }
 ```
 그런데 유틸성 클래스를 객체를 생성하도록 만든 것은 불필요하게 코드를 열어두는 것이므로, 내부 생성자를 통해 이를 제한할 필요가 있다. 롬복을 사용중이라면 NoArgsConstructor를 이용하고, 그렇지 않다면 직접 내부 생성자를 추가하도록 하자. 이를 통해 누군가 객체를 생성하려고 할 때 컴파일 오류를 발생시킬 수 있다.
@@ -439,8 +421,6 @@ public final class TokenUtils {
 
         return builder.compact();
     }
-
-    ... 생략
 }
 ```
 
