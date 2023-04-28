@@ -398,4 +398,50 @@ public class UserController {
 
 ## 유틸성 또는 상수형 클래스는 내부 생성자를 통해 객체 생성을 제한하자
 
+일반적인 유틸리티성 클래스라면 다음과 같이 static 메소드를 제공하기 때문에 객체를 생성할 필요가 없다.
+
+```java
+@Log4j2
+public final class TokenUtils {
+
+    private static final String secretKey = "ThisIsA_SecretKeyForJwtExample";
+
+    public static String generateJwtToken(User user) {
+        JwtBuilder builder = Jwts.builder()
+                .setSubject(user.getEmail())
+                .setHeader(createHeader())
+                .setClaims(createClaims(user))
+                .setExpiration(createExpireDateForOneYear())
+                .signWith(SignatureAlgorithm.HS256, createSigningKey());
+
+        return builder.compact();
+    }
+
+    ... 생략
+}
+```
+그런데 유틸성 클래스를 객체를 생성하도록 만든 것은 불필요하게 코드를 열어두는 것이므로, 내부 생성자를 통해 이를 제한할 필요가 있다. 롬복을 사용중이라면 NoArgsConstructor를 이용하고, 그렇지 않다면 직접 내부 생성자를 추가하도록 하자. 이를 통해 누군가 객체를 생성하려고 할 때 컴파일 오류를 발생시킬 수 있다.
+
+```java
+@Log4j2
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class TokenUtils {
+
+    private static final String secretKey = "ThisIsA_SecretKeyForJwtExample";
+
+    public static String generateJwtToken(User user) {
+        JwtBuilder builder = Jwts.builder()
+                .setSubject(user.getEmail())
+                .setHeader(createHeader())
+                .setClaims(createClaims(user))
+                .setExpiration(createExpireDateForOneYear())
+                .signWith(SignatureAlgorithm.HS256, createSigningKey());
+
+        return builder.compact();
+    }
+
+    ... 생략
+}
+```
+
 <br>
