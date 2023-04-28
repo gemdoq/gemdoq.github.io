@@ -362,8 +362,37 @@ public class UserServiceImpl implements UserService {
 
 ## 불변 객체를 사용하라
 
+많은 개발자가 협업하고, 개발 팀원들이 계속해서 변화하는 오늘날에는 불변 객체를 사용하는 것이 특히 중요하다.
 
+그렇기 때문에 변경가능성이 없는 객체라면 final로 선언하여 불변성을 확보하도록 하자. 내 코드를 읽거나 수정하는 다른 누군가는 final로 선언된 객체를 안전하게 사용할 수 있을 것이다. 또한 자연스럽게 우리는 부수효과가 없는 순수 함수로 개발을 하게 될 것이다.
 
+```java
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/user")
+@Log4j2
+public class UserController {
+
+    private final UserService userService;
+
+    @PostMapping(value = "/signUp")
+    public ResponseEntity<String> signUp(@RequestBody final SignUpDTO signUpDTO) {
+        return userService.findByEmail(signUpDTO.getEmail()).isPresent()
+                ? ResponseEntity.badRequest().build()
+                : ResponseEntity.ok(TokenUtils.generateJwtToken(userService.signUp(signUpDTO)));
+    }
+
+    @GetMapping(value = "/list")
+    public ResponseEntity<UserListResponseDTO> findAll() {
+        final UserListResponseDTO userListResponseDTO = UserListResponseDTO.builder()
+                .userList(userService.findAll()).build();
+
+        return ResponseEntity.ok(userListResponseDTO);
+    }
+
+}
+```
+위의 코드를 보면 이제 매개변수, 지역변수, 클래스 변수 등 변경가능성이 없는 모든 변수들에 final이 붙어있다. UserController 외에 다른 클래스들에도 마찬가지로 final을 적극 활용해주도록 하자.
 
 <br>
 
