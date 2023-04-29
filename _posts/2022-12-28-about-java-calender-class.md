@@ -85,6 +85,8 @@ public static void main(String[] args) {
 
 
 
+
+
 ### 주요 메소드
 
 |                            메소드                            |                             설명                             |
@@ -103,6 +105,30 @@ public static void main(String[] args) {
 |               void setTimeInMills(long mills)                |  현재 객체를 1/1000초 단위의 주어진 매개변수 시간으로 설정   |
 |               int getActualMinimum(int field)                |            현재 객체의 특정 필드의 최소 값을 반환            |
 |               int getActualMaximum(int field)                |            현재 객체의 특정 필드의 최대 값을 반환            |
+
+```java
+public static void main(String[] args) {
+        
+  			final String[] DAY_OF_WEEK = {"", "일", "월", "화", "수", "목", "금", "토"};
+        
+        Calendar date1 = Calendar.getInstance();
+        Calendar date2 = Calendar.getInstance();
+        
+        date1.set(1945, Calendar.AUGUST, 15);
+        
+        System.out.println("date1은 " + toString(date1) + DAY_OF_WEEK[date1.get(Calendar.DAY_OF_WEEK)] +"요일이고, \n"
+                + "date2(오늘)는 " + toString(date1) + DAY_OF_WEEK[date1.get(Calendar.DAY_OF_WEEK)] +"요일. " );
+        
+        long difference = (date2.getTimeInMillis() - date1.getTimeInMillis())/ 1000; 
+        System.out.println("date1부터 지금까지 " + difference + "초가 지났고, \n"
+                + "일(day)로 계산하면 " + difference/(24*60*60) +"일이 지났다. ");
+
+}
+ 
+    private static String toString(Calendar date) {
+        return date.get(Calendar.YEAR)+ "년 " + (date.get(Calendar.MONTH)+1) +"월 " + date.get(Calendar.DATE) +"일 ";
+    }
+```
 
 
 
