@@ -83,7 +83,7 @@ public static void main(String[] args) {
 }
 ```
 
-
+![constan](/images/2022-12-28-about-java-calender-class/constan.png){: width="560"}
 
 
 
@@ -130,7 +130,7 @@ public static void main(String[] args) {
     }
 ```
 
-
+![method](/images/2022-12-28-about-java-calender-class/method.png){: width="560"}
 
 
 
