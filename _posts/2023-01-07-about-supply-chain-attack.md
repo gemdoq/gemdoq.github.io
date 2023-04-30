@@ -3,7 +3,7 @@ layout: single
 title: "Supply Chain Attack에 대해"
 date: 2023-01-07 09:36:31 +0900
 categories: knowledge
-tags: [Left-Pad, Supply Chain Attack]
+tags: [Left-Pad, Supply Chain Attack, Typosquatting]
 typora-root-url: ../
 ---
 
