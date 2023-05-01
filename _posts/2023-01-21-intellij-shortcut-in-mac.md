@@ -43,3 +43,14 @@ typora-root-url: ../
 - 해당 메서드를 사용하는 곳 조회: Option + F7
 
 <br>
+
+## 메모 단축키
+
+- 제목: Command + Shift + T
+- 머리말: Command + Shift + H
+- 본문: Command + Shift + B
+- 글씨 굵게: Command + B
+- 구분점: Command + Shift + 7
+- 체크리스트: Command + Shift + L
+
+<br>
