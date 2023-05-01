@@ -54,3 +54,12 @@ typora-root-url: ../
 - 체크리스트: Command + Shift + L
 
 <br>
+
+## Visual Studio Code
+
+- 새 파일: Command + N
+- Markdown 미리보기: Command + Shift + V
+- Markdown 측면에 미리보기: Command + K, V
+- 탭 이동: Command + Option + 화살표(좌, 우)
+
+<br>
