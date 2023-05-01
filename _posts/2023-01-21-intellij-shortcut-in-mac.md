@@ -63,3 +63,11 @@ typora-root-url: ../
 - 탭 이동: Command + Option + 화살표(좌, 우)
 
 <br>
+
+## 기타 단축키
+
+- 이모지 입력: Control + Command + Space
+- Alfred: Control + Shift + A
+- 알트탭: Command + Tab
+
+<br>
