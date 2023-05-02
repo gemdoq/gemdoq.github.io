@@ -10,6 +10,7 @@ typora-root-url: ../
 ## JPA에서 Flush에 대하여
 > - 정의
 > - 동작 과정
+> - 사용 방법
 
 
 <br>
@@ -32,5 +33,11 @@ Transaction commit 이 일어날 때 flush가 동작하는데, 이때 쓰기 지
    - flush가 발생한다고 해서 commit이 이루어지는 것이 아니고 flush 다음에 실제 commit
    - 플러시가 동작할 수 있는 이유는 데이터베이스 트랜잭션 때문
    - 트랜잭션이 시작되고 해당 트랜잭션이 commit 되는 시점에 동기화
+
+<br>
+
+## 사용 방법
+
+### 
 
 <br>
