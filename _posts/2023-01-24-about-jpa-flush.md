@@ -11,6 +11,7 @@ typora-root-url: ../
 > - 정의
 > - 동작 과정
 > - 사용 방법
+> - 옵션 설정
 
 
 <br>
@@ -38,7 +39,7 @@ Transaction commit 이 일어날 때 flush가 동작하는데, 이때 쓰기 지
 
 ## 사용 방법
 
-### em.flush()
+### em.flush()을 통한 직접 호출
 
 ```java
 // 영속 상태 (Persistence Context 에 의해 Entity 가 관리되는 상태)
@@ -53,7 +54,26 @@ tx.commit(); // DB에 insert query 가 날라가는 시점 (Transaction commit)
 
 플러시는 쓰기 지연 SQL 저장소에 있는 Query들만 DB에 전송되는 과정이므로 1차 캐시는 그대로 보존
 
+### JPQL 쿼리 실행시 플러시 자동 호출
 
+```java
+em.persist(memberA);
+em.persist(memberB);
+em.persist(memberC);
 
+// 중간에 JPQL 실행
+query = entityManager.createQuery("select m from Member m", Member.class);
+List<Member> members = query.getResultList();
+```
+
+memberA, B, C는 영속성 컨텍스트에만 존재할 뿐, DB에 INSERT Query가 전송되지 않아 반영되지 않은 상태
+
+JPQL Query 실행 시, flush()가 자동 호출되어 DB에 SQL로 번역된 INSERT Query가 전송, DB에 반영됨(동기화)
+
+### 트랜잭션 커밋 시 플러시 자동 호출
+
+<br>
+
+## 옵션 설정
 
 <br>
