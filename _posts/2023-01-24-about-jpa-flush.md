@@ -38,6 +38,22 @@ Transaction commit 이 일어날 때 flush가 동작하는데, 이때 쓰기 지
 
 ## 사용 방법
 
-### 
+### em.flush()
+
+```java
+// 영속 상태 (Persistence Context 에 의해 Entity 가 관리되는 상태)
+Member member = new Member(200L, "A");
+entityManager.persist(member);
+
+entityManager.flush(); // 강제 호출 (쿼리가 DB 에 반영됨)
+
+System.out.println("DB INSERT Query 가 즉시 나감. -- flush() 호출 후 --  Transaction commit 됨.");
+tx.commit(); // DB에 insert query 가 날라가는 시점 (Transaction commit)
+```
+
+플러시는 쓰기 지연 SQL 저장소에 있는 Query들만 DB에 전송되는 과정이므로 1차 캐시는 그대로 보존
+
+
+
 
 <br>
