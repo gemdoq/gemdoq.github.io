@@ -76,4 +76,15 @@ JPQL Query 실행 시, flush()가 자동 호출되어 DB에 SQL로 번역된 INS
 
 ## 옵션 설정
 
+```java
+em.setFlushMode(플러쉬 모드 타입 옵션);
+```
+1. FlushModeType.AUTO
+   - 기본값
+   - 트랜잭션을 커밋하거나 쿼리를 실행할 때 flush()를 먼저 수행
+2. FlushModeType.COMMIT
+   - 트랜잭션을 커밋할 때만 flush()를 먼저 수행
+   - 쿼리를 실행할 때는 flush()를 먼저 수행하지 않음
+   - persist한 것과 전혀 다른 테이블을 조회하는 경우
+
 <br>
