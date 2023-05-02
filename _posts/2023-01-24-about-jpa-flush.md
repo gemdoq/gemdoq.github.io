@@ -8,10 +8,14 @@ typora-root-url: ../
 ---
 
 ## JPA에서 Flush에 대하여
-> - 
+> - 정의
+> -
+
 
 <br>
 
-## 
+## 정의
+
+
 
 <br>
