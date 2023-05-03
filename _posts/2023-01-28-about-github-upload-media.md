@@ -40,6 +40,22 @@ GitHub의 README 파일에 이미지나 동영상을 첨부하는 방법은 다�
 
 ## mp4파일을 gif파일로 변환
 
+mp4파일을 gif파일로 변환해주는 웹사이트가 있다.
 
+🔗 웹사이트 링크 : [cloudconvert.com/mp4-to-gif](https://cloudconvert.com/mp4-to-gif)
+
+위 사이트로 들어가면 다음과 같이 input파일 형식과 output파일 형식을 정할 수 있다. 
+
+![index](/images/2023-01-28-about-github-upload-media/index.png){: width="560"}
+
+파일을 추가하면 다음과 같이 전환되고, Convert를 눌러서 변환을 시작할 수 있다.
+
+![convert](/images/2023-01-28-about-github-upload-media/convert.png){: width="560"}
+
+변환이 완료되면 다음과 같이 다운로드 받을 수 있게 바뀐다.
+
+![down](/images/2023-01-28-about-github-upload-media/down.png){: width="560"}
+
+gif파일을 다운받고, 위의 방법대로 링크를 생성하여 양식에 맞게 첨부하면 된다.
 
 <br>
