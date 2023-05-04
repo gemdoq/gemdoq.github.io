@@ -119,5 +119,73 @@ Content-Type: application/json; charset=utf-8
 Content-Length: 155
 ```
 
+#### Preflight request
+
+Simple request가 아니면 브라우저는 실제 요청을 보내기 전에 한 가지 작업을 수행합니다. preflight request를 실제 요청 메시지보다 서버에 먼저 보냅니다. 서버는 이에 대한 응답을 주고, 브라우저는 이를 통해 실제 요청을 보낼지 결정합니다.
+
+preflight request는 OPTIONS 메서드를 사용하며, 다음과 같은 요청 헤더를 사용
+
+Access-Control-Request-Method : 실제 요청에서 사용하는 메서드를 서버가 알 수 있도록 설정하는 헤더
+Access-Control-Request-Headers : 실제 요청에 포함될 헤더를 서버가 알 수 있도록 설정하는 헤더
+Origin : 요청을 보낸 출처로, URL 중 scheme과 host, port만 명시
+
+보통 preflight request는 브라우저가 자동적으로 생성하기 때문에 크게 신경 쓸 필요는 없지만, 각 헤더가 무엇을 의미하는지는 알아둘 필요는 있습니다.
+
+응답이 오면, 브라우저는 방금 언급한 3가지 헤더 값과 응답의 Access-Control-*헤더의 값을 비교하며 실제 요청을 서버에게 보낼지 결정합니다.
+
+예를 들어, 다음과 같은 요청을 보낸다면 Simple request의 조건을 만족하지 못하므로, 실제 요청을 보내기 전에 preflight request를 보냅니다.
+
+Prefilght request
+
+```
+OPTIONS /api/menus HTTP/1.1
+
+Host: localhost:9000
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: content-type
+Referer: http://localhost:8080/
+Origin: http://localhost:8080
+```
+
+서버가 다음과 같이 응답을 했다면, 브라우저는 실제 요청을 보내도 문제가 없다고 판단하여 실제 요청을 서버에 보냅니다. 이후 과정은 일반적인 요청-응답 사이클과 같습니다.
+
+preflight request에 대한 응답 : 성공
+
+```
+HTTP/1.1 200 OK
+
+Access-Control-Allow-Origin: http://localhost:8080
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Max-Age: -1
+Connection: keep-alive
+Content-Length: 0
+```
+
+실제 요청을 서버로 전송
+
+```
+GET /api/menus HTTP/1.1
+
+Host: localhost:9000
+Referer: http://localhost:8080/
+Content-Type: application/json
+Origin: http://localhost:8080
+```
+
+하지만 서버가 다음과 같은 응답을 했다면, 브라우저는 실제 요청을 보내지 않고 오류 메시지를 뱉어낼 것입니다.
+
+preflight request에 대한 응답 : 실패
+
+```
+HTTP/1.1 200 OK
+
+Access-Control-Allow-Origin: http://localhost:8080
+Access-Control-Max-Age: -1
+Connection: keep-alive
+Content-Length: 0
+```
+```console
+교차 출처 요청 차단: 동일 출처 정책으로 인해 http://localhost:9000/api/menus에 있는 원격 자원을 차단하였습니다. (원인: CORS 사전 점검 응답의 헤더 ‘Access-Control-Allow-Headers’에 따라 헤더 ‘content-type’가 허용되지 않음)
+```
 
 <br>
