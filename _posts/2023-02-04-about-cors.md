@@ -69,7 +69,55 @@ CORS 요청을 보낼 때, 브라우저는 해당 요청을 두 가지 방식으
 
 Preflight request을 사용한 방식과 그렇지 않은 방식(Simple request)
 
+#### Simple request
 
+다음과 같은 조건을 만족하면, 브라우저는 CORS 요청을 Simple request로 처리합니다.
+
+- GET, POST, HEAD
+- CORS safe-listed request header을 사용하였을 때
+- Content-Type의 헤더 값으로 다음과 같은 값을 사용하였을 때
+  - application/x-www-form-urlencoded
+  - multipart/form-data
+  - text/plain
+- XMLHttpRequestUpload 객체에 이벤트 리스너가 등록되지 않은 경우
+- 요청에서 ReadableStream 객체를 사용하지 않은 경우
+
+이 방식은 일반 요청이랑 동일하게 동작하며, 응답의 Access-Control-Allow-Origin에 따라 브라우저가 응답을 정상적으로 처리할지 결정
+
+예를 들어 http://localhost:8000에서 서버에 요청을 보낸다면 다음과 같이 Origin 헤더만 추가
+
+```
+GET /api/menus HTTP/1.1
+
+Host: localhost:9000
+Referer: http://localhost:8080/
+Origin: http://localhost:8080
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+```
+
+Access-Control-Allow-Origin 헤더가 존재하지 않기 때문에 브라우저는 다음과 같은 응답을 자바스크립트 코드에 노출시키지 않고 오류
+
+```
+HTTP/1.1 200 OK
+
+Content-Type: application/json; charset=utf-8
+Content-Length: 155
+```
+```console
+교차 출처 요청 차단: 동일 출처 정책으로 인해 http://localhost:9000/api/menus에 있는 원격 자원을 차단하였습니다. (원인: ‘Access-Control-Allow-Origin’ CORS 헤더가 없음)
+```
+
+서버에 Access-Control-Allow-Origin 헤더를 추가해서 응답하면 다음과 같이 정상적으로 자바스크립트 코드에서 응답 처리
+
+```
+HTTP/1.1 200 OK
+
+Access-Control-Allow-Origin: http://localhost:8080
+Content-Type: application/json; charset=utf-8
+Content-Length: 155
+```
 
 
 <br>
