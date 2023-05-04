@@ -16,6 +16,9 @@ typora-root-url: ../
 
 <br>
 
-## 
+## 정의
+
+Cross-origin resource sharing(CORS)는 최초에 리소스를 제공한 출처(origin)와 다른 출처의 리소스를 요청하는 경우(cross-origin 요청), 특정 HTTP header를 사용하여 웹 애플리케이션의 cross-origin 요청을 브라우저가 제한적으로 허용하는 정책입니다.
+
 
 <br>
