@@ -250,4 +250,30 @@ Access-Control-Allow-Origin은 하나의 origin이나 *, null만 가질 수 있�
 
 CORS의 Whitelist를 직접 처리할 수도 있지만, cors 미들웨어가 이미 지원하고 있기 때문에 다음과 같이 작성하면 Whitelist를 편하게 관리할 수 있음
 
+```javascript
+// express cors
+// https://www.npmjs.com/package/cors#configuration-options
+app.use(
+  cors({
+    origin: ["http://localhost:8080", "http://localhost:7070"],
+  })
+);
+```
+
+### scheme과 host, port 명시
+
+Accecc-Control-Allow-Origin의 헤더 값은 origin 스펙을 만족하는 값이기 때문에 [scheme]://[host]:[port] 형태로 명시
+
+Origin 스펙을 준수하지 않으면, 브라우저에서 Origin 헤더값과 잘 비교를 못할 수 있음
+
+### Access-Control-Allow-Origin: *와 Access-Control-Allow-Credentials: true는 함께 사용 불가
+
+CORS는 응답이 Access-Control-Allow-Credentials: true 을 가질 경우, Access-Controll-Allow-Origin의 값으로 *를 사용 불가
+
+Access-Control-Allow-Credentials: true를 사용하는 경우는 사용자 인증이 필요한 리소스 접근이 필요한 경우인데, 만약 Access-Control-Allow-Origin: *를 허용한다면, CSRF 공격에 매우 취약해져 악의적인 사용자가 인증이 필요한 리소스를 마음대로 접근할 수 있음
+
+그렇기 때문에 CORS 정책에서 아예 동작하지 않도록 막아버림
+
+Access-Contorl-Allow-Credentials: true인 경우에는 반드시 Access-Control-Allow-Origin의 값이 하나의 origin 값으로 명시되어 있어야 정상적으로 동작
+
 <br>
