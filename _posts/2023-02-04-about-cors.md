@@ -191,3 +191,63 @@ Content-Length: 0
 ```
 
 <br>
+
+## Access-Control-Allow-Credentials
+
+CORS는 기본적으로 보안상의 이유로 쿠키를 요청으로 보낼 수 없음
+
+하지만 다른 도메인을 가진 API 서버에 자신을 인증해야 정상적인 응답을 받을 수 있는 경우, 쿠키를 통한 인증 필요
+
+이를 위해서 두 가지 작업이 필요
+
+- 요청을 credentials 모드로 설정
+```javascript
+// fetch case
+fetch(url, {
+  credentials: 'include'
+}) 
+
+// XHR case
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+```
+
+- 서버에서 응답 헤더로 Access-Control-Allow-Crendentials: true 설정
+
+CORS는 Access-Control-Allow-Credentials 헤더를 지원
+
+서버가 Access-Control-Allow-Credentials: true로 응답하면, credentials 이용 요청 처리
+
+prefilght request의 경우, 실제 요청과 함께 credentials를 보낼지 판단하는데 사용
+
+Access-Control-Allow-Credentials: false이거나 생략한 경우, 실제 요청을 서버에 보낼 떄 credentials 정보를 함께 보내지 않음
+
+간단한 GET 요청의 경우는 prelight 과정이 없기에, credentials 정보와 함께 CORS 요청
+
+서버에서 Access-Control-Allow-Credentials: false이거나 생략한 경우, 응답을 브라우저가 자바스크립트 코드에 노출시키지 않고 전달하지 않음
+
+<br>
+
+## Access-Control-Allow-Origin
+
+Access-Control-Allow-Origin은 하나의 origin이나 *, null만 가질 수 있음
+
+그렇기에 서브 도메인의 접근 허용을 위해 *.example.com로 헤더값을 설정하는 것은 스펙상 맞지 않음
+
+그래서 여러 출처의 접근 허용을 위해 * 값을 쓰는 경우가 많음
+
+하지만 *는 모든 출처의 접근을 허용하는 것이기 때문에 보안상 좋지 않음
+
+### Whitelist 관리를 통한 여러 출처 허용
+
+여러 출처를 허용하고 싶다면, Origin 헤더를 이용한 Whitelist 관리를 통한 방법을 사용
+
+요청이 오면 CORS 요청 헤더의 Origin 값을 확인하여, 별도로 관리하고 있는 Whitelist에 포함되고 있는지 확인
+
+만약 존재한다면, Access-Control-Allow-Origin 헤더값으로 해당 Origin의 값을 넣어 응답할 것이고, 브라우저는 실제 요청을 서버에 보낼 것
+
+악의적인 사이트에서 요청을 보냈더라도, Whitelist에 포함되어 있지 않기 때문에 안전하게 CORS 요청 처리
+
+CORS의 Whitelist를 직접 처리할 수도 있지만, cors 미들웨어가 이미 지원하고 있기 때문에 다음과 같이 작성하면 Whitelist를 편하게 관리할 수 있음
+
+<br>
