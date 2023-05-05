@@ -201,6 +201,7 @@ CORS는 기본적으로 보안상의 이유로 쿠키를 요청으로 보낼 수
 이를 위해서 두 가지 작업이 필요
 
 - 요청을 credentials 모드로 설정
+
 ```javascript
 // fetch case
 fetch(url, {
@@ -224,7 +225,7 @@ Access-Control-Allow-Credentials: false이거나 생략한 경우, 실제 요청
 
 간단한 GET 요청의 경우는 prelight 과정이 없기에, credentials 정보와 함께 CORS 요청
 
-서버에서 Access-Control-Allow-Credentials: false이거나 생략한 경우, 응답을 브라우저가 자바스크립트 코드에 노출시키지 않고 전달하지 않음
+서버에서 Access-Control-Allow-Credentials: false이거나 생략한 경우, 브라우저가 응답을 자바스크립트 코드에 노출시키지 않고 전달하지 않음
 
 <br>
 
