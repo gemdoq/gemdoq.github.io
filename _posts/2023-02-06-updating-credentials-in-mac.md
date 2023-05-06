@@ -18,6 +18,12 @@ Git 사용 시 Personal access token으로 자격 증명 가능
 
 또는 Git Credential Manager와 같은 자격 증명 헬퍼 사용 가능
 
-## 
+## keychain access로 자격 증명 업데이트
+
+1. Spotlight에 Keychain Access를 입력
+2. github.com을 검색
+3. github.com에 대한 "Internet password" 기입란에 Personal access token 기입
+
+## 명령줄을 통한 자격 증명 삭제
 
 <br>
