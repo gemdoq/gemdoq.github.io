@@ -14,7 +14,17 @@ typora-root-url: ../
 
 <br>
 
-Git 사용 시 Personal access token으로 자격 증명 가능
+과거 GitHub 비밀번호 입력 방식에서 현재 Personal Access Token 방식으로 자격 증명이 변경
+
+MacOS에서 git push 실행 시, 다음과 같은 에러 로그 발생
+
+```console
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead. ... The requested URL returned error: 403
+```
+
+MacOS의 키체인에 GitHub 자격 증명으로 ID와 PW가 저장되어 있기 때문
+
+이제 Git 사용 시 변경된 방식인 Personal access token으로 자격 증명 가능
 
 또는 Git Credential Manager와 같은 자격 증명 헬퍼 사용 가능
 
