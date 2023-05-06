@@ -26,4 +26,18 @@ Git 사용 시 Personal access token으로 자격 증명 가능
 
 ## 명령줄을 통한 자격 증명 삭제
 
+터미널 명령줄을 이용해 자격 증명 키체인을 삭제
+
+```console
+$ git credential-osxkeychain erase
+host=github.com
+protocol=https
+> [Press Return]
+```
+
+제대로 작동하면 아무것도 출력되지 않음
+
+자격 증명이 제대로 지워졌는지 시험해보기 위해서는 private repository를 clone할 때, 패스워드를 요구함
+
+
 <br>
