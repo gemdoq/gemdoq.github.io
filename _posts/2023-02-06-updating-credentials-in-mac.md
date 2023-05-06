@@ -14,6 +14,10 @@ typora-root-url: ../
 
 <br>
 
-##
+Git 사용 시 Personal access token으로 자격 증명 가능
+
+또는 Git Credential Manager와 같은 자격 증명 헬퍼 사용 가능
+
+## 
 
 <br>
