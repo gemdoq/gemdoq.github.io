@@ -45,6 +45,85 @@ findAll() 메서드가 있고, 그 메서드의 반환 타입과 파라미터
 
 JpaRepository<>를 사용할 때, findAll() 메서드를 Pageable 인터페이스로 파라미터를 넘기면 페이징을 사용 가능
 
+### 예시
 
+```java
+@RestController
+public class UserController {
+
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping("/users")
+    public Page<User> getAllUsers() {
+        PageRequest pageRequest = PageRequest.of(0, 5);
+        return userRepository.findAll(pageRequest);
+    }
+
+    @PostConstruct
+    public void initializing() {
+        for (int i = 0; i < 100; i++) {
+            User user = User.builder()
+                    .username("User " + i)
+                    .address("Korea")
+                    .age(i)
+                    .build();
+            userRepository.save(user);
+        }
+    }
+}
+```
+
+getAllUsers() 메서드에 보면 PageRequest 객체가 존재
+
+PageRequest 객체는 Pageable 인터페이스를 상속
+
+![pagerequest](/images/2023-02-14-about-jpa-pageable/pagerequest.png){: width="560"}
+
+정렬, offset, page와 같은 Paging을 위한 정보를 넘길 수 있음
+
+추가로 DB에 데이터가 있으면 좋지만 없기 때문에, 테스트를 위해 100명 분의 더미 데이터를 생성하는 initializing() 메서드를 이용하여 페이징을 구현
+
+```
+"content":[
+{
+    "content": [
+        {"id": 1, "username": "User 0", "address": "Korea", "age": 0},
+        // 중간 생략
+        {"id": 5, "username": "User 4", "address": "Korea", "age": 4}
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false, // 정렬 상태
+            "unsorted": true,
+            "empty": true
+        },
+        "pageSize": 5, // 한 페이지에서 나타내는 원소의 수 (게시글 수)
+        "pageNumber": 0, // 페이지 번호 (0번 부터 시작)
+        "offset": 0, // 해당 페이지에 첫 번째 원소의 수
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 20, // 페이지로 제공되는 총 페이지 수
+    "totalElements": 100, // 모든 페이지에 존재하는 총 원소 수
+    "last": false,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "size": 5,
+    "numberOfElements": 5,
+    "first": true,
+    "empty": false
+}
+]
+```
+
+content 아래에 있는 데이터들이 paging 과 관련된 정보들
 
 <br>
