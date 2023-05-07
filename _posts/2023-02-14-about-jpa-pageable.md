@@ -269,3 +269,26 @@ public List<User> getAllUsers(Pageable pageable) {
 List 반환 타입은 가장 기본적인 방법으로 count 쿼리 없이 결과만 반환
 
 <br>
+
+## Spring Web MVC에서 더 편하게 페이징하기
+
+사용자가 정의한 파라미터에 따라서도 페이징이 가능
+
+컨트롤러에서 @GetMapping에 파라미터로 Pageable 추가
+
+```java
+@GetMapping("/users")
+public Page<User> getAllUsers(Pageable pageable) {
+    return userRepository.findAll(pageable);
+}
+```
+
+Springboot에서 url파라미터가 컨트롤러에 바인딩될 때, Pageable이 존재하면 PageRequest 객체 생성
+
+해당 객체에서 정렬도 제공하는데, url을 다음과 같이 치면 정렬과 페이징이 동시에 수행되게 할 수 있음
+
+- http://localhost:8080/members?page=0 : 0번 페이지 부터 20개 조회(default가 20개로 default 수정 가능)
+- http://localhost:8080/members?page=0&size=5 : 0번 페이지부터 5개 조회
+- http://localhost:8080/members?page=0&size=5&sort=id.desc : 0번 페이지부터 5개 id역순으로 조회
+
+<br>
