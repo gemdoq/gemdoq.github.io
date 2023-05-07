@@ -43,7 +43,7 @@ findAll() 메서드가 있고, 그 메서드의 반환 타입과 파라미터
 - org.springframework.data.domain.Pageable : 페이징을 제공
 - org.springframework.data.domain.Page : 페이징의 findAll()의 여러 반환 타입 중 하나
 
-JpaRepository<>를 사용할 때, findAll() 메서드를 Pageable 인터페이스로 파라미터를 넘기면 페이징을 사용 가능
+JpaRepository<>를 사용할 때, findAll() 메서드를 Pageable 인터페이스로 파라미터를 넘기면 페이징 사용 가능
 
 ### 예시
 
@@ -125,5 +125,81 @@ PageRequest 객체는 Pageable 인터페이스를 상속
 ```
 
 content 아래에 있는 데이터들이 paging 과 관련된 정보들
+
+<br>
+
+## 쿼리 메서드에서 페이징 사용하기
+
+다음은 주소로 사용자를 조회하는 쿼리 메서드이고, 두번째 파라미터는 pageable 
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+    Page<User> findByAddress(String address, Pageable pageable);
+}
+```
+
+다음은 쿼리 메서드로 모든 사용자 정보를 페이지로 받아오는 컨트롤러
+
+```java
+@RestController
+public class UserController {
+
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping("/users")
+    public Page<User> getAllUserWithPageByQueryMethod(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return userRepository.findByAddress("Korea", pageRequest);
+    }
+
+
+    @PostConstruct
+    public void initializing() {
+        for (int i = 0; i < 100; i++) {
+            User user = User.builder()
+                    .username("User " + i)
+                    .address("Korea")
+                    .age(i)
+                    .build();
+            userRepository.save(user);
+        }
+    }
+}
+```
+
+이렇게 만들고 http://localhost:8080/users/?page=3&size=4 로 요청을 보내면 다음과 같은 결과가 출력
+
+```
+{
+  "content": [
+    { "id": 13, "username": "User 12", "address": "Korea", "age": 12 },
+    { "id": 14, "username": "User 13", "address": "Korea", "age": 13 },
+    { "id": 15, "username": "User 14", "address": "Korea", "age": 14 },
+    { "id": 16, "username": "User 15", "address": "Korea", "age": 15 }
+  ],
+  "pageable": {
+    "sort": { "sorted": false, "unsorted": true, "empty": true },
+    "pageNumber": 3,
+    "pageSize": 4,
+    "offset": 12,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 25,
+  "totalElements": 100,
+  "last": false,
+  "numberOfElements": 4,
+  "number": 3,
+  "sort": { "sorted": false, "unsorted": true, "empty": true },
+  "size": 4,
+  "first": false,
+  "empty": false
+}
+```
+
 
 <br>
