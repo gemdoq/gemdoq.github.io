@@ -201,5 +201,71 @@ public class UserController {
 }
 ```
 
+<br>
+
+## 반환 타입에 따른 페이징 결과
+
+Spring Data JPA 에는 반환 타입에 따라서 각기 다른 결과를 제공
+
+1. Page<T>
+2. Slice<T>
+3. List<T>
+
+### 1. Page<T>
+
+Page<T> 타입을 반환 타입으로 받게 된다면 offset과 totalPage 이용
+
+Page<T> 는 일반적인 게시판 형태의 페이징에서 사용
+
+중요한 정보는 총 페이지 수이기 때문에 총 페이지 수를 포함하여 반환
+
+카운트 쿼리 자동 생성
+
+### 2. Slice<T>
+
+Slice<T> 타입을 반환 타입으로 받게 된다면 더보기 형태의 페이징에서 사용
+
+```
+{
+  "content": [
+    { "id": 13, "username": "User 12", "address": "Korea", "age": 12 },
+    { "id": 14, "username": "User 13", "address": "Korea", "age": 13 },
+    { "id": 15, "username": "User 14", "address": "Korea", "age": 14 },
+    { "id": 16, "username": "User 15", "address": "Korea", "age": 15 }
+  ],
+  "pageable": {
+    "sort": { "sorted": false, "unsorted": true, "empty": true },
+    "pageNumber": 3,
+    "pageSize": 4,
+    "offset": 12,
+    "paged": true,
+    "unpaged": false
+  },
+  "number": 3,
+  "numberOfElements": 4,
+  "first": false,
+  "last": false,
+  "size": 4,
+  "sort": { "sorted": false, "unsorted": true, "empty": true },
+  "empty": false
+}
+```
+
+Page<T> 타입에는 없던 number과 numberOfElements들이 생기고, Page<T> 에 존재하던 totalPages, totalElements가 없어짐
+
+Slice<T> 타입은 추가 count 쿼리 없이 다음 페이지 확인 가능
+
+내부적으로 limit+1 조회를 해서 totalCount 쿼리가 나가지 않음
+
+### 3. List<T>
+
+```java
+@GetMapping("/users")
+public List<User> getAllUsers(Pageable pageable) {
+  return userRepository.findAll(pageable);
+}
+```
+
+List 반환 타입은 가장 기본적인 방법으로 count 쿼리 없이 결과만 반환
 
 <br>
