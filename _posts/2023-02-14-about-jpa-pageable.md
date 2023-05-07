@@ -28,6 +28,23 @@ typora-root-url: ../
 
 <br>
 
-## 
+## Spring Data JPA에서의 페이징과 정렬
+
+다음은 JpaRepository 인터페이스의 상속 다이어그램
+
+![jparepo](/images/2023-02-14-about-jpa-pageable/jparepo.png){: width="560"}
+
+JpaRepository의 부모 인터페이스인 PagingAndSortingRepository에서 페이징과 소팅이라는 기능을 제공
+
+![pagingandsort](/images/2023-02-14-about-jpa-pageable/pagingandsort.png){: width="560"}
+
+findAll() 메서드가 있고, 그 메서드의 반환 타입과 파라미터
+
+- org.springframework.data.domain.Pageable : 페이징을 제공
+- org.springframework.data.domain.Page : 페이징의 findAll()의 여러 반환 타입 중 하나
+
+JpaRepository<>를 사용할 때, findAll() 메서드를 Pageable 인터페이스로 파라미터를 넘기면 페이징을 사용 가능
+
+
 
 <br>
