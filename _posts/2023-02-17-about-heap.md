@@ -10,6 +10,7 @@ typora-root-url: ../
 ## Heap이라는 자료구조에 대해
 > - heap 정의
 > - 힙을 배열로 구현
+> - 삽입과 삭제로 깨진 힙을 재구조화하기(heapify)
 
 <br>
 
@@ -37,7 +38,9 @@ typora-root-url: ../
 
 ![heaparray](/images/2023-02-17-about-heap/heaparray.png){: width="560"}
 
+<br>
 
+## 삽입과 삭제로 깨진 힙을 재구조화하기(heapify)
 
 
 
