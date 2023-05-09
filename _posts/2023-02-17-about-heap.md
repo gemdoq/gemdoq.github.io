@@ -35,6 +35,9 @@ typora-root-url: ../
 
 아래 그림과 같이 루트노드를 배열의 0번 index에 저장하고, 각 노드를 기점으로 왼쪽 자식노드는 a[i∗2+1], 오른쪽 자식노드는 a[i∗2+2] 의 index에 저장됩니다. 또한 특정 index의 노드에서 부모노드는 a[(i−1)//2]로 찾을 수 있습니다.
 
+![heaparray](/images/2023-02-17-about-heap/heaparray.png){: width="560"}
+
+
 
 
 
