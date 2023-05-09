@@ -46,13 +46,27 @@ typora-root-url: ../
 
 삽입과 삭제의 경우 모두 연산 자체는 O(1)로 작동하지만 heapify의 과정을 거치기 때문에 O(logn)의 시간복잡도를 가지게 됩니다.
 
-### 삽입 과정 구현
+### 삽입 과정
 
 먼저 삽입과정입니다. 아래 그림은 새로운 노드가 삽입되었을 경우입니다. 새로운 노드는 리프노드가 아니면서 가장 말단에 있는 노드의 자식 노드로 추가됩니다. 이후, 부모노드와 비교하면서 재구조화 과정을 수행합니다. 삽입과정은 아래에서 위로 재구조화 과정이 이루어지게 됩니다.
 
 ![insertprocess](/images/2023-02-17-about-heap/insertprocess.png){: width="560"}
 
+### 삽입 코드 구현
 
+```python
+def up_heapify(index, heap):
+    child_index = index
+    while child_index != 0:
+        parent_index = (child_index - 1) // 2
+        if heap[parent_index] < heap[child_index]:
+            heap[parent_index], heap[child_index] = heap[child_index], heap[parent_index]
+            child_index = parent_index
+        else:
+            return
+```
+
+### 삭제 과정
 
 
 
