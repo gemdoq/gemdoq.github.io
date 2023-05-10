@@ -11,6 +11,7 @@ typora-root-url: ../
 > - heap 정의
 > - 힙을 배열로 구현
 > - 삽입과 삭제로 깨진 힙을 재구조화하기(heapify)
+> - 참고 출처
 
 <br>
 
@@ -72,17 +73,93 @@ def up_heapify(index, heap):
 
 ![deleteprocess](/images/2023-02-17-about-heap/deleteprocess.png){: width="560"}
 
+### 삭제 코드 구현
+
+```python
+def find_bigger_child_index(index, heap_size):
+    parent = index
+    left_child = (parent * 2) + 1
+    right_child = (parent * 2) + 2
+
+    if left_child < heap_size and heap[parent] < heap[left_child]:
+        parent = left_child
+    if right_child < heap_size and heap[parent] < heap[right_child]:
+        parent = right_child
+    return parent
 
 
+def down_heapify(index, heap):
+    parent_index = index
+    bigger_child_index = find_bigger_child_index(parent_index, len(heap))
+    while parent_index != bigger_child_index:
+        heap[parent_index], heap[bigger_child_index] = heap[bigger_child_index], heap[parent_index]
+        parent_index = bigger_child_index
+        bigger_child_index = find_bigger_child_index(parent_index, len(heap))
+```
 
+재귀함수를 사용하면 다음과 같습니다.
 
+```python
+def down_heapify(array, index, heap_size):
+        
+        # 1. 부모노드와 자식노드들의 인덱스 지정
+        parent = index
+        left_child = 2 * parent + 1
+        right_child = 2 * parent + 2
+		
+        # 2. 왼쪽 자식노드, 오른쪽 자식노드 중 가장 큰 노드를 선택
+        if left_child < heap_size and array[left_child] > array[parent]:
+            parent = left_child
+        if right_child < heap_size and array[right_child] > array[parent]:
+            parent = right_child
+            
+        # 3. 자식노드 중 가장 큰 노드와 부모 노드를 바꿈(배열의 값 교환)
+        if parent != index:
+            array[parent], array[index] = array[index], array[parent]
+            
+            # 4. 바뀐 자식노드의 힙을 재구조화
+            make_heap(array, parent, heap_size)
+```
 
+## 힙이 아닌 배열을 힙으로 만들기(build heap)
 
+heapify의 경우 기본적으로 힙을 만족하는 경우에서 삽입 또는 삭제가 발생할 때 O(logn)의 시간복잡도로 다시 힙으로 만드는 과정입니다. build heap은 이와 다르게 아예 힙의 조건을 만족하지 않는 배열을 힙으로 만드는 과정입니다. 여러번의 heapify 과정을 거치기 때문에 결과적으로 시간복잡도는 O(nlogn)입니다.
 
+### 재귀함수를 이용한 재구조
+
+재귀함수 과정으로 아랫방향 재구조를 실행할 수 있습니다.아래 과정에서는 해당 재구조 방법을 사용하겠습니다.
+
+### 재구조 과정
+
+build heap의 과정은 가장 말단의 부모-자식 노드에서부터 시작합니다. 부모노드가 될 수 있는 노드들만을 골라서 진행한다고 생각하면 편할 것 같습니다. 가장 뒤에서부터 heapify가 진행되기 때문에 그림의 4번과정 같은 경우를 보면 모든 자식트리들은 이미 힙의 구조를 만들고 있어 heapify가 가능해집니다.
+
+![rebuild](/images/2023-02-17-about-heap/rebuild.png){: width="560"}
+
+### 재구조 코드 구현
+
+재귀함수로 구현하면 다음과 같습니다. 위 down heapify 과정을 부모노드가 될 수 있는 노드만을 골라 뒤에서부터 실행해주면 됩니다.
+
+```python
+def make_heap(array, index, heap_size):
+        parent = index
+        left_child = 2 * parent + 1
+        right_child = 2 * parent + 2
+
+        if left_child < heap_size and array[left_child] > array[parent]:
+            parent = left_child
+        if right_child < heap_size and array[right_child] > array[parent]:
+            parent = right_child
+        if parent != index:
+            array[parent], array[index] = array[index], array[parent]
+            make_heap(array, parent, heap_size)
+	
+    # 부모노드가 되는 노드들만을 골라서 뒤에서부터 heapify를 차례로 실행
+    for i in range((N - 1) // 2, -1, -1):
+        make_heap(array, i, heap_size)
+```
+
+## 참고 출처
+
+https://velog.io/@emplam27/자료구조-그림으로-알아보는-힙Heap
 
 <br>
-
-
-
-
-
