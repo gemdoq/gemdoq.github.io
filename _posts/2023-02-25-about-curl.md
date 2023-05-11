@@ -45,7 +45,11 @@ Win32-Generic, Win64-Generic 항목에서 받으면 되며, 추천하는 🔗링
 
 ### 주요 옵션
 
+```bash
+curl [options...] <url>
+```
 
+option처리는 GNU getopt를 사용하므로 하이픈 하나를 붙이는 short형식의 옵션과 하이픈 두개로 시작되는 long형식의 options이 있음
 
 <br>
 
