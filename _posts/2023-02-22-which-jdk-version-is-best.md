@@ -15,10 +15,6 @@ typora-root-url: ../
 
 <br>
 
-Java Spec 은 공개되어 있고 OpenJDK 는 이를 구현한 오픈소스로 여기에 기반하는 다양한 Java JDK 구현물이 있다보니 어떤 종류의 JDK 를 사용해야 하는지 선택이 어렵습니다.
-
-whichjdk.com 은 다양한 JDK 의 특성과 Release 기간등을 정리해 놓은 사이트로 JDK 선택시 참고할만 합니다.
-
 ## JDK란
 
 JDK(Java Development Kit)는 자바 프로그래밍 언어를 사용하여 소프트웨어를 개발할 때 필요한 도구들을 포함하는 개발 환경
@@ -39,25 +35,19 @@ Adoptium에서 개발하는 JDK는 Eclipse Temurin이라 부르는데 local, 운
 
 Termurin은 고품질에 벤더 중립적이고 TCK 테스트도 통과
 
-#### Cloud환경은 CSP제공 제품을
-
-Cloud에서 Java를 사용한다면 CSP(Cloud Service Provider)가 빌드하는 제품이 아무래도 클라우드에 최적화되었을테니 CSP가 제공하는 걸 쓰는 게 좋음
-
-예를 들어, AWS를 쓴다면 Amazon의 Corretto를, Azure를 쓴다면 Microsoft Build of OpenJDK를 쓰는 게 좋음
-
-### Azul Systems JDK(권장)
+### 2. Azul Systems JDK(권장)
 
 검증된 Java 기술 전문 회사인 Azul Systems이 만드는 JDK로 Zulu는 무료로 사용할 수 있는 제품
 
 예산이 있거나 전문 기술 지원을 받고 싶다면 상용 제품인 Azul Zing 구매해서 사용
 
-### Oracle JDK(비추)
+### 3. Oracle JDK(비추천)
 
 오라클 JDK는 자주 라이센스가 바뀌는데 17 버전은 Oracle No-Fee Terms and Conditions(NFTC) 라이센스
 
 이 라이센스는 Internal Business operations는 무료로 사용할 수 있는데 문제는 이게 무엇인지 명확하게 정의되지 않음(라이센스 위반 여지)
 
-### Alibaba JDK
+### 4. Alibaba JDK(?!)
 
 중국 정부랑 일한다면 사용
 
@@ -152,28 +142,145 @@ Available Java Versions
 
 ### JDK 설치
 
+설치하려면 install java  명령어뒤에 Identifier 를 기술
+
+#### Adoptium Eclipse Temurin
+
+whichjdk.com에서 추천하는 JDK 구현물인 Temurin을 설치하려면 다음 명령을 실행
+
+먼저 버전 목록을 확인
+
+```bash
+$ sdk l java |grep -i tem
 
 
-### JDK 관리
+ Temurin       |     | 17.0.0       | tem     |            | 17.0.0-tem          
+               |     | 16.0.2       | tem     |            | 16.0.2-tem          
+               |     | 11.0.12      | tem     |            | 11.0.12-tem         
+               | >>> | 8.0.302      | tem     | installed  | 8.0.302-tem 
+```
 
+LTS 버전인 8, 11, 17을 설치
 
+```bash
+$ sdk i java 8.0.302-tem
+$ sdk i java 11.0.12-tem  
+$ sdk i java 17.0.0-tem
+```
+
+#### AdoptOpenJDK
+
+AdoptOpenJDK는 다음 명령어로 설치
+
+```bash
+$ sdk i java 8.0.292.j9-adpt
+```
+
+11버전은 다음 명령어로 설치 가능
+
+```bash
+$ sdk i java 11.0.11.j9-adpt
+```
+
+### JDK 버전 관리
+
+#### 기본 버전 설정
+
+default 명령으로 사용할 기본 버전을 설정
+
+```bash
+$ sdk default java 8.0.292.hs-adpt
+
+Default java version set to 8.0.292.hs-adpt
+```
+
+#### 현재 버전 보기
+
+current 명령으로 현재 기본 버전을 확인
+
+```bash
+$ sdk current
+
+Using:
+
+gradle: 7.0.2
+java: 11.0.11.9.1-amzn
+```
+
+#### 사용 버전 지정
+
+use 명령으로 사용할 버전을 지정
+
+다음은 기본 Java를 MS의 OpenJDK 11로 설정
+
+```bash
+$ sdk use java 11.0.11.9.1-ms
+```
 
 ### JDK 개발도구 설치
 
+#### gradle
 
+list gradle 명령으로 설치 가능한 버전을 확인
 
+```bash
+$ sdk l gradle
 
+================================================================================
+Available Gradle Versions
+================================================================================
+ > * 7.3                 6.2.1               4.6                 2.7            
+     7.3-rc-5            6.2                 4.5.1               2.6            
+     7.3-rc-3            6.1.1               4.5                 2.5            
+     7.3-rc-2            6.1                 4.4.1               2.4            
+     7.3-rc-1            6.0.1               4.4                 2.3            
+     7.2                 6.0                 4.3.1               2.2.1          
+     7.2-rc-3            5.6.4               4.3                 2.2  
+```
 
+install gradle 명령어로 설치할 버전을 지정하여 설치
 
+```bash
+$ sdk i gradle 7.3
+```
+
+#### maven
+
+list maven 명령으로 설치 가능한 버전을 확인
+
+```bash
+$ sdk l maven
+
+================================================================================
+Available Maven Versions
+================================================================================
+     3.8.4                                                                      
+     3.8.3                                                                      
+     3.8.2
+```
+
+install maven 뒤에 설치할 버전을 지정하여 설치
+
+```bash
+$ sdk i maven 3.8.4
+```
+
+#### tomcat
+
+install tomcat 뒤에 설치할 버전을 지정하여 설치
+
+```bash
+$ sdk i tomcat 9.0.40
+```
 
 <br>
 
-## release 주기
+## Release 주기
 
+새로운 기능을 추가한 major 버전은 1년에 2번, 3월과 9월에 발표, 추가로 분기별로 버그 픽스 업데이트
 
+3년마다 9월에 발표되는 버전은 LTS(Long-Term Support)릴리스로 최소 3년 간 지원
 
-<br>
-
-## 
+그래서 JDK는 LTS인 8, 11, 17 중 고르는 게 좋음
 
 <br>
