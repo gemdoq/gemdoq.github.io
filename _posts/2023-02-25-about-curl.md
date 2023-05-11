@@ -29,5 +29,24 @@ Download/Upload 모두 가능하며, HTTP/HTTPS/FTP/LDAP/SCP/TELNET/SMTP/POP3 �
 
 libcurl이라는 PHP, ruby, PERL 및 여러 언어에 바인딩되어 있는 C기반 library가 제공되므로 C/C++ 프로그램 개발 시 위의 protocol과 연계가 필요하다면 libcurl을 사용하여 손쉽게 연계 가능
 
+<br>
+
+## 설치 및 주요 옵션
+
+### 설치
+
+Linux나 Mac OS X 에는 기본 탑재
+
+Windows는 build된 바이너리를 설치해도 되고, compiler가 있다면 소스를 받아서 직접 빌드
+
+Windows버전은 cygwin나 MinGW로 빌드한 것보다 VIsual Studio로 빌드한 버전을 다운받는 것이 좋음
+
+Win32-Generic, Win64-Generic 항목에서 받으면 되며, 추천하는 🔗링크는 https://winampplugins.co.uk/curl/
+
+### 주요 옵션
+
+
+
+<br>
 
 <br>
