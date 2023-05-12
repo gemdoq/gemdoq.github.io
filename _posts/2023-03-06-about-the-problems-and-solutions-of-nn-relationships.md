@@ -14,6 +14,6 @@ typora-root-url: ../
 
 <br>
 
-##
+## 다대다 관계의 예
 
 <br>
