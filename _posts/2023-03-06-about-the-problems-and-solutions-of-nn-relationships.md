@@ -24,13 +24,13 @@ DB 모델링 과정에서 n:n(다대다) 관계가 나올 수 있다.
 
 학번이 각각의 학생을 구별하는 PK가 된다.
 
-
+![student](/images/2023-03-06-about-the-problems-and-solutions-of-nn-relationships/student.png){: width="560"}
 
 학과는 과목코드, 과목명, 담당교수를 갖는다.
 
 여기서는 과목코드가 각 과목을 구별하는 PK가 된다.
 
-
+![subject](/images/2023-03-06-about-the-problems-and-solutions-of-nn-relationships/subject.png){: width="560"}
 
 이 두 테이블의 관계를 보면 학생은 여러 과목을 수강할 수 있고, 한 과목은 여러 학생이 수강할 수 있다.
 
@@ -43,5 +43,13 @@ DB 모델링 과정에서 n:n(다대다) 관계가 나올 수 있다.
 또한 과목의 입장에서 과목의 수강생 정보를 관리하기 위해서는 수강 학생의 학번 정보가 유지되어야 한다.
 
 그럼 테이블은 아래와 같이 구성된다.
+
+![lecture](/images/2023-03-06-about-the-problems-and-solutions-of-nn-relationships/lecture.png){: width="560"}
+
+<br>
+
+
+
+
 
 <br>
