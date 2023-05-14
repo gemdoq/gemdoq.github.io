@@ -25,7 +25,7 @@ typora-root-url: ../
 
 ## 준비물
 
-1. labels.json
+1. labels.json(아무 디렉토리나 생성하고 위치 기억)
 ```json
 [
   {
@@ -104,6 +104,32 @@ typora-root-url: ../
 <br>
 
 ## 진행과정
+
+### CLI 켜기
+
+맥북은 기본으로 깔려있는 터미널을 사용하고, 윈도우는 Git Bash를 설치하고 실행
+
+### labels.json을 저장해뒀던 디렉토리로 이동
+
+디렉토리 이동 명령어는 `cd 경로`이므로 만약 json파일이 downloads에 있을 경우 다음과 같이 입력
+
+```bash
+cd downloads
+```
+
+### GitHub label 동기화 명령어 실행
+
+json파일이 있는 디렉토리로 이동했으면, 해당 디렉토리에서 다음 형식에 맞춰 명령어를 입력
+
+```bash
+npx github-label-sync --access-token {personal access token} --labels ./labels.json {repo}
+```
+
+token은 ghp_abc123이고, repo명은 gemdoq/testrepo일 경우, 위 명령어의 예시
+
+```bash
+npx github-label-sync --access-token ghp_abc123 --labels ./labels.json gemdoq/testrepo
+```
 
 <br>
 
