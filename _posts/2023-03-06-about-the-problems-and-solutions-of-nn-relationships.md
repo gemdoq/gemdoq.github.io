@@ -2,7 +2,7 @@
 layout: single
 title: "다대다 관계의 문제점과 해결에 대해"
 date: 2023-03-06 09:19:42 +0900
-categories: knowledge
+categories: database
 tags: [다대다 관계, 연관 테이블]
 typora-root-url: ../
 ---

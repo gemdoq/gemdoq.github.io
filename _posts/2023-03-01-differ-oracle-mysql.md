@@ -2,7 +2,7 @@
 layout: single
 title: "ORACLE과 MySQL의 차이"
 date: 2023-03-01 10:17:42 +0900
-categories: Database
+categories: database
 tags: [ORACLE, MySQL]
 typora-root-url: ../
 ---

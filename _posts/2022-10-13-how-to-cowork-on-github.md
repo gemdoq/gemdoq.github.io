@@ -2,7 +2,7 @@
 layout: single
 title: "GitHub로 협업하는 방법"
 date: 2022-10-13 11:52:22 +0900
-categories: knowledge
+categories: github
 tags: [Git]
 typora-root-url: ../
 ---

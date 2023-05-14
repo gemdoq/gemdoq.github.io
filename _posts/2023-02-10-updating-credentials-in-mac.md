@@ -2,7 +2,7 @@
 layout: single
 title: "GitHub credentials 업데이트(mac)"
 date: 2023-02-10 11:27:14 +0900
-categories: knowledge
+categories: github
 tags: [Personal access token, Credentials, Osxkeychain]
 typora-root-url: ../
 ---

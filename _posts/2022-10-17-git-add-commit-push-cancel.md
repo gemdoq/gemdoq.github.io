@@ -2,7 +2,7 @@
 layout: single
 title: "Git Add, Commit, Push 취소"
 date: 2022-10-17 09:48:25 +0900
-categories: knowledge
+categories: github
 tags: [Git]
 typora-root-url: ../
 ---

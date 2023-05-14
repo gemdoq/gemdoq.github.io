@@ -2,7 +2,7 @@
 layout: single
 title: "GitHub README 파일에 이미지나 동영상 첨부하는 방법"
 date: 2023-01-28 11:32:29 +0900
-categories: knowledge
+categories: github
 tags: [README, jpg, png, gif]
 typora-root-url: ../
 ---

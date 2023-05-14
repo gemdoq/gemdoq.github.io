@@ -2,7 +2,7 @@
 layout: single
 title: "MySQL에서 잠금 쿼리로 동시 접근을 처리하는 방법에 대해"
 date: 2023-03-03 11:41:13 +0900
-categories: Database
+categories: database
 tags: [ORACLE, MySQL, Shared Lock, Exclusive Lock]
 typora-root-url: ../
 ---
