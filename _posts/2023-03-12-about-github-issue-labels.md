@@ -135,4 +135,6 @@ npx github-label-sync --access-token ghp_abc123 --labels ./labels.json gemdoq/te
 
 ## 결과화면
 
-![labels](/images/2023-03-12-about-github-issue-labels/labels.png)<br>
+![labels](/images/2023-03-12-about-github-issue-labels/labels.png)
+
+<br>
