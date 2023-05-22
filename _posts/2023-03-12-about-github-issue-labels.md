@@ -97,7 +97,7 @@ typora-root-url: ../
 ```
 
 2. personal access token
-  다음 🔗[링크](https://github.com/settings/tokens)에 들어가서 Select scope에서 repo 카테고리가 체크된 Personal access token을 발급받아 따로 잘 보관(만약 한번이라도 분실 시, 토큰 찾기 불가능)
+  다음 🔗[링크](https://github.com/settings/tokens){:target="_blank"}에 들어가서 Select scope에서 repo 카테고리가 체크된 Personal access token을 발급받아 따로 잘 보관(만약 한번이라도 분실 시, 토큰 찾기 불가능)
 
   ![token](/images/2023-03-12-about-github-issue-labels/token.png)
 
