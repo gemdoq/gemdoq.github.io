@@ -160,6 +160,6 @@ def make_heap(array, index, heap_size):
 
 ## 참고 출처
 
-https://velog.io/@emplam27/자료구조-그림으로-알아보는-힙Heap
+[https://velog.io/@emplam27/자료구조-그림으로-알아보는-힙Heap](https://velog.io/@emplam27/자료구조-그림으로-알아보는-힙Heap){:target="_blank"}
 
 <br>
