@@ -34,13 +34,13 @@ libcurl이라는 PHP, ruby, PERL 및 여러 언어에 바인딩되어 있는 C�
 
 ### 설치
 
-Linux나 Mac OS X 에는 기본 탑재
+Linux나 Mac OS X에는 기본 탑재
 
 Windows는 build된 바이너리를 설치해도 되고, compiler가 있다면 소스를 받아서 직접 빌드
 
 Windows버전은 cygwin나 MinGW로 빌드한 것보다 VIsual Studio로 빌드한 버전을 다운받는 것이 좋음
 
-Win32-Generic, Win64-Generic 항목에서 받으면 되며, 추천하는 🔗링크는 https://winampplugins.co.uk/curl/
+Win32-Generic, Win64-Generic 항목에서 받으면 되며, 추천하는 링크는 [🔗 https://winampplugins.co.uk/curl/](https://winampplugins.co.uk/curl/){:target="_blank"}
 
 ### 주요 옵션
 
@@ -63,7 +63,7 @@ option처리는 GNU getopt를 사용하므로 하이픈 하나를 붙이는 shor
 | -s    | --silent             | 정숙 모드<br />진행 내역이나 메시지등을 출력하지 않음<br />-o옵션으로 remote data도 /dev/null로 보내면 결과물도 출력되지 않음 | HTTP response code 만 가져오거나 할 경우 유용                |
 | -X    | --request            | Request시 사용할 method종류(GET, POST, PUT, PATCH, DELETE)를 기술 |                                                              |
 | -i    | --include            | 응답에 Content만 출력하지 않고 서버의 Reponse도 포함해서 출력(디버깅에 유용) |                                                              |
-| -J    | --remote-header-name | 어떤 웹서비스는 파일 다운로드시 [Content-Disposition Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html)를 파싱해야 정확한 파일이름을 알 수 있는 경우가 있음<br />-J 옵션을 주면 헤더에 있는 파일 이름으로 저장 |                                                              |
+| -J    | --remote-header-name | 어떤 웹서비스는 파일 다운로드시 [Content-Disposition Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html){:target="_blank"}를 파싱해야 정확한 파일이름을 알 수 있는 경우가 있음<br />-J 옵션을 주면 헤더에 있는 파일 이름으로 저장 |                                                              |
 
 <br>
 
