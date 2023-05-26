@@ -10,9 +10,7 @@ typora-root-url: ../
 ## QueryDSL에 대해
 > - 정의
 > - 설정
-> - QueryDSL 간단 예제
-> - Repository에서 QueryDSL 사용하기
-> - 커스텀 사용
+> - 사용 예시
 
 <br>
 
@@ -61,20 +59,37 @@ clean.doLast {
 
 <br>
 
-## QueryDSL 간단 예제
+## 사용 예시
 
+```java
+// 엔티티 QMember 클래스를 가져온다.
+QMember member = QMember.member;
 
+// member 엔티티의 id가 1인 엔티티를 조회한다.
+List<Member> members = em.createQuery("select m from Member m where m.id = :id", Member.class)
+.setParameter("id", 1L)
+.getResultList();
 
-<br>
+// member 엔티티의 name이 "홍길동"인 엔티티를 조회한다.
+Member member = em.createQuery("select m from Member m where m.name = :name", Member.class)
+.setParameter("name", "홍길동")
+.getSingleResult();
 
-## Repository에서 QueryDSL 사용하기
+// member 엔티티의 name이 "홍길동"이고 age가 20살 이상인 엔티티를 조회한다.
+List<Member> members = em.createQuery("select m from Member m where m.name = :name and m.age >= :age", Member.class)
+.setParameter("name", "홍길동")
+.setParameter("age", 20)
+.getResultList();
+```
 
+위 예시에서 QMember는 QueryDSL에서 제공하는 Member 엔티티의 클래스
 
+em.createQuery() 메서드는 JPQL 쿼리를 실행하여 결과를 반환
 
-<br>
+setParameter() 메서드는 JPQL 쿼리에 파라미터를 설정
 
-## 커스텀 사용
+QueryDSL은 JPQL을 Java 코드로 작성할 수 있도록 도와주는 프레임워크
 
-
+QueryDSL을 사용하면 JPQL 쿼리의 오류를 컴파일 시점에 발견할 수 있으므로, 런타임 시점에 발생하는 오류 방지 가능
 
 <br>
