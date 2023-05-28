@@ -62,20 +62,20 @@ clean.doLast {
 ## 사용 예시
 
 ```java
-// 엔티티 QMember 클래스를 가져온다.
+// 엔티티 QMember 클래스
 QMember member = QMember.member;
 
-// member 엔티티의 id가 1인 엔티티를 조회한다.
+// member 엔티티의 id가 1인 엔티티를 조회
 List<Member> members = em.createQuery("select m from Member m where m.id = :id", Member.class)
 .setParameter("id", 1L)
 .getResultList();
 
-// member 엔티티의 name이 "홍길동"인 엔티티를 조회한다.
+// member 엔티티의 name이 "홍길동"인 엔티티를 조회
 Member member = em.createQuery("select m from Member m where m.name = :name", Member.class)
 .setParameter("name", "홍길동")
 .getSingleResult();
 
-// member 엔티티의 name이 "홍길동"이고 age가 20살 이상인 엔티티를 조회한다.
+// member 엔티티의 name이 "홍길동"이고 age가 20살 이상인 엔티티를 조회
 List<Member> members = em.createQuery("select m from Member m where m.name = :name and m.age >= :age", Member.class)
 .setParameter("name", "홍길동")
 .setParameter("age", 20)
