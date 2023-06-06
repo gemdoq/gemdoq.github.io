@@ -9,6 +9,7 @@ typora-root-url: ../
 
 ## 댓글에 댓글을 달 수 있는 방법
 > - 기획 고민
+> - 코드
 
 <br>
 
@@ -68,7 +69,75 @@ Soft delete는 데이터베이스 레코드를 삭제하지 않고 삭제된 것
 
 <br>
 
-## 
+## 코드
+
+### entity.comment.Comment 엔티티
+
+```java
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Slf4j
+public class Comment extends EntityDate {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    @Lob
+    private String content;
+
+    @Column(nullable = false)
+    private boolean deleted; // 1
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Member member; // 2
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Post post; // 3
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Comment parent; // 4
+
+    @OneToMany(mappedBy = "parent")
+    private List<Comment> children = new ArrayList<>(); // 5
+
+    public Comment(String content, Member member, Post post, Comment parent) {
+        this.content = content;
+        this.member = member;
+        this.post = post;
+        this.parent = parent;
+        this.deleted = false;
+    }
+
+    public Optional<Comment> findDeletableComment() { // 6
+        return hasChildren() ? Optional.empty() : Optional.of(findDeletableCommentByParent());
+    }
+
+    public void delete() { // 7
+        this.deleted = true;
+    }
+
+    private Comment findDeletableCommentByParent() { // 8
+        return isDeletableParent() ? getParent().findDeletableCommentByParent() : this;
+    }
+
+    private boolean hasChildren() { // 9
+        return getChildren().size() != 0;
+    }
+
+    private boolean isDeletableParent() { // 10
+        return getParent() != null && getParent().isDeleted() && getParent().getChildren().size() == 1;
+    }
+}
+```
 
 
 <br>
