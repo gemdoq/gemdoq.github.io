@@ -140,6 +140,6 @@ public class Comment extends EntityDate {
 ```
 
 1. 삭제는 했더라도 아직 하위 댓글이 있어서 실제로는 남겨둬야한다면, deleted는 true가 될 것
-2. @OnDelete(action=onDeleteAction.CASCADE)를 설정해놨기 때문에, Member나 Category, 상위 Comment가 제거된다면, 연쇄적으로 현재의 댓글도 제거될 것
+2. @OnDelete(action=onDeleteAction.CASCADE)를 설정해놨기 때문에, Member나 Category, 상위 Comment가 제거된다면, 연쇄적으로 현재 댓글도 제거될 것
 
 <br>
