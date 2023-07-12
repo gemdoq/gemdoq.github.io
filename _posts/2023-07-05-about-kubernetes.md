@@ -1,13 +1,13 @@
 ---
 layout: single
-title: "쿠버네티스 기록 1"
+title: "쿠버네티스에 대하여"
 date: 2023-07-05 18:40:41 +0900
 categories: kubernetes
 tags: [kubernetes]
 typora-root-url: ../
 ---
 
-## 쿠버네티스에 대해 1
+## 쿠버네티스에 대하여
 > - 쿠버네티스?
 > - minikube vs kubernetes
 > - ReplicationController vs ReplicaSet vs Deployment
