@@ -74,8 +74,8 @@ typora-root-url: ../
 - $(dollar): 해당 문자로 끝
 - .(dot): 하나의 문자
 - *(asterisk): 바로 앞에 있는 항목이 0번 이상 반복되는 모든 문자를 의미(greedy)
-- ?(question mark): 바로 앞에 있는 항목이 존재할 수도 있고 없을 수도 있는 모든 문자를 의미(non-greedy)
 - \+(plus sign): 바로 앞에 오는 패턴이 최소 1개 이상 반복되는 것을 의미(non-greedy)
+- ?(question mark): 바로 앞에 있는 항목이 존재할 수도 있고 없을 수도 있는 모든 문자를 의미(non-greedy)
 - []: 해당 문자에 해당하는 한 문자
 - [^]: 해당 문자에 해당하지 않는 한 문자
 - REGEXP_REPLACE: 주어진 문자열에서 특정패턴을 찾아 치환
