@@ -3,7 +3,7 @@ layout: single
 title: "SQL 단일행 함수에 대해"
 date: 2024-03-07 18:05:47 +0900
 categories: sql
-tags: [SQL, DBMS]
+tags: [SQL, DBMS, POSIX regular expression, Meta characters]
 typora-root-url: ../
 ---
 
