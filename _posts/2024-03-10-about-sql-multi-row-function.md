@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "SQL 단일행 함수에 대해"
+title: "SQL 복수행 함수에 대해"
 date: 2024-03-10 18:09:22 +0900
 categories: sql
 tags: [SQL, DBMS]
