@@ -42,7 +42,7 @@ git은 단순히 저장하고 불러오는 작업만 하는 것이 아니라 다
 ### 좋은 commit의 기준
 > https://github.com/joelparkerhenderson/git-commit-message
 > 위 내용을 요약하면 **prefix를 잘 활용하고, 짧고 굵게 기록하라**
-> ![prefix](/images/2024-06-10-about-git-branch-strategy/prefix.png)
+> ![prefix](/images/2024-04-10-about-git-branch-strategy/prefix.png)
 
 <br>
 
@@ -60,7 +60,7 @@ git은 단순히 저장하고 불러오는 작업만 하는 것이 아니라 다
 - `release branch`: 배포를 위해 main branch로 보내기 전에 먼저 QA를 하기 위한 branch(QA를 진행하면서 commit이 쌓이면 dev branch에 지속적으로 merge된다)
 - `hotfix branch`: main branch로 배포를 했는데 bug가 생겼을 때 긴급히 수정하는 branch이며, bug 수정 후 재배포가 완료된 이후에는 dev branch에도 main과 동일하게 배포해야 함
 
-![gitflowbranch](/images/2024-06-10-about-git-branch-strategy/gitflowbranch.png)
+![gitflowbranch](/images/2024-04-10-about-git-branch-strategy/gitflowbranch.png)
 
 <br>
 
@@ -70,32 +70,32 @@ git은 단순히 저장하고 불러오는 작업만 하는 것이 아니라 다
 
 ### Merge의 유형
 
-![mergetype](/images/2024-06-10-about-git-branch-strategy/mergetype.png)
+![mergetype](/images/2024-04-10-about-git-branch-strategy/mergetype.png)
 
 1. Create a merge commit
 
-    <img src="/images/2024-06-10-about-git-branch-strategy/merge1.png" alt="merge1" style="zoom:50%;" />
+    <img src="/images/2024-04-10-about-git-branch-strategy/merge1.png" alt="merge1" style="zoom:50%;" />
 
     parent branch에서 fork하여 작업을 한 branch를 merge하려고 했는데, 
 
     내가 merge하기 전에 누군가 parent branch에 다른 작업을 하여 commit하고 push한 경우이다.
 
-    <img src="/images/2024-06-10-about-git-branch-strategy/merge2.png" alt="merge2" style="zoom:50%;" />
+    <img src="/images/2024-04-10-about-git-branch-strategy/merge2.png" alt="merge2" style="zoom:50%;" />
 
     하나의 branch와 다른 branch의 변경 이력 전체를 합치는 방법이다.
 
-    <img src="/images/2024-06-10-about-git-branch-strategy/merge3.png" alt="merge3" style="zoom:50%;" />
+    <img src="/images/2024-04-10-about-git-branch-strategy/merge3.png" alt="merge3" style="zoom:50%;" />
 
 2. Squash and merge
 
-    <img src="/images/2024-06-10-about-git-branch-strategy/squashmerge1.png" alt="squashmerge1" style="zoom:50%;" />
+    <img src="/images/2024-04-10-about-git-branch-strategy/squashmerge1.png" alt="squashmerge1" style="zoom:50%;" />
 
     commit a + b + c를 합쳐서 새로운 commit, abc를 만들어 parent branch에 추가한다.
 
     보통 feature branch의 commit history를 합쳐서 깔끔하게 만들기 위해 사용한다. 
 
 3. Rebase and merge
-    <img src="/images/2024-06-10-about-git-branch-strategy/rebasemerge1.png" alt="rebasemerge1" style="zoom:50%;" />
+    <img src="/images/2024-04-10-about-git-branch-strategy/rebasemerge1.png" alt="rebasemerge1" style="zoom:50%;" />
 
     모든 commit들이 합쳐지지 않고 각각 parent branch에 추가된다. 
     Merge는 Merge commit 기록이 추가로 남게 되지만, Rebase의 경우에는 Merge commit의 기록이 남지 않는다. 
