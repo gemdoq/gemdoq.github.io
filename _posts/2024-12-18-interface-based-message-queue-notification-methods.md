@@ -201,7 +201,7 @@ public class AltService {
 >
 > Outbox 패턴으로 비즈니스 로직(예: 주문 저장)과 알림 전송을 한 번에 처리(transaction)해서 동일성과 원자성을 보장
 
-<img width="600" alt="스크린샷" src="https://github.com/user-attachments/assets/daca0655-5063-43db-84c3-69adab99aa85">
+<img width="600" src="/images/2024-12-18-interface-based-message-queue-notification-methods/1.png" alt="스크린샷"/>
 
 ---
 
@@ -458,23 +458,23 @@ spring:
 
 > 위와 같이 속성으로 설정해주면 Flyway가 데이터베이스를 처음 봤을 때, 기존 데이터베이스 상태를 수용하고 flyway_schema_history 테이블에 Flyway Baseline을 생성. 그 이후 정의된 마이그레이션 SQL파일을 적용하면서 테이블을 추가하거나 수정
 
-<img width="1400" alt="스크린샷" src="https://github.com/user-attachment/assets/b677ee4c-6fda-4bb6-a74c-a7fd79dded67">
+<img width="1000" src="/images/2024-12-18-interface-based-message-queue-notification-methods/2.png" alt="스크린샷"/>
 
 > 만약, 스프링부트가 사용하는 Datasource인 데이터베이스에 다른 테이블이 존재한다면, 위 방법으로 flyway를 초기화할 때, 해당 데이터베이스의 flyway_schema_history 테이블에 다음과 같이 <Flyway Baseline>이라고 생성됨
 
-<img width="1400" alt="스크린샷" src="https://github.com/user-attachment/assets/8b397142-2718-4dc5-854c-7d7e79daf383">
+<img width="1200" src="/images/2024-12-18-interface-based-message-queue-notification-methods/3.png" alt="스크린샷"/>
 
 > 또한 데이터베이스에도 SQL에 의한 테이블이 생성되지 않음
 
-<img width="400" alt="스크린샷" src="https://github.com/user-attachment/assets/d70d6132-1269-4dd2-8d62-217a98365ffd">
+<img width="600" src="/images/2024-12-18-interface-based-message-queue-notification-methods/4.png" alt="스크린샷"/>
 
 > 만약, 스프링부트가 사용하는 Datasource인 데이터베이스에 다른 테이블이 존재하지 않는다면, 다음과 같이 flyway에 의해 초기화가 이루어지고, migration되어 데이터베이스에 테이블이 생성됨
 
-<img width="400" alt="스크린샷" src="https://github.com/user-attachment/assets/9b609c28-244b-409a-8738-7f5d1bf4b013">
+<img width="600" src="/images/2024-12-18-interface-based-message-queue-notification-methods/5.png" alt="스크린샷"/>
 
 > 그리고 다음과 같이 flyway_schema_history 테이블에 다음과 같이 해당 테이블에 대한 히스토리 레코드가 생성됨
 
-<img width="1400" alt="스크린샷" src="https://github.com/user-attachment/assets/1c2a3d25-0c38-4860-b529-40768ebfd798">
+<img width="1200" src="/images/2024-12-18-interface-based-message-queue-notification-methods/6.png" alt="스크린샷"/>
 
 ---
 
@@ -1240,7 +1240,7 @@ logging:
 
 > 스프링부트 설정 중 org.springframework.jdbc를 DEBUG로 해놓고 스프링부트를 실행
 
-<img width="1400" alt="스크린샷" src="https://github.com/user-attachment/assets/7e6a26a1-6f61-49b3-beaf-af1a02d82488">
+<img width="1200" src="/images/2024-12-18-interface-based-message-queue-notification-methods/7.png" alt="스크린샷"/>
 
 > 위와 같은 로그를 볼 수 있음. 요약하면 Spring Integration에 스레드 scheduling-1에서 스케쥴링된 폴링작업에 의해 JdbcChannelMessageStore가 아웃박스 메시지 테이블에서 메시지를 폴링하기 위해 DELETE 쿼리 실행
 
@@ -1298,7 +1298,7 @@ Content-Type: application/json
 
 ##### 계약 생성 이메일 알림 테스트 결과
 
-<img width="1400" alt="스크린샷" src="https://github.com/user-attachment/assets/73dea81a-f439-4503-bb05-b4fc483d6fed">  <img width="600" alt="스크린샷" src="https://github.com/user-attachment/assets/5519b05d-deec-4e4d-9b17-d7737ed78a8e">
+<img width="300" src="/images/2024-12-18-interface-based-message-queue-notification-methods/8.png" alt="스크린샷"/>
 
 #### 계약 생성 SMS 알림 테스트
 
@@ -1319,7 +1319,7 @@ Content-Type: application/json
 
 ##### 계약 생성 SMS 알림 테스트 결과
 
-<img width="1400" alt="스크린샷" src="https://github.com/user-attachment/assets/e5548998-fa62-4e81-92b5-fc1b345883e6">  <img width="400" alt="스크린샷" src="https://github.com/user-attachment/assets/16326aa6-83ad-4e3e-aa2c-83cf882e531b">
+<img width="300" src="/images/2024-12-18-interface-based-message-queue-notification-methods/9.png" alt="스크린샷"/>
 
 ---
 
