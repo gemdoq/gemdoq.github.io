@@ -1281,20 +1281,7 @@ logging:
 
 #### 계약 생성 이메일 알림 테스트
 
-```plaintext
-POST {{host}}/api/contract/notify  
-Content-Type: application/json  
-  
-{  
-  "companyName": "matchhub",  
-  "representative": "{{representative}}",  
-  "phone": "{{phone}}",  
-  "email": "{{email}}",  
-  "content": "{{content}}",  
-  "recipient": "{{recipient[0]}}",  
-  "channels": ["{{channels[0]}}"]  
-}
-```
+<img width="300" src="/images/2024-12-18-interface-based-message-queue-notification-methods/10.png" alt="스크린샷"/>
 
 ##### 계약 생성 이메일 알림 테스트 결과
 
@@ -1302,20 +1289,7 @@ Content-Type: application/json
 
 #### 계약 생성 SMS 알림 테스트
 
-```plaintext
-POST {{host}}/api/contract/notify  
-Content-Type: application/json  
-  
-{  
-  "companyName": "matchhub",  
-  "representative": "{{representative}}",  
-  "phone": "{{phone}}",  
-  "email": "{{email}}",  
-  "content": "{{content}}",  
-  "recipient": "{{recipient[1]}}",  
-  "channels": ["{{channels[1]}}"]  
-}
-```
+<img width="300" src="/images/2024-12-18-interface-based-message-queue-notification-methods/11.png" alt="스크린샷"/>
 
 ##### 계약 생성 SMS 알림 테스트 결과
 
