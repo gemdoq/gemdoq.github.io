@@ -1281,7 +1281,7 @@ logging:
 
 #### 계약 생성 이메일 알림 테스트
 
-```http
+```plaintext
 POST {{host}}/api/contract/notify  
 Content-Type: application/json  
   
@@ -1302,7 +1302,7 @@ Content-Type: application/json
 
 #### 계약 생성 SMS 알림 테스트
 
-```http
+```plaintext
 POST {{host}}/api/contract/notify  
 Content-Type: application/json  
   
