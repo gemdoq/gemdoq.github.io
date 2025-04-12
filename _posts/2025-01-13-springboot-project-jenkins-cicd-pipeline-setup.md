@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "스프링부트 프로젝트를 Jenkins CI/CD Pipeline 구축"
+title: "[v1.0] 스프링부트 프로젝트를 Jenkins CI/CD Pipeline 구축"
 date: 2025-01-13 10:15:23 +0900
 categories: cicd
 tags: [Jenkins, CICD, Pipeline]
@@ -8,7 +8,7 @@ typora-root-url: ../
 
 ---
 
-# ✈️ 스프링부트 프로젝트를 Jenkins CI/CD Pipeline 구축
+# ✈️ [v1.0] 스프링부트 프로젝트를 Jenkins CI/CD Pipeline 구축
 
 ## 🎯 프로젝트 목적
 
