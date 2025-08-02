@@ -1,14 +1,12 @@
 ---
+layout: single
 title: "스프링부트로 MySQL 연동과 CRUD 구현"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - MySQL
-  - JPA
-last_modified_at: 2025-07-23
----
+date: 2025-06-29 14:12:23 +0900
+categories: Spring Boot
+tags: [MySQL, JPA]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - MySQL: 관계형 DB, 데이터 영구 저장  
 - CRUD: 생성, 조회, 수정, 삭제 작업  
@@ -247,12 +245,3 @@ MySQL로 안정적 데이터 관리
 JPA, Hibernate로 코드 간소화  
 EntityManager가 연결 조율  
 핵심 로직에 집중 가능  
-
----
-#### ✍ 느끼며
-MySQL 연동 처음엔 설정 복잡했음  
-외장 하드 비유로 역할 이해  
-잘못된 설정 데이터 불일치 위험  
-IntelliJ JPA 콘솔로 디버깅 편리  
-application.yml로 설정 간소화  
-MySQL과 JPA로 설계 집중 가능

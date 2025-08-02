@@ -1,13 +1,12 @@
 ---
 layout: single
 title: "스프링 시큐리티 필터와 예외 처리"
-date: 2025-08-03 17:30:00 +0900
-categories: spring-security
+date: 2025-07-11 17:30:00 +0900
+categories: Spring Boot
 tags: [Spring Security, Filters, Exception Handling]
 typora-root-url: ../
 
 ---
-
 # ✈️ 스프링 시큐리티 필터와 예외 처리
 
 ## 🎯 개요

@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "동기와 비동기 구분 짓기"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-21
+date: 2025-06-09 14:12:23 +0900
+categories: knowledge
+tags: [Sync, Async]
+typora-root-url: ../
+
 ---
 
 #### 📌 용어 한눈에
@@ -150,10 +151,9 @@ UI 반응성 필요
 동기 비동기 처음엔 속도 차이로만 봤음  
 알고 보니 **흐름과 자원**의 문제  
 
-RestTemplate으로 동기 시작, WebClient로 비동기 익히는 여정  
 스프링부트에서 WebFlux 도입하면 비동기 감 잡힘  
 IntelliJ 디버깅과 Postman 테스트로 흐름 이해  
 
 비동기는 성능 향상의 열쇠  
 복잡성 감수하더라도 고트래픽 환경엔 필수  
-상황별 도구 선택이 개발자의 성장
+상황별 도구 선택 필요

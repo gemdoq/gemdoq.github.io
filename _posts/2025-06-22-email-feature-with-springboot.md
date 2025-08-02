@@ -1,13 +1,12 @@
 ---
+layout: single
 title: "스프링부트로 이메일 발송 구현하기"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - Email
-last_modified_at: 2025-07-20
----
+date: 2025-06-22 14:12:23 +0900
+categories: Spring Boot
+tags: [SMTP, JavaMailSender]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - JavaMailSender: 스프링에서 이메일 전송 처리 인터페이스  
 - SMTP: 이메일 전송 프로토콜, Gmail, Naver 등 제공  
@@ -145,10 +144,7 @@ public class EmailController {
 스프링부트로 설정 간소화, 핵심 로직 집중  
 
 ---
-#### ✍ 느끼며
+#### ✍ 결론
 이메일 발송 처음엔 복잡해 보였음  
-JavaMailSender와 application.yml로 쉽게 정리  
 Gmail SMTP 연동하며 보안 중요성 깨달음  
-IntelliJ 디버깅, Postman으로 테스트 편리  
-환경 변수와 로깅으로 유지보수 쉬워짐  
 사용자 경험까지 고려하는 설계의 묘미 느낌

@@ -1,13 +1,12 @@
 ---
 layout: single
 title: "Spring Boot로 파일 업로드와 다운로드 구현"
-date: 2025-08-08 17:33:00 +0900
-categories: spring-boot
-tags: [Spring Boot, File Upload, File Download]
+date: 2025-07-30 17:33:00 +0900
+categories: Spring Boot
+tags: [Upload, Download]
 typora-root-url: ../
 
 ---
-
 # ✈️ Spring Boot로 파일 업로드와 다운로드 구현
 
 ## 🎯 개요
@@ -228,9 +227,3 @@ if (!file.getContentType().startsWith("image/")) {
 - 의존성 호환: Gradle 빌드 시 spring-boot-starter-web 버전 점검
 - 로그 확인: IntelliJ 콘솔로 업로드 실패 디버깅
 - 테스트: 로컬 환경에서 업로드와 다운로드 동작 확인
-
-> 💡특이사항
->
-> JDK21 환경에서 Gradle 8.x 이상 추천
-> application.yml로 업로드 설정 중앙화
-> 이 설정으로 Spring Boot 프로젝트의 파일 처리 안정화

@@ -1,13 +1,12 @@
 ---
+layout: single
 title: "스프링부트 개발 흔한 실수와 해결책"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - Best Practices
-last_modified_at: 2025-07-24
----
+date: 2025-06-30 14:12:23 +0900
+categories: Spring Boot
+tags: [N+1, Transaction]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - DI: 의존성 주입, 객체 의존 관계 자동 관리  
 - JPA: 객체와 DB 매핑 API  
@@ -249,12 +248,3 @@ public class UserController {
 JPA, Hibernate로 데이터 관리 간소화  
 EntityManager가 일관성 보장  
 개발 효율성 증가  
-
----
-#### ✍ 느끼며
-작은 실수 큰 오류로 이어짐  
-노트북 비유로 문제 이해  
-IntelliJ 디버깅으로 쿼리 확인 편리  
-application.yml로 설정 관리 간소화  
-설계와 테스트 중요성 깨달음  
-핵심 로직에 집중 가능

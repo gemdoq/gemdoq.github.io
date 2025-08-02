@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "라이브러리, 프레임워크, IDE 차이점 정리"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-04
+date: 2025-05-24 14:12:23 +0900
+categories: concepts
+tags: [Library, Framework, IDE]
+typora-root-url: ../
+
 ---
 #### 📌 용어 한눈에
 - 라이브러리: 특정 기능을 모아둔 코드 뭉치, 내가 호출해서 쓰는 도구  
@@ -85,7 +86,7 @@ IntelliJ IDEA Ultimate는 스프링부트 개발에 최적화
 | 목적         | 재사용 가능한 기능                  | 일관된 설계와 흐름                  | 생산성 향상                         |
 
 ---
-#### ✍ 도구를 대하는 마음
+#### ✍ 결론
 
 라이브러리, 프레임워크, IDE는 코드를 더 잘 짜기 위한 도구  
 동시에 문제를 깊게 파고드는 시작점  

@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "API와 RESTful API 파헤치기"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-11
+date: 2025-06-02 14:12:23 +0900
+categories: concepts
+tags: [RESTful API]
+typora-root-url: ../
+
 ---
 
 #### 📌 용어 한눈에
@@ -111,13 +112,7 @@ URI로 자원, HTTP 메서드로 행동 표현
 - 스프링부트라면 `@RestControllerAdvice`로 예외 처리 통합 추천  
 
 ---
-#### ✍ 되새기며
+#### ✍ 결론
 API는 단순한 기능 호출이 아님  
 RESTful API는 설계 철학이 담긴 소통 방식  
-
-처음엔 URI와 메서드 구분이 어색했지만  
-스프링부트로 REST API 만들어보며 흐름 이해  
-`application.yml`로 경로와 포트 정리, Postman으로 테스트하면 감 잡힘  
-
 좋은 RESTful API는 유지보수와 확장을 쉽게 만듦  
-코드를 넘어 사용성과 설계의 가치를 고민하는 시작점

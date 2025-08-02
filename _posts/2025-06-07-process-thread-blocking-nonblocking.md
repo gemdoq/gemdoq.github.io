@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "프로세스 쓰레드 블로킹 논블로킹 파악하기"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-17
+date: 2025-06-07 14:12:23 +0900
+categories: knowledge
+tags: [Process, Thread, Blocking, Non Blocking]
+typora-root-url: ../
+
 ---
 
 #### 📌 용어 한눈에
@@ -235,4 +236,3 @@ public class NonBlockingExample {
 IntelliJ로 WebClient 디버깅 해보면 실감  
 
 상황별 선택이 핵심  
-스프링부트에서 WebFlux 도입으로 논블로킹 시작 추천

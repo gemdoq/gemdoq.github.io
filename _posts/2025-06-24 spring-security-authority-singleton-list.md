@@ -1,14 +1,12 @@
 ---
+layout: single
 title: "스프링 시큐리티 권한과 싱글톤 리스트 활용"
-categories:
-  - Spring Security
-tags:
-  - Spring Security
-  - Spring Boot
-  - Authority
-last_modified_at: 2025-06-24
----
+date: 2025-06-24 14:12:23 +0900
+categories: Spring Boot
+tags: [GrantedAuthority, Authentication]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - GrantedAuthority: 스프링 시큐리티에서 권한/역할 정의 인터페이스  
 - Authentication: 사용자 인증 정보, 권한 리스트 포함  
@@ -171,7 +169,6 @@ public class SecurityConfig {
 스프링 시큐리티 권한 처음엔 복잡했음  
 singletonList로 간결함과 효율성 깨달음  
 카페 배지 비유로 메모리 절약 이해  
-application.yml로 보안 설정 간소화 추천  
 불변성으로 안정성 보장 실감  
 대규모 앱에서 리소스 절약의 중요성 체감  
 앞으로 단일 권한은 singletonList 적극 활용

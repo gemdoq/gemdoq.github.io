@@ -1,13 +1,12 @@
 ---
 layout: single
 title: "Spring Boot로 REST API CRUD 구현"
-date: 2025-08-09 17:34:00 +0900
-categories: spring-boot
+date: 2025-08-01 17:34:00 +0900
+categories: Spring Boot
 tags: [Spring Boot, REST API, CRUD]
 typora-root-url: ../
 
 ---
-
 # ✈️ Spring Boot로 REST API CRUD 구현
 
 ## 🎯 개요
@@ -263,9 +262,3 @@ public class UserController {
 - 데이터베이스 설정: application.yml에서 H2 URL 정확히 입력
 - 로그 확인: IntelliJ 콘솔로 에러 디버깅
 - 테스트: Postman으로 CRUD 기능 모두 확인
-
-> 💡특이사항
->
-> JDK21 환경에서 Gradle 8.x 이상 추천
-> application.yml로 설정 중앙화
-> 이 설정으로 Spring Boot 프로젝트의 REST API 안정성 확보

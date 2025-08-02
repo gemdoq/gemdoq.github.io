@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "HTTP 클라이언트 알아보기: RestTemplate WebClient 중심"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-18
+date: 2025-06-08 14:12:23 +0900
+categories: Spring Boot
+tags: [RestTemplate, WebClient, HttpClient, FeignClient]
+typora-root-url: ../
+
 ---
 
 #### 📌 HTTP 클라이언트란
@@ -234,5 +235,4 @@ WebClient는 비동기와 논블로킹으로 미래 지향적
 IntelliJ로 WebClient 디버깅, Postman으로 응답 테스트하면 흐름 빠르게 익힘  
 application.yml로 타임아웃과 로깅 설정하면 유지보수 쉬워짐  
 
-도구 선택은 트래픽과 요구사항에 따라  
-RestTemplate으로 시작, WebClient으로 확장하는 여정
+트래픽과 요구사항에 따라 도구 선택  

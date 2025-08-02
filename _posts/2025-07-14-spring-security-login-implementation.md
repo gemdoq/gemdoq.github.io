@@ -1,13 +1,12 @@
 ---
 layout: single
 title: "스프링 시큐리티로 로그인 기능 구현"
-date: 2025-08-05 17:30:00 +0900
-categories: spring-security
-tags: [Spring Security, Login Implementation, Authentication]
+date: 2025-07-14 17:30:00 +0900
+categories: Spring Boot
+tags: [Spring Security, Login, Authentication]
 typora-root-url: ../
 
 ---
-
 # ✈️ 스프링 시큐리티로 로그인 기능 구현
 
 ## 🎯 개요
@@ -300,9 +299,3 @@ public class HomeController {
 - 비밀번호 암호화: BCryptPasswordEncoder 필수
 - 로그 확인: IntelliJ 콘솔로 인증 에러 디버깅
 - 테스트: 로컬 환경에서 로그인과 로그아웃 동작 점검
-
-> 💡특이사항
->
-> JDK21 환경에서 Gradle 8.x 이상 추천
-> application.yml로 DB와 포트 설정 중앙화
-> 이 설정으로 Spring Boot 프로젝트의 로그인 보안 강화

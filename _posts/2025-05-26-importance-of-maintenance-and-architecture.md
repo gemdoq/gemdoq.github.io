@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "유지보수와 소프트웨어 아키텍처의 가치"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-07
+date: 2025-05-26 20:27:23 +0900
+categories: software engineering
+tags: [Architecture, Maintenance]
+typora-root-url: ../
+
 ---
 
 #### 📌 용어 한눈에
@@ -83,7 +84,7 @@ public class UserController {
 IntelliJ Ultimate라면 `@Autowired` 경고 감지, 코드 리팩토링 제안 같은 기능이 유지보수 효율 높여줌  
 
 ---
-#### ✍ 되새기며
+#### ✍ 결론
 유지보수는 단순히 버그 잡는 작업이 아님  
 사용자의 목소리에 귀 기울이고  
 소프트웨어를 더 나은 방향으로 이끄는 여정  
@@ -92,6 +93,3 @@ IntelliJ Ultimate라면 `@Autowired` 경고 감지, 코드 리팩토링 제안 �
 완벽히 이해하지 못해도  
 깔끔한 구조, 가독성 있는 코드, 명확한 설계를 고민하는 습관이  
 좋은 개발자로 가는 길을 열어줌  
-
-작은 질문과 실천에서 성장 시작됨  
-스프링부트 개발자라면 패키지 구조와 `application.yml`부터 정리 시작해보는 걸 추천

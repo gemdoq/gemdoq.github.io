@@ -1,10 +1,11 @@
 ---
+layout: single
 title: "보일러플레이트 코드 알아보기"
-categories:
-  - CS Basics
-tags:
-  - CS Basics
-last_modified_at: 2025-06-05
+date: 2025-05-25 17:16:23 +0900
+categories: concepts
+tags: [Boilerplate]
+typora-root-url: ../
+
 ---
 
 #### 📌 용어 한눈에
@@ -124,9 +125,9 @@ Lombok, Hibernate, Spring Boot는 단순 편의 도구가 아니라
 스프링부트 개발자라면 `application.yml` 잘 활용해서 설정 간소화 추천  
 
 ---
-#### ✍ 느낀 점
+#### ✍ 결론
 보일러플레이트 코드는 처음엔 부담스러웠지만  
-반복하다 보니 패턴이 익숙해지고 구조를 이해하는 계기 됨  
+반복하다 보니 패턴이 익숙해지고 구조를 이해하는 계기  
 
 Lombok은 단순히 코드를 줄이는 게 아니라 시간 절약의 철학  
 Hibernate는 DB를 객체로 바라보는 새로운 시각  
@@ -134,4 +135,4 @@ Spring Boot는 전체 흐름을 간소화하는 설계
 
 도구를 쓰는 건 단순히 편의를 넘어서  
 **왜 이 도구가 필요한지**, **어떻게 설계를 단순화하는지** 고민하는 과정  
-그 고민이 결국 좋은 코드를 만드는 첫걸음
+그 고민이 결국 좋은 코드를 만드는 시작

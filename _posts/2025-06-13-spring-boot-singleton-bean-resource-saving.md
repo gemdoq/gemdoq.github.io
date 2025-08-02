@@ -1,11 +1,11 @@
 ---
+layout: single
 title: "스프링부트 싱글톤 빈으로 리소스 절약하기"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - Singleton
-last_modified_at: 2025-06-24
+date: 2025-06-13 14:12:23 +0900
+categories: Spring Boot
+tags: [Singleton Bean, Resource]
+typora-root-url: ../
+
 ---
 
 #### 📌 용어 한눈에
@@ -143,10 +143,8 @@ public class CalculatorService {
 - application.yml로 빈 스코프와 설정 관리  
 
 ---
-#### ✍ 느끼며
+#### ✍ 결론
 싱글톤 처음엔 단순 객체 공유로 봤음  
 커피 머신 비유로 리소스 절약 실감  
 상태 없는 빈의 스레드 안전성 중요성 이해  
-스프링부트에서 application.yml로 스코프 설정 간편  
-IntelliJ 디버깅으로 빈 생명주기 파악  
-빈 설계와 스코프 선택이 서버 안정성의 핵심
+빈 설계와 스코프 선택이 서버 안정성의 핵심  

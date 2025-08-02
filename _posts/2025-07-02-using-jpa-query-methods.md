@@ -1,14 +1,12 @@
 ---
+layout: single
 title: "스프링부트 JPA Query Methods 활용"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - JPA
-  - Query Methods
-last_modified_at: 2025-07-24
----
+date: 2025-07-02 14:12:23 +0900
+categories: Spring Boot
+tags: [JPA, Query Method]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - JPA Query Methods: 메서드 이름으로 쿼리 자동 생성  
 - Spring Data JPA: JPA 간소화 스프링 모듈  
@@ -252,6 +250,4 @@ EntityManager가 DB 연결 조율
 Query Methods 처음엔 이름 짓기 어색했음  
 검색 비유로 역할 이해  
 잘못된 이름은 쿼리 오류  
-IntelliJ JPA 콘솔로 디버깅 편리  
-application.yml로 설정 간소화  
 Query Methods로 설계 집중 가능

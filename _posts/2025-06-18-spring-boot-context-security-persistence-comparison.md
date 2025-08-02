@@ -1,14 +1,12 @@
 ---
+layout: single
 title: "스프링부트 컨텍스트와 시큐리티 퍼시스턴스 비교"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - Spring Security
-  - JPA
-last_modified_at: 2025-06-24
----
+date: 2025-06-18 14:12:23 +0900
+categories: Spring Boot
+tags: [ApplicationContext, SecurityContextHolder, SecurityContext, PersistenceContext]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - ApplicationContext: 스프링 IoC 컨테이너, 빈과 의존성 관리  
 - SecurityContextHolder: 스레드별 보안 정보 저장소  
@@ -214,7 +212,7 @@ public class MyComponent {
 > application.yml에 `spring.main.allow-bean-definition-overriding: true`로 충돌 관리  
 
 ---
-#### ✍ 느끼며
+#### ✍ 결론
 컨텍스트 처음엔 단순 저장소로 보였음  
 각각 환경, 보안, DB 다루는 역할 깨달음  
 
@@ -222,7 +220,5 @@ public class MyComponent {
 상태 없는 빈과 상태 있는 빈 차이로 스레드 안전성 이해  
 Configuration과 Component로 빈 생성 흐름 파악  
 
-스프링부트에서 application.yml로 설정 간소화 추천  
-IntelliJ 디버깅으로 컨텍스트 흐름 추적하면 감 잡힘  
 컨텍스트와 빈 스코프 선택이 설계의 핵심  
 스프링의 체계적인 구조에 감탄

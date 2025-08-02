@@ -1,13 +1,12 @@
 ---
 layout: single
 title: "윈도우 개발자 필수 단축키"
-date: 2025-08-07 17:32:00 +0900
-categories: tips
-tags: [Windows, Shortcuts, Productivity]
+date: 2025-07-26 17:32:00 +0900
+categories: knowledge
+tags: [Windows, Shortcut]
 typora-root-url: ../
 
 ---
-
 # ✈️ 윈도우 개발자 필수 단축키
 
 ## 🎯 개요
@@ -208,9 +207,3 @@ Spring Boot 프로젝트와 IntelliJ Ultimate 작업에서 반복 작업 간소�
 - 브라우저 호환: 크롬과 브레이브 단축키 차이 점검
 - 연습 필요: 근육 기억 형성까지 반복
 - 로그 확인: IntelliJ 콘솔로 단축키 동작 확인
-
-> 💡특이사항
->
-> IntelliJ Ultimate에서 단축키 설정 커스텀으로 워크플로우 최적화
-> Spring Boot 프로젝트 디버깅과 GitHub Pages 포스트 작성 효율성 향상
-> 이 단축키로 개발 생산성 극대화

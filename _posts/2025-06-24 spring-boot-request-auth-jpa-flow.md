@@ -1,14 +1,12 @@
 ---
+layout: single
 title: "스프링부트 요청 인증 JPA 흐름 파악하기"
-categories:
-  - Spring Boot
-tags:
-  - Spring Boot
-  - Spring Security
-  - JPA
-last_modified_at: 2025-06-24
----
+date: 2025-06-24 14:12:23 +0900
+categories: knowledge
+tags: [SecurityConfig, UserDetailsService]
+typora-root-url: ../
 
+---
 #### 📌 용어 한눈에
 - HTTP 요청: 클라이언트가 서버에 보내는 메시지 (GET, POST 등)  
 - 인증: 사용자 신원 확인 (로그인 여부)  
@@ -228,12 +226,9 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
 - application.yml로 설정 통합 관리  
 
 ---
-#### ✍ 느끼며
+#### ✍ 결론
 스프링부트 흐름 처음엔 어지러웠음  
-카페 비유로 단계별 역할 이해  
 시큐리티의 인증/인가 중요성 깨달음  
 컨트롤러, 서비스, 리포지토리 분리로 설계 감 잡힘  
 JPA로 DB 작업 간소화 놀라움  
-IntelliJ 디버깅과 Postman으로 흐름 파악  
-주니어로서 전체 그림 보이기 시작  
-앞으로 로깅과 테스트 연습 늘릴 예정
+전체 그림 보이기 시작  

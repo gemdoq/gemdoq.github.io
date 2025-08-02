@@ -1,13 +1,12 @@
 ---
 layout: single
 title: "GitHub Pages로 블로그 만들기"
-date: 2025-08-02 17:25:00 +0900
-categories: cicd
-tags: [GitHub, Jekyll, Blog]
+date: 2025-07-10 14:12:23 +0900
+categories: github
+tags: [Blog, Jekyll]
 typora-root-url: ../
 
 ---
-
 # ✈️ GitHub Pages로 블로그 만들기
 
 ## 🎯 개요
